@@ -148,7 +148,9 @@ textarea{min-height:68px;}
 <body>
 <div id="app"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://unpkg.com/docx@8.5.0/build/index.js"></script>
 <script src="xlsx-data.js"></script>
+<script src="questions-data.js"></script>
 <script src="main.js"></script>
 <script>
 var app = Elm.Main.init({ node: document.getElementById('app') });
@@ -175,6 +177,125 @@ app.ports.generateXlsx.subscribe(function(responses) {
     ws[cellRef] = { t: 's', v: val };
   });
   XLSX.writeFile(wb, 'HECVAT-4.14-Filled.xlsx');
+});
+
+app.ports.generateDocx.subscribe(function(responses) {
+  var D = docx;
+  var vendorName = responses['GNRL-01'] || 'Untitled Assessment';
+  var today = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  // Group questions by section
+  var sectionMap = {};
+  var sectionOrder = [];
+  QUESTIONS.forEach(function(q) {
+    if (!sectionMap[q.section]) {
+      sectionMap[q.section] = { name: q.sectionName, questions: [] };
+      sectionOrder.push(q.section);
+    }
+    sectionMap[q.section].questions.push(q);
+  });
+
+  var children = [];
+
+  // Cover heading
+  children.push(new D.Paragraph({
+    text: 'HECVAT 4.14 — Solution Provider Assessment',
+    heading: D.HeadingLevel.TITLE,
+    spacing: { after: 120 },
+  }));
+  children.push(new D.Paragraph({
+    children: [new D.TextRun({ text: vendorName, bold: true, size: 28 })],
+    spacing: { after: 80 },
+  }));
+  children.push(new D.Paragraph({
+    children: [new D.TextRun({ text: 'Date: ' + today, color: '666666', size: 20 })],
+    spacing: { after: 400 },
+  }));
+
+  sectionOrder.forEach(function(code) {
+    var section = sectionMap[code];
+    var hasAnswers = section.questions.some(function(q) { return responses[q.id]; });
+
+    // Section heading
+    children.push(new D.Paragraph({
+      text: code + '  ' + section.name,
+      heading: D.HeadingLevel.HEADING_1,
+      spacing: { before: 320, after: 120 },
+      border: { bottom: { style: D.BorderStyle.SINGLE, size: 4, color: '2d4a3e' } },
+    }));
+
+    section.questions.forEach(function(q) {
+      var answer = responses[q.id] || '';
+      var addAnswer = responses[q.id + '_add'] || '';
+
+      // Question ID + importance tag
+      var tagText = q.importance !== 'Unscored' ? '  [' + q.importance + (q.isCritical ? ' ★' : '') + ']' : '';
+      children.push(new D.Paragraph({
+        spacing: { before: 160, after: 40 },
+        children: [
+          new D.TextRun({ text: q.id, bold: true, color: '2d4a3e', size: 20 }),
+          new D.TextRun({ text: tagText, color: '888888', size: 18 }),
+        ],
+      }));
+
+      // Question label
+      children.push(new D.Paragraph({
+        children: [new D.TextRun({ text: q.label, size: 22 })],
+        spacing: { after: 40 },
+      }));
+
+      // Guidance
+      if (q.guidance) {
+        children.push(new D.Paragraph({
+          children: [new D.TextRun({ text: q.guidance, italics: true, color: '777777', size: 18 })],
+          indent: { left: 360 },
+          spacing: { after: 40 },
+        }));
+      }
+
+      // Answer
+      var answerText = answer || '(no response)';
+      var answerColor = !answer ? 'aaaaaa' : (answer === 'Yes' ? '2d7a4a' : answer === 'No' ? '8b1a1a' : '333333');
+      children.push(new D.Paragraph({
+        children: [
+          new D.TextRun({ text: 'Response: ', bold: true, size: 20 }),
+          new D.TextRun({ text: answerText, color: answerColor, size: 20 }),
+        ],
+        spacing: { after: addAnswer ? 40 : 80 },
+      }));
+
+      // Additional info
+      if (addAnswer) {
+        children.push(new D.Paragraph({
+          children: [
+            new D.TextRun({ text: 'Additional: ', bold: true, size: 20 }),
+            new D.TextRun({ text: addAnswer, size: 20 }),
+          ],
+          spacing: { after: 80 },
+        }));
+      }
+    });
+  });
+
+  var doc = new D.Document({
+    styles: {
+      default: {
+        document: { run: { font: 'Calibri', size: 22 } },
+      },
+    },
+    sections: [{ children: children }],
+  });
+
+  D.Packer.toBlob(doc).then(function(blob) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'HECVAT-4.14-' + vendorName.replace(/[^a-zA-Z0-9]/g, '-') + '.docx';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  });
 });
 </script>
 </body>
