@@ -5772,7 +5772,7 @@ var $author$project$Main$update = F2(
 					_Utils_update(
 						model,
 						{reportOpen: true}),
-					$elm$core$Platform$Cmd$none);
+					$author$project$Main$scrollTo('app'));
 			case 'CloseReport':
 				return _Utils_Tuple2(
 					_Utils_update(
@@ -11942,10 +11942,34 @@ var $author$project$Main$view = function (model) {
 												]))
 										]))
 								]),
-							A2(
-								$elm$core$List$map,
-								A2($author$project$Main$viewSection, model, scores),
-								$author$project$Questions$sections)))
+							_Utils_ap(
+								A2(
+									$elm$core$List$map,
+									A2($author$project$Main$viewSection, model, scores),
+									$author$project$Questions$sections),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$div,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('submit-bar')
+											]),
+										_List_fromArray(
+											[
+												A2(
+												$elm$html$Html$button,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('btn btn-accent btn-submit'),
+														$elm$html$Html$Events$onClick($author$project$Main$OpenReport)
+													]),
+												_List_fromArray(
+													[
+														$elm$html$Html$text('Submit Assessment')
+													]))
+											]))
+									]))))
 					])),
 				model.reportOpen ? A2($author$project$Main$viewReport, model, scores) : $elm$html$Html$text('')
 			]));

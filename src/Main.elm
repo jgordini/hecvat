@@ -107,7 +107,7 @@ update msg model =
             ( { model | collapsed = collapsed }, Cmd.none )
 
         OpenReport ->
-            ( { model | reportOpen = True }, Cmd.none )
+            ( { model | reportOpen = True }, scrollTo "app" )
 
         CloseReport ->
             ( { model | reportOpen = False }, Cmd.none )
@@ -856,6 +856,10 @@ view model =
                     ]
                  ]
                     ++ List.map (viewSection model scores) sections
+                    ++ [ div [ class "submit-bar" ]
+                            [ button [ class "btn btn-accent btn-submit", onClick OpenReport ] [ text "Submit Assessment" ]
+                            ]
+                       ]
                 )
             ]
         , if model.reportOpen then
