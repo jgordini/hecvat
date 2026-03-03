@@ -857,7 +857,7 @@ view model =
                  ]
                     ++ List.map (viewSection model scores) sections
                     ++ [ div [ class "submit-bar" ]
-                            [ button [ class "btn btn-accent btn-submit", onClick OpenReport ] [ text "Submit Assessment" ]
+                            [ button [ class "btn btn-accent btn-submit", onClick OpenReport ] [ text "Generate Report" ]
                             ]
                        ]
                 )

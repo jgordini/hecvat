@@ -11966,7 +11966,7 @@ var $author$project$Main$view = function (model) {
 													]),
 												_List_fromArray(
 													[
-														$elm$html$Html$text('Submit Assessment')
+														$elm$html$Html$text('Generate Report')
 													]))
 											]))
 									]))))
