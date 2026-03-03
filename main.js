@@ -4370,9 +4370,6 @@ function _Browser_load(url)
 		}
 	}));
 }
-var $author$project$Main$ImportLoaded = function (a) {
-	return {$: 'ImportLoaded', a: a};
-};
 var $elm$core$Basics$EQ = {$: 'EQ'};
 var $elm$core$Basics$GT = {$: 'GT'};
 var $elm$core$Basics$LT = {$: 'LT'};
@@ -5162,8 +5159,6 @@ var $elm$core$Task$perform = F2(
 				A2($elm$core$Task$map, toMessage, task)));
 	});
 var $elm$browser$Browser$element = _Browser_element;
-var $elm$json$Json$Decode$string = _Json_decodeString;
-var $author$project$Main$importLoaded = _Platform_incomingPort('importLoaded', $elm$json$Json$Decode$string);
 var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
 var $elm$core$Set$Set_elm_builtin = function (a) {
@@ -5177,6 +5172,50 @@ var $author$project$Main$init = function (_v0) {
 		{collapsed: $elm$core$Set$empty, reportOpen: false, responses: $elm$core$Dict$empty},
 		$elm$core$Platform$Cmd$none);
 };
+var $elm$core$Platform$Sub$batch = _Platform_batch;
+var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
+var $elm$core$Dict$foldl = F3(
+	function (func, acc, dict) {
+		foldl:
+		while (true) {
+			if (dict.$ === 'RBEmpty_elm_builtin') {
+				return acc;
+			} else {
+				var key = dict.b;
+				var value = dict.c;
+				var left = dict.d;
+				var right = dict.e;
+				var $temp$func = func,
+					$temp$acc = A3(
+					func,
+					key,
+					value,
+					A3($elm$core$Dict$foldl, func, acc, left)),
+					$temp$dict = right;
+				func = $temp$func;
+				acc = $temp$acc;
+				dict = $temp$dict;
+				continue foldl;
+			}
+		}
+	});
+var $elm$json$Json$Encode$dict = F3(
+	function (toKey, toValue, dictionary) {
+		return _Json_wrap(
+			A3(
+				$elm$core$Dict$foldl,
+				F3(
+					function (key, value, obj) {
+						return A3(
+							_Json_addField,
+							toKey(key),
+							toValue(value),
+							obj);
+					}),
+				_Json_emptyObject(_Utils_Tuple0),
+				dictionary));
+	});
+var $author$project$Main$generateXlsx = _Platform_outgoingPort('generateXlsx', $elm$core$Basics$identity);
 var $elm$core$Dict$Black = {$: 'Black'};
 var $elm$core$Dict$RBNode_elm_builtin = F5(
 	function (a, b, c, d, e) {
@@ -5286,100 +5325,6 @@ var $elm$core$Dict$insert = F3(
 			return x;
 		}
 	});
-var $elm$core$Dict$fromList = function (assocs) {
-	return A3(
-		$elm$core$List$foldl,
-		F2(
-			function (_v0, dict) {
-				var key = _v0.a;
-				var value = _v0.b;
-				return A3($elm$core$Dict$insert, key, value, dict);
-			}),
-		$elm$core$Dict$empty,
-		assocs);
-};
-var $elm$json$Json$Decode$keyValuePairs = _Json_decodeKeyValuePairs;
-var $elm$json$Json$Decode$dict = function (decoder) {
-	return A2(
-		$elm$json$Json$Decode$map,
-		$elm$core$Dict$fromList,
-		$elm$json$Json$Decode$keyValuePairs(decoder));
-};
-var $author$project$Main$decodeResponses = $elm$json$Json$Decode$dict($elm$json$Json$Decode$string);
-var $elm$json$Json$Decode$decodeString = _Json_runOnString;
-var $elm$core$Dict$foldl = F3(
-	function (func, acc, dict) {
-		foldl:
-		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
-				return acc;
-			} else {
-				var key = dict.b;
-				var value = dict.c;
-				var left = dict.d;
-				var right = dict.e;
-				var $temp$func = func,
-					$temp$acc = A3(
-					func,
-					key,
-					value,
-					A3($elm$core$Dict$foldl, func, acc, left)),
-					$temp$dict = right;
-				func = $temp$func;
-				acc = $temp$acc;
-				dict = $temp$dict;
-				continue foldl;
-			}
-		}
-	});
-var $elm$json$Json$Encode$dict = F3(
-	function (toKey, toValue, dictionary) {
-		return _Json_wrap(
-			A3(
-				$elm$core$Dict$foldl,
-				F3(
-					function (key, value, obj) {
-						return A3(
-							_Json_addField,
-							toKey(key),
-							toValue(value),
-							obj);
-					}),
-				_Json_emptyObject(_Utils_Tuple0),
-				dictionary));
-	});
-var $elm$json$Json$Encode$string = _Json_wrap;
-var $author$project$Main$downloadJson = _Platform_outgoingPort('downloadJson', $elm$json$Json$Encode$string);
-var $elm$json$Json$Encode$object = function (pairs) {
-	return _Json_wrap(
-		A3(
-			$elm$core$List$foldl,
-			F2(
-				function (_v0, obj) {
-					var k = _v0.a;
-					var v = _v0.b;
-					return A3(_Json_addField, k, v, obj);
-				}),
-			_Json_emptyObject(_Utils_Tuple0),
-			pairs));
-};
-var $author$project$Main$encodeResponses = function (responses) {
-	return A2(
-		$elm$json$Json$Encode$encode,
-		2,
-		$elm$json$Json$Encode$object(
-			A2(
-				$elm$core$List$map,
-				function (_v0) {
-					var k = _v0.a;
-					var v = _v0.b;
-					return _Utils_Tuple2(
-						k,
-						$elm$json$Json$Encode$string(v));
-				},
-				$elm$core$Dict$toList(responses))));
-};
-var $author$project$Main$generateXlsx = _Platform_outgoingPort('generateXlsx', $elm$core$Basics$identity);
 var $elm$core$Set$insert = F2(
 	function (key, _v0) {
 		var dict = _v0.a;
@@ -5799,12 +5744,7 @@ var $elm$core$Set$remove = F2(
 		return $elm$core$Set$Set_elm_builtin(
 			A2($elm$core$Dict$remove, key, dict));
 	});
-var $elm$json$Json$Encode$null = _Json_encodeNull;
-var $author$project$Main$requestImport = _Platform_outgoingPort(
-	'requestImport',
-	function ($) {
-		return $elm$json$Json$Encode$null;
-	});
+var $elm$json$Json$Encode$string = _Json_wrap;
 var $author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
@@ -5838,39 +5778,15 @@ var $author$project$Main$update = F2(
 						model,
 						{reportOpen: false}),
 					$elm$core$Platform$Cmd$none);
-			case 'ExportJson':
-				return _Utils_Tuple2(
-					model,
-					$author$project$Main$downloadJson(
-						$author$project$Main$encodeResponses(model.responses)));
-			case 'ExportXlsx':
+			default:
 				return _Utils_Tuple2(
 					model,
 					$author$project$Main$generateXlsx(
 						A3($elm$json$Json$Encode$dict, $elm$core$Basics$identity, $elm$json$Json$Encode$string, model.responses)));
-			case 'RequestImport':
-				return _Utils_Tuple2(
-					model,
-					$author$project$Main$requestImport(_Utils_Tuple0));
-			default:
-				var raw = msg.a;
-				var _v1 = A2($elm$json$Json$Decode$decodeString, $author$project$Main$decodeResponses, raw);
-				if (_v1.$ === 'Ok') {
-					var newResponses = _v1.a;
-					return _Utils_Tuple2(
-						_Utils_update(
-							model,
-							{responses: newResponses}),
-						$elm$core$Platform$Cmd$none);
-				} else {
-					return _Utils_Tuple2(model, $elm$core$Platform$Cmd$none);
-				}
 		}
 	});
-var $author$project$Main$ExportJson = {$: 'ExportJson'};
 var $author$project$Main$ExportXlsx = {$: 'ExportXlsx'};
 var $author$project$Main$OpenReport = {$: 'OpenReport'};
-var $author$project$Main$RequestImport = {$: 'RequestImport'};
 var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -10726,8 +10642,6 @@ var $author$project$Main$viewReport = F2(
 					A2($elm$core$Dict$get, code, scores.bySection));
 			},
 			$author$project$Questions$sections);
-		var overallPct = scores.overallPct;
-		var scoreFill = $author$project$Main$pctStr(overallPct);
 		var otherFindings = A2(
 			$elm$core$List$take,
 			40,
@@ -10753,7 +10667,6 @@ var $author$project$Main$viewReport = F2(
 					$elm$html$Html$Attributes$class('findings-list')
 				]),
 			A2($elm$core$List$map, $author$project$Main$viewFinding, otherFindings));
-		var critPct = scores.critPct;
 		var critFindings = A2(
 			$elm$core$List$filter,
 			function (f) {
@@ -10861,22 +10774,11 @@ var $author$project$Main$viewReport = F2(
 													_List_fromArray(
 														[
 															$elm$html$Html$Attributes$class('btn-ghost-inv'),
-															$elm$html$Html$Events$onClick($author$project$Main$ExportJson)
-														]),
-													_List_fromArray(
-														[
-															$elm$html$Html$text('⬇ JSON')
-														])),
-													A2(
-													$elm$html$Html$button,
-													_List_fromArray(
-														[
-															$elm$html$Html$Attributes$class('btn-ghost-inv'),
 															$elm$html$Html$Events$onClick($author$project$Main$ExportXlsx)
 														]),
 													_List_fromArray(
 														[
-															$elm$html$Html$text('⬇ xlsx')
+															$elm$html$Html$text('⬇ Export xlsx')
 														]))
 												]))
 										])),
@@ -10905,7 +10807,7 @@ var $author$project$Main$viewReport = F2(
 													_List_fromArray(
 														[
 															$elm$html$Html$text(
-															$author$project$Main$pctStr(overallPct))
+															$author$project$Main$pctStr(scores.overallPct))
 														])),
 													A2(
 													$elm$html$Html$span,
@@ -10935,7 +10837,7 @@ var $author$project$Main$viewReport = F2(
 													_List_fromArray(
 														[
 															$elm$html$Html$text(
-															$author$project$Main$pctStr(critPct))
+															$author$project$Main$pctStr(scores.critPct))
 														])),
 													A2(
 													$elm$html$Html$span,
@@ -11154,17 +11056,6 @@ var $author$project$Main$viewReport = F2(
 									$elm$html$Html$button,
 									_List_fromArray(
 										[
-											$elm$html$Html$Attributes$class('btn btn-ghost'),
-											$elm$html$Html$Events$onClick($author$project$Main$ExportJson)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('⬇ Export JSON')
-										])),
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
 											$elm$html$Html$Attributes$class('btn btn-accent'),
 											$elm$html$Html$Events$onClick($author$project$Main$ExportXlsx)
 										]),
@@ -11243,6 +11134,7 @@ var $elm$json$Json$Decode$at = F2(
 	function (fields, decoder) {
 		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
 	});
+var $elm$json$Json$Decode$string = _Json_decodeString;
 var $elm$html$Html$Events$targetValue = A2(
 	$elm$json$Json$Decode$at,
 	_List_fromArray(
@@ -11707,17 +11599,9 @@ var $author$project$Main$view = function (model) {
 	var showReport = scores.answeredCount > 0;
 	var overallPct = scores.overallPct;
 	var scoreBarClass = 'score-bar-fill ' + $author$project$Main$scoreClass(overallPct);
-	var scoreFillStyle = A2(
-		$elm$html$Html$Attributes$style,
-		'width',
-		$author$project$Main$pctStr(overallPct));
 	var critPct = scores.critPct;
 	var answeredCount = scores.answeredCount;
 	var progressPct = (!totalQs) ? 0 : $elm$core$Basics$round((answeredCount / totalQs) * 100);
-	var progressFillStyle = A2(
-		$elm$html$Html$Attributes$style,
-		'width',
-		$author$project$Main$pctStr(progressPct));
 	return A2(
 		$elm$html$Html$div,
 		_List_Nil,
@@ -11892,7 +11776,10 @@ var $author$project$Main$view = function (model) {
 								_List_fromArray(
 									[
 										$elm$html$Html$Attributes$class(scoreBarClass),
-										scoreFillStyle
+										A2(
+										$elm$html$Html$Attributes$style,
+										'width',
+										$author$project$Main$pctStr(overallPct))
 									]),
 								_List_Nil)
 							])),
@@ -11909,7 +11796,10 @@ var $author$project$Main$view = function (model) {
 								_List_fromArray(
 									[
 										$elm$html$Html$Attributes$class('progress-fill'),
-										progressFillStyle
+										A2(
+										$elm$html$Html$Attributes$style,
+										'width',
+										$author$project$Main$pctStr(progressPct))
 									]),
 								_List_Nil)
 							])),
@@ -12005,48 +11895,7 @@ var $author$project$Main$view = function (model) {
 										]),
 									_List_fromArray(
 										[
-											A2(
-											$elm$html$Html$div,
-											_List_fromArray(
-												[
-													$elm$html$Html$Attributes$class('action-group')
-												]),
-											_List_fromArray(
-												[
-													A2(
-													$elm$html$Html$button,
-													_List_fromArray(
-														[
-															$elm$html$Html$Attributes$class('btn btn-ghost'),
-															$elm$html$Html$Events$onClick($author$project$Main$RequestImport)
-														]),
-													_List_fromArray(
-														[
-															$elm$html$Html$text('⬆ Import JSON')
-														])),
-													A2(
-													$elm$html$Html$button,
-													_List_fromArray(
-														[
-															$elm$html$Html$Attributes$class('btn btn-ghost'),
-															$elm$html$Html$Events$onClick($author$project$Main$ExportJson)
-														]),
-													_List_fromArray(
-														[
-															$elm$html$Html$text('⬇ Export JSON')
-														])),
-													A2(
-													$elm$html$Html$button,
-													_List_fromArray(
-														[
-															$elm$html$Html$Attributes$class('btn btn-ghost'),
-															$elm$html$Html$Events$onClick($author$project$Main$ExportXlsx)
-														]),
-													_List_fromArray(
-														[
-															$elm$html$Html$text('⬇ Export xlsx')
-														]))
-												])),
+											A2($elm$html$Html$div, _List_Nil, _List_Nil),
 											A2(
 											$elm$html$Html$div,
 											_List_fromArray(
@@ -12065,7 +11914,18 @@ var $author$project$Main$view = function (model) {
 													_List_fromArray(
 														[
 															$elm$html$Html$text('⎷ View Report')
-														])) : $elm$html$Html$text('')
+														])) : $elm$html$Html$text(''),
+													A2(
+													$elm$html$Html$button,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$class('btn btn-ghost'),
+															$elm$html$Html$Events$onClick($author$project$Main$ExportXlsx)
+														]),
+													_List_fromArray(
+														[
+															$elm$html$Html$text('⬇ Export xlsx')
+														]))
 												]))
 										]))
 								]),
@@ -12081,7 +11941,7 @@ var $author$project$Main$main = $elm$browser$Browser$element(
 	{
 		init: $author$project$Main$init,
 		subscriptions: function (_v0) {
-			return $author$project$Main$importLoaded($author$project$Main$ImportLoaded);
+			return $elm$core$Platform$Sub$none;
 		},
 		update: $author$project$Main$update,
 		view: $author$project$Main$view

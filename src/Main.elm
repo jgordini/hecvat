@@ -11,16 +11,7 @@ import Set exposing (Set)
 import Questions exposing (..)
 
 
-port downloadJson : String -> Cmd msg
-
-
 port generateXlsx : Encode.Value -> Cmd msg
-
-
-port requestImport : () -> Cmd msg
-
-
-port importLoaded : (String -> msg) -> Sub msg
 
 
 
@@ -85,10 +76,7 @@ type Msg
     | ToggleSection String
     | OpenReport
     | CloseReport
-    | ExportJson
     | ExportXlsx
-    | RequestImport
-    | ImportLoaded String
 
 
 
@@ -120,22 +108,8 @@ update msg model =
         CloseReport ->
             ( { model | reportOpen = False }, Cmd.none )
 
-        ExportJson ->
-            ( model, downloadJson (encodeResponses model.responses) )
-
         ExportXlsx ->
             ( model, generateXlsx (Encode.dict identity Encode.string model.responses) )
-
-        RequestImport ->
-            ( model, requestImport () )
-
-        ImportLoaded raw ->
-            case Decode.decodeString decodeResponses raw of
-                Ok newResponses ->
-                    ( { model | responses = newResponses }, Cmd.none )
-
-                Err _ ->
-                    ( model, Cmd.none )
 
 
 
@@ -302,23 +276,6 @@ computeScores responses =
     , unansweredCritical = unansweredCritical
     , answeredCount = answeredCount
     }
-
-
-
--- JSON ENCODE/DECODE
-
-
-encodeResponses : Dict String String -> String
-encodeResponses responses =
-    Dict.toList responses
-        |> List.map (\( k, v ) -> ( k, Encode.string v ))
-        |> Encode.object
-        |> Encode.encode 2
-
-
-decodeResponses : Decode.Decoder (Dict String String)
-decodeResponses =
-    Decode.dict Decode.string
 
 
 
@@ -708,15 +665,6 @@ viewReport model scores =
 
             else
                 div [ class "findings-list" ] unansweredEls
-
-        overallPct =
-            scores.overallPct
-
-        critPct =
-            scores.critPct
-
-        scoreFill =
-            pctStr overallPct
     in
     div [ class "modal-backdrop visible", onClick CloseReport ]
         [ div
@@ -731,17 +679,16 @@ viewReport model scores =
                         ]
                     , div [ class "report-header-btns" ]
                         [ button [ class "btn-ghost-inv", onClick CloseReport ] [ text "Close" ]
-                        , button [ class "btn-ghost-inv", onClick ExportJson ] [ text "⬇ JSON" ]
-                        , button [ class "btn-ghost-inv", onClick ExportXlsx ] [ text "⬇ xlsx" ]
+                        , button [ class "btn-ghost-inv", onClick ExportXlsx ] [ text "⬇ Export xlsx" ]
                         ]
                     ]
                 , div [ class "report-meta" ]
                     [ div [ class "report-meta-item" ]
-                        [ span [ class "val" ] [ text (pctStr overallPct) ]
+                        [ span [ class "val" ] [ text (pctStr scores.overallPct) ]
                         , span [ class "lbl" ] [ text "Overall" ]
                         ]
                     , div [ class "report-meta-item" ]
-                        [ span [ class "val" ] [ text (pctStr critPct) ]
+                        [ span [ class "val" ] [ text (pctStr scores.critPct) ]
                         , span [ class "lbl" ] [ text "Critical" ]
                         ]
                     , div [ class "report-meta-item" ]
@@ -774,7 +721,6 @@ viewReport model scores =
                 ]
             , div [ class "report-footer" ]
                 [ button [ class "btn btn-ghost", onClick CloseReport ] [ text "Close" ]
-                , button [ class "btn btn-ghost", onClick ExportJson ] [ text "⬇ Export JSON" ]
                 , button [ class "btn btn-accent", onClick ExportXlsx ] [ text "⬇ Export xlsx" ]
                 ]
             ]
@@ -820,12 +766,6 @@ view model =
 
         showReport =
             scores.answeredCount > 0
-
-        scoreFillStyle =
-            style "width" (pctStr overallPct)
-
-        progressFillStyle =
-            style "width" (pctStr progressPct)
 
         scoreBarClass =
             "score-bar-fill " ++ scoreClass overallPct
@@ -874,40 +814,18 @@ view model =
                     ]
                 ]
             , div [ class "score-bar-wrap" ]
-                [ div [ class scoreBarClass, scoreFillStyle ] [] ]
+                [ div [ class scoreBarClass, style "width" (pctStr overallPct) ] [] ]
             , div [ class "progress-wrap" ]
-                [ div [ class "progress-fill", progressFillStyle ] [] ]
+                [ div [ class "progress-fill", style "width" (pctStr progressPct) ] [] ]
             , div [ class "header-stats" ]
                 [ span []
-                    [ text
-                        (String.fromInt answeredCount
-                            ++ " of "
-                            ++ String.fromInt totalQs
-                            ++ " answered"
-                        )
-                    ]
+                    [ text (String.fromInt answeredCount ++ " of " ++ String.fromInt totalQs ++ " answered") ]
                 , span []
-                    [ text
-                        ("Score: "
-                            ++ String.fromInt scores.totalActual
-                            ++ " / "
-                            ++ String.fromInt scores.totalPotential
-                        )
-                    ]
+                    [ text ("Score: " ++ String.fromInt scores.totalActual ++ " / " ++ String.fromInt scores.totalPotential) ]
                 , span []
-                    [ text
-                        ("Critical: "
-                            ++ String.fromInt scores.critActual
-                            ++ " / "
-                            ++ String.fromInt scores.critPotential
-                        )
-                    ]
+                    [ text ("Critical: " ++ String.fromInt scores.critActual ++ " / " ++ String.fromInt scores.critPotential) ]
                 , span []
-                    [ text
-                        (String.fromInt (List.length scores.nonCompliant)
-                            ++ " non-compliant"
-                        )
-                    ]
+                    [ text (String.fromInt (List.length scores.nonCompliant) ++ " non-compliant") ]
                 ]
             ]
         , div [ class "layout" ]
@@ -917,17 +835,14 @@ view model =
                 )
             , div [ class "form-area" ]
                 ([ div [ class "action-bar" ]
-                    [ div [ class "action-group" ]
-                        [ button [ class "btn btn-ghost", onClick RequestImport ] [ text "⬆ Import JSON" ]
-                        , button [ class "btn btn-ghost", onClick ExportJson ] [ text "⬇ Export JSON" ]
-                        , button [ class "btn btn-ghost", onClick ExportXlsx ] [ text "⬇ Export xlsx" ]
-                        ]
+                    [ div [] []
                     , div [ class "action-group" ]
                         [ if showReport then
                             button [ class "btn btn-accent", onClick OpenReport ] [ text "⎷ View Report" ]
 
                           else
                             text ""
+                        , button [ class "btn btn-ghost", onClick ExportXlsx ] [ text "⬇ Export xlsx" ]
                         ]
                     ]
                  ]
@@ -952,5 +867,5 @@ main =
         { init = init
         , update = update
         , view = view
-        , subscriptions = \_ -> importLoaded ImportLoaded
+        , subscriptions = \_ -> Sub.none
         }
