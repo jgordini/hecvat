@@ -14,6 +14,9 @@ import Questions exposing (..)
 port downloadJson : String -> Cmd msg
 
 
+port generateXlsx : Encode.Value -> Cmd msg
+
+
 port requestImport : () -> Cmd msg
 
 
@@ -83,6 +86,7 @@ type Msg
     | OpenReport
     | CloseReport
     | ExportJson
+    | ExportXlsx
     | RequestImport
     | ImportLoaded String
 
@@ -118,6 +122,9 @@ update msg model =
 
         ExportJson ->
             ( model, downloadJson (encodeResponses model.responses) )
+
+        ExportXlsx ->
+            ( model, generateXlsx (Encode.dict identity Encode.string model.responses) )
 
         RequestImport ->
             ( model, requestImport () )
@@ -724,7 +731,8 @@ viewReport model scores =
                         ]
                     , div [ class "report-header-btns" ]
                         [ button [ class "btn-ghost-inv", onClick CloseReport ] [ text "Close" ]
-                        , button [ class "btn-ghost-inv", onClick ExportJson ] [ text "⬇ Export JSON" ]
+                        , button [ class "btn-ghost-inv", onClick ExportJson ] [ text "⬇ JSON" ]
+                        , button [ class "btn-ghost-inv", onClick ExportXlsx ] [ text "⬇ xlsx" ]
                         ]
                     ]
                 , div [ class "report-meta" ]
@@ -766,7 +774,8 @@ viewReport model scores =
                 ]
             , div [ class "report-footer" ]
                 [ button [ class "btn btn-ghost", onClick CloseReport ] [ text "Close" ]
-                , button [ class "btn btn-accent", onClick ExportJson ] [ text "⬇ Export JSON" ]
+                , button [ class "btn btn-ghost", onClick ExportJson ] [ text "⬇ Export JSON" ]
+                , button [ class "btn btn-accent", onClick ExportXlsx ] [ text "⬇ Export xlsx" ]
                 ]
             ]
         ]
@@ -911,6 +920,7 @@ view model =
                     [ div [ class "action-group" ]
                         [ button [ class "btn btn-ghost", onClick RequestImport ] [ text "⬆ Import JSON" ]
                         , button [ class "btn btn-ghost", onClick ExportJson ] [ text "⬇ Export JSON" ]
+                        , button [ class "btn btn-ghost", onClick ExportXlsx ] [ text "⬇ Export xlsx" ]
                         ]
                     , div [ class "action-group" ]
                         [ if showReport then

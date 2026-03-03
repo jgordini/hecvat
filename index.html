@@ -148,6 +148,8 @@ textarea{min-height:68px;}
 <body>
 <div id="app"></div>
 <input type="file" id="import-input" accept=".json" style="display:none">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="xlsx-data.js"></script>
 <script src="main.js"></script>
 <script>
 var app = Elm.Main.init({ node: document.getElementById('app') });
@@ -177,6 +179,30 @@ document.getElementById('import-input').addEventListener('change', function(e) {
   };
   reader.readAsText(file);
   e.target.value = '';
+});
+
+app.ports.generateXlsx.subscribe(function(responses) {
+  var wb = XLSX.read(TEMPLATE_B64, { type: 'base64' });
+  // Write date to START HERE C3
+  var sh = wb.Sheets['START HERE'];
+  if (sh) {
+    var today = new Date().toISOString().slice(0, 10);
+    sh['C3'] = { t: 's', v: today };
+  }
+  // Write each response to its mapped cell
+  Object.keys(responses).forEach(function(qid) {
+    var val = responses[qid];
+    var isAdd = qid.endsWith('_add');
+    var baseId = isAdd ? qid.slice(0, -4) : qid;
+    var map = WRITE_MAP[baseId];
+    if (!map) return;
+    var ws = wb.Sheets[map.sheet];
+    if (!ws) return;
+    var col = isAdd ? map.addl_col : map.answer_col;
+    var cellRef = XLSX.utils.encode_cell({ r: map.row - 1, c: col - 1 });
+    ws[cellRef] = { t: 's', v: val };
+  });
+  XLSX.writeFile(wb, 'HECVAT-4.14-Filled.xlsx');
 });
 </script>
 </body>

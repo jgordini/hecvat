@@ -5307,6 +5307,47 @@ var $elm$json$Json$Decode$dict = function (decoder) {
 };
 var $author$project$Main$decodeResponses = $elm$json$Json$Decode$dict($elm$json$Json$Decode$string);
 var $elm$json$Json$Decode$decodeString = _Json_runOnString;
+var $elm$core$Dict$foldl = F3(
+	function (func, acc, dict) {
+		foldl:
+		while (true) {
+			if (dict.$ === 'RBEmpty_elm_builtin') {
+				return acc;
+			} else {
+				var key = dict.b;
+				var value = dict.c;
+				var left = dict.d;
+				var right = dict.e;
+				var $temp$func = func,
+					$temp$acc = A3(
+					func,
+					key,
+					value,
+					A3($elm$core$Dict$foldl, func, acc, left)),
+					$temp$dict = right;
+				func = $temp$func;
+				acc = $temp$acc;
+				dict = $temp$dict;
+				continue foldl;
+			}
+		}
+	});
+var $elm$json$Json$Encode$dict = F3(
+	function (toKey, toValue, dictionary) {
+		return _Json_wrap(
+			A3(
+				$elm$core$Dict$foldl,
+				F3(
+					function (key, value, obj) {
+						return A3(
+							_Json_addField,
+							toKey(key),
+							toValue(value),
+							obj);
+					}),
+				_Json_emptyObject(_Utils_Tuple0),
+				dictionary));
+	});
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $author$project$Main$downloadJson = _Platform_outgoingPort('downloadJson', $elm$json$Json$Encode$string);
 var $elm$json$Json$Encode$object = function (pairs) {
@@ -5338,6 +5379,7 @@ var $author$project$Main$encodeResponses = function (responses) {
 				},
 				$elm$core$Dict$toList(responses))));
 };
+var $author$project$Main$generateXlsx = _Platform_outgoingPort('generateXlsx', $elm$core$Basics$identity);
 var $elm$core$Set$insert = F2(
 	function (key, _v0) {
 		var dict = _v0.a;
@@ -5801,6 +5843,11 @@ var $author$project$Main$update = F2(
 					model,
 					$author$project$Main$downloadJson(
 						$author$project$Main$encodeResponses(model.responses)));
+			case 'ExportXlsx':
+				return _Utils_Tuple2(
+					model,
+					$author$project$Main$generateXlsx(
+						A3($elm$json$Json$Encode$dict, $elm$core$Basics$identity, $elm$json$Json$Encode$string, model.responses)));
 			case 'RequestImport':
 				return _Utils_Tuple2(
 					model,
@@ -5821,6 +5868,7 @@ var $author$project$Main$update = F2(
 		}
 	});
 var $author$project$Main$ExportJson = {$: 'ExportJson'};
+var $author$project$Main$ExportXlsx = {$: 'ExportXlsx'};
 var $author$project$Main$OpenReport = {$: 'OpenReport'};
 var $author$project$Main$RequestImport = {$: 'RequestImport'};
 var $elm$html$Html$button = _VirtualDom_node('button');
@@ -10817,7 +10865,18 @@ var $author$project$Main$viewReport = F2(
 														]),
 													_List_fromArray(
 														[
-															$elm$html$Html$text('⬇ Export JSON')
+															$elm$html$Html$text('⬇ JSON')
+														])),
+													A2(
+													$elm$html$Html$button,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$class('btn-ghost-inv'),
+															$elm$html$Html$Events$onClick($author$project$Main$ExportXlsx)
+														]),
+													_List_fromArray(
+														[
+															$elm$html$Html$text('⬇ xlsx')
 														]))
 												]))
 										])),
@@ -11095,12 +11154,23 @@ var $author$project$Main$viewReport = F2(
 									$elm$html$Html$button,
 									_List_fromArray(
 										[
-											$elm$html$Html$Attributes$class('btn btn-accent'),
+											$elm$html$Html$Attributes$class('btn btn-ghost'),
 											$elm$html$Html$Events$onClick($author$project$Main$ExportJson)
 										]),
 									_List_fromArray(
 										[
 											$elm$html$Html$text('⬇ Export JSON')
+										])),
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('btn btn-accent'),
+											$elm$html$Html$Events$onClick($author$project$Main$ExportXlsx)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('⬇ Export xlsx')
 										]))
 								]))
 						]))
@@ -11964,6 +12034,17 @@ var $author$project$Main$view = function (model) {
 													_List_fromArray(
 														[
 															$elm$html$Html$text('⬇ Export JSON')
+														])),
+													A2(
+													$elm$html$Html$button,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$class('btn btn-ghost'),
+															$elm$html$Html$Events$onClick($author$project$Main$ExportXlsx)
+														]),
+													_List_fromArray(
+														[
+															$elm$html$Html$text('⬇ Export xlsx')
 														]))
 												])),
 											A2(
