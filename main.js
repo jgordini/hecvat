@@ -5745,6 +5745,7 @@ var $elm$core$Set$remove = F2(
 			A2($elm$core$Dict$remove, key, dict));
 	});
 var $elm$json$Json$Encode$string = _Json_wrap;
+var $author$project$Main$scrollTo = _Platform_outgoingPort('scrollTo', $elm$json$Json$Encode$string);
 var $author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
@@ -5778,11 +5779,20 @@ var $author$project$Main$update = F2(
 						model,
 						{reportOpen: false}),
 					$elm$core$Platform$Cmd$none);
-			default:
+			case 'ExportDocx':
 				return _Utils_Tuple2(
 					model,
 					$author$project$Main$generateDocx(
 						A3($elm$json$Json$Encode$dict, $elm$core$Basics$identity, $elm$json$Json$Encode$string, model.responses)));
+			default:
+				var code = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							collapsed: A2($elm$core$Set$remove, code, model.collapsed)
+						}),
+					$author$project$Main$scrollTo('section-' + code));
 		}
 	});
 var $author$project$Main$ExportDocx = {$: 'ExportDocx'};
@@ -11518,6 +11528,9 @@ var $author$project$Main$viewSection = F3(
 						sectionQs))
 				]));
 	});
+var $author$project$Main$GoToSection = function (a) {
+	return {$: 'GoToSection', a: a};
+};
 var $elm$virtual_dom$VirtualDom$attribute = F2(
 	function (key, value) {
 		return A2(
@@ -11561,7 +11574,7 @@ var $author$project$Main$viewSidebarItem = F3(
 				[
 					$elm$html$Html$Attributes$class('nav-item'),
 					$elm$html$Html$Events$onClick(
-					$author$project$Main$ToggleSection(code)),
+					$author$project$Main$GoToSection(code)),
 					A2($elm$html$Html$Attributes$attribute, 'data-section', code)
 				]),
 			_List_fromArray(

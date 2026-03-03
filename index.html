@@ -155,6 +155,11 @@ textarea{min-height:68px;}
 <script>
 var app = Elm.Main.init({ node: document.getElementById('app') });
 
+app.ports.scrollTo.subscribe(function(id) {
+  var el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
 app.ports.generateXlsx.subscribe(function(responses) {
   var wb = XLSX.read(TEMPLATE_B64, { type: 'base64' });
   // Write date to START HERE C3

@@ -14,6 +14,9 @@ import Questions exposing (..)
 port generateDocx : Encode.Value -> Cmd msg
 
 
+port scrollTo : String -> Cmd msg
+
+
 
 -- MODEL
 
@@ -77,6 +80,7 @@ type Msg
     | OpenReport
     | CloseReport
     | ExportDocx
+    | GoToSection String
 
 
 
@@ -110,6 +114,11 @@ update msg model =
 
         ExportDocx ->
             ( model, generateDocx (Encode.dict identity Encode.string model.responses) )
+
+        GoToSection code ->
+            ( { model | collapsed = Set.remove code model.collapsed }
+            , scrollTo ("section-" ++ code)
+            )
 
 
 
@@ -544,7 +553,7 @@ viewSidebarItem model scores ( code, name ) =
     in
     button
         [ class "nav-item"
-        , onClick (ToggleSection code)
+        , onClick (GoToSection code)
         , attribute "data-section" code
         ]
         [ span [ class "nav-code" ] [ text code ]
