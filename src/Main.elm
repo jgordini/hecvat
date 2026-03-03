@@ -11,9 +11,6 @@ import Set exposing (Set)
 import Questions exposing (..)
 
 
-port generateXlsx : Encode.Value -> Cmd msg
-
-
 port generateDocx : Encode.Value -> Cmd msg
 
 
@@ -79,7 +76,6 @@ type Msg
     | ToggleSection String
     | OpenReport
     | CloseReport
-    | ExportXlsx
     | ExportDocx
 
 
@@ -111,9 +107,6 @@ update msg model =
 
         CloseReport ->
             ( { model | reportOpen = False }, Cmd.none )
-
-        ExportXlsx ->
-            ( model, generateXlsx (Encode.dict identity Encode.string model.responses) )
 
         ExportDocx ->
             ( model, generateDocx (Encode.dict identity Encode.string model.responses) )
@@ -687,7 +680,6 @@ viewReport model scores =
                     , div [ class "report-header-btns" ]
                         [ button [ class "btn-ghost-inv", onClick CloseReport ] [ text "Close" ]
                         , button [ class "btn-ghost-inv", onClick ExportDocx ] [ text "⬇ .docx" ]
-                        , button [ class "btn-ghost-inv", onClick ExportXlsx ] [ text "⬇ .xlsx" ]
                         ]
                     ]
                 , div [ class "report-meta" ]
@@ -729,8 +721,7 @@ viewReport model scores =
                 ]
             , div [ class "report-footer" ]
                 [ button [ class "btn btn-ghost", onClick CloseReport ] [ text "Close" ]
-                , button [ class "btn btn-ghost", onClick ExportDocx ] [ text "⬇ Export .docx" ]
-                , button [ class "btn btn-accent", onClick ExportXlsx ] [ text "⬇ Export .xlsx" ]
+                , button [ class "btn btn-accent", onClick ExportDocx ] [ text "⬇ Export .docx" ]
                 ]
             ]
         ]
@@ -852,7 +843,6 @@ view model =
                           else
                             text ""
                         , button [ class "btn btn-ghost", onClick ExportDocx ] [ text "⬇ Export .docx" ]
-                        , button [ class "btn btn-ghost", onClick ExportXlsx ] [ text "⬇ Export .xlsx" ]
                         ]
                     ]
                  ]

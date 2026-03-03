@@ -5216,7 +5216,6 @@ var $elm$json$Json$Encode$dict = F3(
 				dictionary));
 	});
 var $author$project$Main$generateDocx = _Platform_outgoingPort('generateDocx', $elm$core$Basics$identity);
-var $author$project$Main$generateXlsx = _Platform_outgoingPort('generateXlsx', $elm$core$Basics$identity);
 var $elm$core$Dict$Black = {$: 'Black'};
 var $elm$core$Dict$RBNode_elm_builtin = F5(
 	function (a, b, c, d, e) {
@@ -5779,11 +5778,6 @@ var $author$project$Main$update = F2(
 						model,
 						{reportOpen: false}),
 					$elm$core$Platform$Cmd$none);
-			case 'ExportXlsx':
-				return _Utils_Tuple2(
-					model,
-					$author$project$Main$generateXlsx(
-						A3($elm$json$Json$Encode$dict, $elm$core$Basics$identity, $elm$json$Json$Encode$string, model.responses)));
 			default:
 				return _Utils_Tuple2(
 					model,
@@ -5792,7 +5786,6 @@ var $author$project$Main$update = F2(
 		}
 	});
 var $author$project$Main$ExportDocx = {$: 'ExportDocx'};
-var $author$project$Main$ExportXlsx = {$: 'ExportXlsx'};
 var $author$project$Main$OpenReport = {$: 'OpenReport'};
 var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$html$Html$Attributes$stringProperty = F2(
@@ -10786,17 +10779,6 @@ var $author$project$Main$viewReport = F2(
 													_List_fromArray(
 														[
 															$elm$html$Html$text('⬇ .docx')
-														])),
-													A2(
-													$elm$html$Html$button,
-													_List_fromArray(
-														[
-															$elm$html$Html$Attributes$class('btn-ghost-inv'),
-															$elm$html$Html$Events$onClick($author$project$Main$ExportXlsx)
-														]),
-													_List_fromArray(
-														[
-															$elm$html$Html$text('⬇ .xlsx')
 														]))
 												]))
 										])),
@@ -11074,23 +11056,12 @@ var $author$project$Main$viewReport = F2(
 									$elm$html$Html$button,
 									_List_fromArray(
 										[
-											$elm$html$Html$Attributes$class('btn btn-ghost'),
+											$elm$html$Html$Attributes$class('btn btn-accent'),
 											$elm$html$Html$Events$onClick($author$project$Main$ExportDocx)
 										]),
 									_List_fromArray(
 										[
 											$elm$html$Html$text('⬇ Export .docx')
-										])),
-									A2(
-									$elm$html$Html$button,
-									_List_fromArray(
-										[
-											$elm$html$Html$Attributes$class('btn btn-accent'),
-											$elm$html$Html$Events$onClick($author$project$Main$ExportXlsx)
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('⬇ Export .xlsx')
 										]))
 								]))
 						]))
@@ -11954,17 +11925,6 @@ var $author$project$Main$view = function (model) {
 													_List_fromArray(
 														[
 															$elm$html$Html$text('⬇ Export .docx')
-														])),
-													A2(
-													$elm$html$Html$button,
-													_List_fromArray(
-														[
-															$elm$html$Html$Attributes$class('btn btn-ghost'),
-															$elm$html$Html$Events$onClick($author$project$Main$ExportXlsx)
-														]),
-													_List_fromArray(
-														[
-															$elm$html$Html$text('⬇ Export .xlsx')
 														]))
 												]))
 										]))
