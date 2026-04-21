@@ -77,7 +77,7 @@ function A9(fun, a, b, c, d, e, f, g, h, i) {
   return fun.a === 9 ? fun.f(a, b, c, d, e, f, g, h, i) : fun(a)(b)(c)(d)(e)(f)(g)(h)(i);
 }
 
-console.warn('Compiled in DEV mode. Follow the advice at https://elm-lang.org/0.19.1/optimize for better performance and smaller assets.');
+
 
 
 // EQUALITY
@@ -113,7 +113,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 		return true;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x.$ === 'Set_elm_builtin')
 	{
 		x = $elm$core$Set$toList(x);
@@ -126,7 +126,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (x.$ < 0)
 	{
 		x = $elm$core$Dict$toList(x);
@@ -161,7 +161,7 @@ function _Utils_cmp(x, y, ord)
 		return x === y ? /*EQ*/ 0 : x < y ? /*LT*/ -1 : /*GT*/ 1;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x instanceof String)
 	{
 		var a = x.valueOf();
@@ -170,10 +170,10 @@ function _Utils_cmp(x, y, ord)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (typeof x.$ === 'undefined')
 	//*/
-	/**/
+	/**_UNUSED/
 	if (x.$[0] === '#')
 	//*/
 	{
@@ -203,17 +203,17 @@ var _Utils_compare = F2(function(x, y)
 
 // COMMON VALUES
 
-var _Utils_Tuple0_UNUSED = 0;
-var _Utils_Tuple0 = { $: '#0' };
+var _Utils_Tuple0 = 0;
+var _Utils_Tuple0_UNUSED = { $: '#0' };
 
-function _Utils_Tuple2_UNUSED(a, b) { return { a: a, b: b }; }
-function _Utils_Tuple2(a, b) { return { $: '#2', a: a, b: b }; }
+function _Utils_Tuple2(a, b) { return { a: a, b: b }; }
+function _Utils_Tuple2_UNUSED(a, b) { return { $: '#2', a: a, b: b }; }
 
-function _Utils_Tuple3_UNUSED(a, b, c) { return { a: a, b: b, c: c }; }
-function _Utils_Tuple3(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
+function _Utils_Tuple3(a, b, c) { return { a: a, b: b, c: c }; }
+function _Utils_Tuple3_UNUSED(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
 
-function _Utils_chr_UNUSED(c) { return c; }
-function _Utils_chr(c) { return new String(c); }
+function _Utils_chr(c) { return c; }
+function _Utils_chr_UNUSED(c) { return new String(c); }
 
 
 // RECORDS
@@ -264,11 +264,11 @@ function _Utils_ap(xs, ys)
 
 
 
-var _List_Nil_UNUSED = { $: 0 };
-var _List_Nil = { $: '[]' };
+var _List_Nil = { $: 0 };
+var _List_Nil_UNUSED = { $: '[]' };
 
-function _List_Cons_UNUSED(hd, tl) { return { $: 1, a: hd, b: tl }; }
-function _List_Cons(hd, tl) { return { $: '::', a: hd, b: tl }; }
+function _List_Cons(hd, tl) { return { $: 1, a: hd, b: tl }; }
+function _List_Cons_UNUSED(hd, tl) { return { $: '::', a: hd, b: tl }; }
 
 
 var _List_cons = F2(_List_Cons);
@@ -499,12 +499,12 @@ var _JsArray_appendN = F3(function(n, dest, source)
 
 // LOG
 
-var _Debug_log_UNUSED = F2(function(tag, value)
+var _Debug_log = F2(function(tag, value)
 {
 	return value;
 });
 
-var _Debug_log = F2(function(tag, value)
+var _Debug_log_UNUSED = F2(function(tag, value)
 {
 	console.log(tag + ': ' + _Debug_toString(value));
 	return value;
@@ -530,12 +530,12 @@ function _Debug_todoCase(moduleName, region, value)
 
 // TO STRING
 
-function _Debug_toString_UNUSED(value)
+function _Debug_toString(value)
 {
 	return '<internals>';
 }
 
-function _Debug_toString(value)
+function _Debug_toString_UNUSED(value)
 {
 	return _Debug_toAnsiString(false, value);
 }
@@ -720,13 +720,13 @@ function _Debug_toHexDigit(n)
 // CRASH
 
 
-function _Debug_crash_UNUSED(identifier)
+function _Debug_crash(identifier)
 {
 	throw new Error('https://github.com/elm/core/blob/1.0.0/hints/' + identifier + '.md');
 }
 
 
-function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
+function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 {
 	switch(identifier)
 	{
@@ -784,11 +784,11 @@ function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.start.line === region.end.line)
+	if (region.ah.L === region.am.L)
 	{
-		return 'on line ' + region.start.line;
+		return 'on line ' + region.ah.L;
 	}
-	return 'on lines ' + region.start.line + ' through ' + region.end.line;
+	return 'on lines ' + region.ah.L + ' through ' + region.am.L;
 }
 
 
@@ -1212,7 +1212,7 @@ function _Char_toLocaleLower(char)
 
 
 
-/**/
+/**_UNUSED/
 function _Json_errorToString(error)
 {
 	return $elm$json$Json$Decode$errorToString(error);
@@ -1616,11 +1616,11 @@ var _Json_encode = F2(function(indentLevel, value)
 	return JSON.stringify(_Json_unwrap(value), null, indentLevel) + '';
 });
 
-function _Json_wrap(value) { return { $: 0, a: value }; }
-function _Json_unwrap(value) { return value.a; }
+function _Json_wrap_UNUSED(value) { return { $: 0, a: value }; }
+function _Json_unwrap_UNUSED(value) { return value.a; }
 
-function _Json_wrap_UNUSED(value) { return value; }
-function _Json_unwrap_UNUSED(value) { return value; }
+function _Json_wrap(value) { return value; }
+function _Json_unwrap(value) { return value; }
 
 function _Json_emptyArray() { return []; }
 function _Json_emptyObject() { return {}; }
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.a_,
+		impl.a7,
+		impl.a5,
 		function() { return function() {} }
 	);
 });
@@ -1872,7 +1872,7 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 function _Platform_initialize(flagDecoder, args, init, update, subscriptions, stepperBuilder)
 {
 	var result = A2(_Json_run, flagDecoder, _Json_wrap(args ? args['flags'] : undefined));
-	$elm$core$Result$isOk(result) || _Debug_crash(2 /**/, _Json_errorToString(result.a) /**/);
+	$elm$core$Result$isOk(result) || _Debug_crash(2 /**_UNUSED/, _Json_errorToString(result.a) /**/);
 	var managers = {};
 	var initPair = init(result.a);
 	var model = initPair.a;
@@ -2316,7 +2316,7 @@ function _Platform_setupIncomingPort(name, sendToApp)
 //
 
 
-function _Platform_export_UNUSED(exports)
+function _Platform_export(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsProd(scope['Elm'], exports)
@@ -2337,7 +2337,7 @@ function _Platform_mergeExportsProd(obj, exports)
 }
 
 
-function _Platform_export(exports)
+function _Platform_export_UNUSED(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsDebug('Elm', scope['Elm'], exports)
@@ -2377,10 +2377,10 @@ var _VirtualDom_init = F4(function(virtualNode, flagDecoder, debugMetadata, args
 {
 	// NOTE: this function needs _Platform_export available to work
 
-	/**_UNUSED/
+	/**/
 	var node = args['node'];
 	//*/
-	/**/
+	/**_UNUSED/
 	var node = args && args['node'] ? args['node'] : _Debug_crash(0);
 	//*/
 
@@ -2655,14 +2655,14 @@ function _VirtualDom_noInnerHtmlOrFormAction(key)
 function _VirtualDom_noJavaScriptUri(value)
 {
 	return _VirtualDom_RE_js.test(value)
-		? /**_UNUSED/''//*//**/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
+		? /**/''//*//**_UNUSED/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
 		: value;
 }
 
 function _VirtualDom_noJavaScriptOrHtmlUri(value)
 {
 	return _VirtualDom_RE_js_html.test(value)
-		? /**_UNUSED/''//*//**/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
+		? /**/''//*//**_UNUSED/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
 		: value;
 }
 
@@ -2670,7 +2670,7 @@ function _VirtualDom_noJavaScriptOrHtmlJson(value)
 {
 	return (typeof _Json_unwrap(value) === 'string' && _VirtualDom_RE_js_html.test(_Json_unwrap(value)))
 		? _Json_wrap(
-			/**_UNUSED/''//*//**/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
+			/**/''//*//**_UNUSED/'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'//*/
 		) : value;
 }
 
@@ -2719,9 +2719,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		message: func(record.message),
-		stopPropagation: record.stopPropagation,
-		preventDefault: record.preventDefault
+		u: func(record.u),
+		ai: record.ai,
+		af: record.af
 	}
 });
 
@@ -2989,11 +2989,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.message;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.stopPropagation;
+		var message = !tag ? value : tag < 3 ? value.a : value.u;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.ai;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.preventDefault) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.af) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3943,15 +3943,15 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.a_,
+		impl.a7,
+		impl.a5,
 		function(sendToApp, initialModel) {
-			var view = impl.view;
-			/**_UNUSED/
+			var view = impl.a8;
+			/**/
 			var domNode = args['node'];
 			//*/
-			/**/
+			/**_UNUSED/
 			var domNode = args && args['node'] ? args['node'] : _Debug_crash(0);
 			//*/
 			var currNode = _VirtualDom_virtualize(domNode);
@@ -3979,12 +3979,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.a_,
+		impl.a7,
+		impl.a5,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.setup && impl.setup(sendToApp)
-			var view = impl.view;
+			var divertHrefToApp = impl.ag && impl.ag(sendToApp)
+			var view = impl.a8;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3992,12 +3992,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.body);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.aR);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.title) && (_VirtualDom_doc.title = title = doc.title);
+				(title !== doc.a6) && (_VirtualDom_doc.title = title = doc.a6);
 			});
 		}
 	);
@@ -4053,12 +4053,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.onUrlChange;
-	var onUrlRequest = impl.onUrlRequest;
+	var onUrlChange = impl.a1;
+	var onUrlRequest = impl.a2;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		setup: function(sendToApp)
+		ag: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4074,9 +4074,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.protocol === next.protocol
-							&& curr.host === next.host
-							&& curr.port_.a === next.port_.a
+							&& curr.aB === next.aB
+							&& curr.ar === next.ar
+							&& curr.ay.a === next.ay.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4084,13 +4084,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		init: function(flags)
+		a_: function(flags)
 		{
-			return A3(impl.init, flags, _Browser_getUrl(), key);
+			return A3(impl.a_, flags, _Browser_getUrl(), key);
 		},
-		view: impl.view,
-		update: impl.update,
-		subscriptions: impl.subscriptions
+		a8: impl.a8,
+		a7: impl.a7,
+		a5: impl.a5
 	});
 }
 
@@ -4156,17 +4156,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { hidden: 'hidden', change: 'visibilitychange' }
+		? { aY: 'hidden', aS: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { hidden: 'mozHidden', change: 'mozvisibilitychange' }
+		? { aY: 'mozHidden', aS: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { hidden: 'msHidden', change: 'msvisibilitychange' }
+		? { aY: 'msHidden', aS: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { hidden: 'webkitHidden', change: 'webkitvisibilitychange' }
-		: { hidden: 'hidden', change: 'visibilitychange' };
+		? { aY: 'webkitHidden', aS: 'webkitvisibilitychange' }
+		: { aY: 'hidden', aS: 'visibilitychange' };
 }
 
 
@@ -4247,12 +4247,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		scene: _Browser_getScene(),
-		viewport: {
-			x: _Browser_window.pageXOffset,
-			y: _Browser_window.pageYOffset,
-			width: _Browser_doc.documentElement.clientWidth,
-			height: _Browser_doc.documentElement.clientHeight
+		aF: _Browser_getScene(),
+		aK: {
+			aN: _Browser_window.pageXOffset,
+			aO: _Browser_window.pageYOffset,
+			aM: _Browser_doc.documentElement.clientWidth,
+			aq: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4262,8 +4262,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		width: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		height: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		aM: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		aq: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4286,15 +4286,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			scene: {
-				width: node.scrollWidth,
-				height: node.scrollHeight
+			aF: {
+				aM: node.scrollWidth,
+				aq: node.scrollHeight
 			},
-			viewport: {
-				x: node.scrollLeft,
-				y: node.scrollTop,
-				width: node.clientWidth,
-				height: node.clientHeight
+			aK: {
+				aN: node.scrollLeft,
+				aO: node.scrollTop,
+				aM: node.clientWidth,
+				aq: node.clientHeight
 			}
 		};
 	});
@@ -4324,18 +4324,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			scene: _Browser_getScene(),
-			viewport: {
-				x: x,
-				y: y,
-				width: _Browser_doc.documentElement.clientWidth,
-				height: _Browser_doc.documentElement.clientHeight
+			aF: _Browser_getScene(),
+			aK: {
+				aN: x,
+				aO: y,
+				aM: _Browser_doc.documentElement.clientWidth,
+				aq: _Browser_doc.documentElement.clientHeight
 			},
-			element: {
-				x: x + rect.left,
-				y: y + rect.top,
-				width: rect.width,
-				height: rect.height
+			aU: {
+				aN: x + rect.left,
+				aO: y + rect.top,
+				aM: rect.width,
+				aq: rect.height
 			}
 		};
 	});
@@ -4370,15 +4370,15 @@ function _Browser_load(url)
 		}
 	}));
 }
-var $elm$core$Basics$EQ = {$: 'EQ'};
-var $elm$core$Basics$GT = {$: 'GT'};
-var $elm$core$Basics$LT = {$: 'LT'};
+var $elm$core$Basics$EQ = 1;
+var $elm$core$Basics$GT = 2;
+var $elm$core$Basics$LT = 0;
 var $elm$core$List$cons = _List_cons;
 var $elm$core$Dict$foldr = F3(
 	function (func, acc, t) {
 		foldr:
 		while (true) {
-			if (t.$ === 'RBEmpty_elm_builtin') {
+			if (t.$ === -2) {
 				return acc;
 			} else {
 				var key = t.b;
@@ -4423,7 +4423,7 @@ var $elm$core$Dict$keys = function (dict) {
 		dict);
 };
 var $elm$core$Set$toList = function (_v0) {
-	var dict = _v0.a;
+	var dict = _v0;
 	return $elm$core$Dict$keys(dict);
 };
 var $elm$core$Elm$JsArray$foldr = _JsArray_foldr;
@@ -4433,7 +4433,7 @@ var $elm$core$Array$foldr = F3(
 		var tail = _v0.d;
 		var helper = F2(
 			function (node, acc) {
-				if (node.$ === 'SubTree') {
+				if (!node.$) {
 					var subTree = node.a;
 					return A3($elm$core$Elm$JsArray$foldr, helper, acc, subTree);
 				} else {
@@ -4451,32 +4451,32 @@ var $elm$core$Array$toList = function (array) {
 	return A3($elm$core$Array$foldr, $elm$core$List$cons, _List_Nil, array);
 };
 var $elm$core$Result$Err = function (a) {
-	return {$: 'Err', a: a};
+	return {$: 1, a: a};
 };
 var $elm$json$Json$Decode$Failure = F2(
 	function (a, b) {
-		return {$: 'Failure', a: a, b: b};
+		return {$: 3, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Field = F2(
 	function (a, b) {
-		return {$: 'Field', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Index = F2(
 	function (a, b) {
-		return {$: 'Index', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
 var $elm$core$Result$Ok = function (a) {
-	return {$: 'Ok', a: a};
+	return {$: 0, a: a};
 };
 var $elm$json$Json$Decode$OneOf = function (a) {
-	return {$: 'OneOf', a: a};
+	return {$: 2, a: a};
 };
-var $elm$core$Basics$False = {$: 'False'};
+var $elm$core$Basics$False = 1;
 var $elm$core$Basics$add = _Basics_add;
 var $elm$core$Maybe$Just = function (a) {
-	return {$: 'Just', a: a};
+	return {$: 0, a: a};
 };
-var $elm$core$Maybe$Nothing = {$: 'Nothing'};
+var $elm$core$Maybe$Nothing = {$: 1};
 var $elm$core$String$all = _String_all;
 var $elm$core$Basics$and = _Basics_and;
 var $elm$core$Basics$append = _Utils_append;
@@ -4601,12 +4601,12 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 		errorToStringHelp:
 		while (true) {
 			switch (error.$) {
-				case 'Field':
+				case 0:
 					var f = error.a;
 					var err = error.b;
 					var isSimple = function () {
 						var _v1 = $elm$core$String$uncons(f);
-						if (_v1.$ === 'Nothing') {
+						if (_v1.$ === 1) {
 							return false;
 						} else {
 							var _v2 = _v1.a;
@@ -4621,7 +4621,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'Index':
+				case 1:
 					var i = error.a;
 					var err = error.b;
 					var indexName = '[' + ($elm$core$String$fromInt(i) + ']');
@@ -4630,7 +4630,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'OneOf':
+				case 2:
 					var errors = error.a;
 					if (!errors.b) {
 						return 'Ran into a Json.Decode.oneOf with no possibilities' + function () {
@@ -4694,7 +4694,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 var $elm$core$Array$branchFactor = 32;
 var $elm$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
-		return {$: 'Array_elm_builtin', a: a, b: b, c: c, d: d};
+		return {$: 0, a: a, b: b, c: c, d: d};
 	});
 var $elm$core$Elm$JsArray$empty = _JsArray_empty;
 var $elm$core$Basics$ceiling = _Basics_ceiling;
@@ -4709,7 +4709,7 @@ var $elm$core$Array$shiftStep = $elm$core$Basics$ceiling(
 var $elm$core$Array$empty = A4($elm$core$Array$Array_elm_builtin, 0, $elm$core$Array$shiftStep, $elm$core$Elm$JsArray$empty, $elm$core$Elm$JsArray$empty);
 var $elm$core$Elm$JsArray$initialize = _JsArray_initialize;
 var $elm$core$Array$Leaf = function (a) {
-	return {$: 'Leaf', a: a};
+	return {$: 1, a: a};
 };
 var $elm$core$Basics$apL = F2(
 	function (f, x) {
@@ -4729,7 +4729,7 @@ var $elm$core$Basics$max = F2(
 	});
 var $elm$core$Basics$mul = _Basics_mul;
 var $elm$core$Array$SubTree = function (a) {
-	return {$: 'SubTree', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Elm$JsArray$initializeFromList = _JsArray_initializeFromList;
 var $elm$core$Array$compressNodes = F2(
@@ -4776,25 +4776,25 @@ var $elm$core$Array$treeFromBuilder = F2(
 	});
 var $elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.nodeListSize) {
+		if (!builder.a) {
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail),
+				$elm$core$Elm$JsArray$length(builder.d),
 				$elm$core$Array$shiftStep,
 				$elm$core$Elm$JsArray$empty,
-				builder.tail);
+				builder.d);
 		} else {
-			var treeLen = builder.nodeListSize * $elm$core$Array$branchFactor;
+			var treeLen = builder.a * $elm$core$Array$branchFactor;
 			var depth = $elm$core$Basics$floor(
 				A2($elm$core$Basics$logBase, $elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.nodeList) : builder.nodeList;
-			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.nodeListSize);
+			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.e) : builder.e;
+			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.a);
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail) + treeLen,
+				$elm$core$Elm$JsArray$length(builder.d) + treeLen,
 				A2($elm$core$Basics$max, 5, depth * $elm$core$Array$shiftStep),
 				tree,
-				builder.tail);
+				builder.d);
 		}
 	});
 var $elm$core$Basics$idiv = _Basics_idiv;
@@ -4807,7 +4807,7 @@ var $elm$core$Array$initializeHelp = F5(
 				return A2(
 					$elm$core$Array$builderToArray,
 					false,
-					{nodeList: nodeList, nodeListSize: (len / $elm$core$Array$branchFactor) | 0, tail: tail});
+					{e: nodeList, a: (len / $elm$core$Array$branchFactor) | 0, d: tail});
 			} else {
 				var leaf = $elm$core$Array$Leaf(
 					A3($elm$core$Elm$JsArray$initialize, $elm$core$Array$branchFactor, fromIndex, fn));
@@ -4837,9 +4837,9 @@ var $elm$core$Array$initialize = F2(
 			return A5($elm$core$Array$initializeHelp, fn, initialFromIndex, len, _List_Nil, tail);
 		}
 	});
-var $elm$core$Basics$True = {$: 'True'};
+var $elm$core$Basics$True = 0;
 var $elm$core$Result$isOk = function (result) {
-	if (result.$ === 'Ok') {
+	if (!result.$) {
 		return true;
 	} else {
 		return false;
@@ -4850,33 +4850,31 @@ var $elm$json$Json$Decode$map2 = _Json_map2;
 var $elm$json$Json$Decode$succeed = _Json_succeed;
 var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 	switch (handler.$) {
-		case 'Normal':
+		case 0:
 			return 0;
-		case 'MayStopPropagation':
+		case 1:
 			return 1;
-		case 'MayPreventDefault':
+		case 2:
 			return 2;
 		default:
 			return 3;
 	}
 };
 var $elm$browser$Browser$External = function (a) {
-	return {$: 'External', a: a};
+	return {$: 1, a: a};
 };
 var $elm$browser$Browser$Internal = function (a) {
-	return {$: 'Internal', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Basics$identity = function (x) {
 	return x;
 };
-var $elm$browser$Browser$Dom$NotFound = function (a) {
-	return {$: 'NotFound', a: a};
-};
-var $elm$url$Url$Http = {$: 'Http'};
-var $elm$url$Url$Https = {$: 'Https'};
+var $elm$browser$Browser$Dom$NotFound = $elm$core$Basics$identity;
+var $elm$url$Url$Http = 0;
+var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {fragment: fragment, host: host, path: path, port_: port_, protocol: protocol, query: query};
+		return {ap: fragment, ar: host, aw: path, ay: port_, aB: protocol, aC: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -4912,7 +4910,7 @@ var $elm$url$Url$chompBeforePath = F5(
 					var i = _v0.a;
 					var _v1 = $elm$core$String$toInt(
 						A2($elm$core$String$dropLeft, i + 1, str));
-					if (_v1.$ === 'Nothing') {
+					if (_v1.$ === 1) {
 						return $elm$core$Maybe$Nothing;
 					} else {
 						var port_ = _v1;
@@ -4995,26 +4993,24 @@ var $elm$core$String$startsWith = _String_startsWith;
 var $elm$url$Url$fromString = function (str) {
 	return A2($elm$core$String$startsWith, 'http://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		$elm$url$Url$Http,
+		0,
 		A2($elm$core$String$dropLeft, 7, str)) : (A2($elm$core$String$startsWith, 'https://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		$elm$url$Url$Https,
+		1,
 		A2($elm$core$String$dropLeft, 8, str)) : $elm$core$Maybe$Nothing);
 };
 var $elm$core$Basics$never = function (_v0) {
 	never:
 	while (true) {
-		var nvr = _v0.a;
+		var nvr = _v0;
 		var $temp$_v0 = nvr;
 		_v0 = $temp$_v0;
 		continue never;
 	}
 };
-var $elm$core$Task$Perform = function (a) {
-	return {$: 'Perform', a: a};
-};
+var $elm$core$Task$Perform = $elm$core$Basics$identity;
 var $elm$core$Task$succeed = _Scheduler_succeed;
-var $elm$core$Task$init = $elm$core$Task$succeed(_Utils_Tuple0);
+var $elm$core$Task$init = $elm$core$Task$succeed(0);
 var $elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
 		if (!ls.b) {
@@ -5120,7 +5116,7 @@ var $elm$core$Task$sequence = function (tasks) {
 var $elm$core$Platform$sendToApp = _Platform_sendToApp;
 var $elm$core$Task$spawnCmd = F2(
 	function (router, _v0) {
-		var task = _v0.a;
+		var task = _v0;
 		return _Scheduler_spawn(
 			A2(
 				$elm$core$Task$andThen,
@@ -5132,7 +5128,7 @@ var $elm$core$Task$onEffects = F3(
 		return A2(
 			$elm$core$Task$map,
 			function (_v0) {
-				return _Utils_Tuple0;
+				return 0;
 			},
 			$elm$core$Task$sequence(
 				A2(
@@ -5142,34 +5138,30 @@ var $elm$core$Task$onEffects = F3(
 	});
 var $elm$core$Task$onSelfMsg = F3(
 	function (_v0, _v1, _v2) {
-		return $elm$core$Task$succeed(_Utils_Tuple0);
+		return $elm$core$Task$succeed(0);
 	});
 var $elm$core$Task$cmdMap = F2(
 	function (tagger, _v0) {
-		var task = _v0.a;
-		return $elm$core$Task$Perform(
-			A2($elm$core$Task$map, tagger, task));
+		var task = _v0;
+		return A2($elm$core$Task$map, tagger, task);
 	});
 _Platform_effectManagers['Task'] = _Platform_createManager($elm$core$Task$init, $elm$core$Task$onEffects, $elm$core$Task$onSelfMsg, $elm$core$Task$cmdMap);
 var $elm$core$Task$command = _Platform_leaf('Task');
 var $elm$core$Task$perform = F2(
 	function (toMessage, task) {
 		return $elm$core$Task$command(
-			$elm$core$Task$Perform(
-				A2($elm$core$Task$map, toMessage, task)));
+			A2($elm$core$Task$map, toMessage, task));
 	});
 var $elm$browser$Browser$element = _Browser_element;
-var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
+var $elm$core$Dict$RBEmpty_elm_builtin = {$: -2};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
-var $elm$core$Set$Set_elm_builtin = function (a) {
-	return {$: 'Set_elm_builtin', a: a};
-};
-var $elm$core$Set$empty = $elm$core$Set$Set_elm_builtin($elm$core$Dict$empty);
+var $elm$core$Set$Set_elm_builtin = $elm$core$Basics$identity;
+var $elm$core$Set$empty = $elm$core$Dict$empty;
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (_v0) {
 	return _Utils_Tuple2(
-		{collapsed: $elm$core$Set$empty, reportOpen: false, responses: $elm$core$Dict$empty},
+		{p: $elm$core$Set$empty, N: false, o: $elm$core$Dict$empty},
 		$elm$core$Platform$Cmd$none);
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
@@ -5178,7 +5170,7 @@ var $elm$core$Dict$foldl = F3(
 	function (func, acc, dict) {
 		foldl:
 		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
+			if (dict.$ === -2) {
 				return acc;
 			} else {
 				var key = dict.b;
@@ -5212,25 +5204,26 @@ var $elm$json$Json$Encode$dict = F3(
 							toValue(value),
 							obj);
 					}),
-				_Json_emptyObject(_Utils_Tuple0),
+				_Json_emptyObject(0),
 				dictionary));
 	});
+var $author$project$Main$generateCsv = _Platform_outgoingPort('generateCsv', $elm$core$Basics$identity);
 var $author$project$Main$generateDocx = _Platform_outgoingPort('generateDocx', $elm$core$Basics$identity);
-var $elm$core$Dict$Black = {$: 'Black'};
+var $elm$core$Dict$Black = 1;
 var $elm$core$Dict$RBNode_elm_builtin = F5(
 	function (a, b, c, d, e) {
-		return {$: 'RBNode_elm_builtin', a: a, b: b, c: c, d: d, e: e};
+		return {$: -1, a: a, b: b, c: c, d: d, e: e};
 	});
-var $elm$core$Dict$Red = {$: 'Red'};
+var $elm$core$Dict$Red = 0;
 var $elm$core$Dict$balance = F5(
 	function (color, key, value, left, right) {
-		if ((right.$ === 'RBNode_elm_builtin') && (right.a.$ === 'Red')) {
+		if ((right.$ === -1) && (!right.a)) {
 			var _v1 = right.a;
 			var rK = right.b;
 			var rV = right.c;
 			var rLeft = right.d;
 			var rRight = right.e;
-			if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) {
+			if ((left.$ === -1) && (!left.a)) {
 				var _v3 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -5238,22 +5231,22 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
+					0,
 					key,
 					value,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
 					color,
 					rK,
 					rV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, left, rLeft),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, left, rLeft),
 					rRight);
 			}
 		} else {
-			if ((((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) && (left.d.$ === 'RBNode_elm_builtin')) && (left.d.a.$ === 'Red')) {
+			if ((((left.$ === -1) && (!left.a)) && (left.d.$ === -1)) && (!left.d.a)) {
 				var _v5 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -5266,11 +5259,11 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
+					0,
 					lK,
 					lV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, llK, llV, llLeft, llRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, key, value, lRight, right));
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, key, value, lRight, right));
 			} else {
 				return A5($elm$core$Dict$RBNode_elm_builtin, color, key, value, left, right);
 			}
@@ -5279,8 +5272,8 @@ var $elm$core$Dict$balance = F5(
 var $elm$core$Basics$compare = _Utils_compare;
 var $elm$core$Dict$insertHelp = F3(
 	function (key, value, dict) {
-		if (dict.$ === 'RBEmpty_elm_builtin') {
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
+		if (dict.$ === -2) {
+			return A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
 		} else {
 			var nColor = dict.a;
 			var nKey = dict.b;
@@ -5288,8 +5281,8 @@ var $elm$core$Dict$insertHelp = F3(
 			var nLeft = dict.d;
 			var nRight = dict.e;
 			var _v1 = A2($elm$core$Basics$compare, key, nKey);
-			switch (_v1.$) {
-				case 'LT':
+			switch (_v1) {
+				case 0:
 					return A5(
 						$elm$core$Dict$balance,
 						nColor,
@@ -5297,7 +5290,7 @@ var $elm$core$Dict$insertHelp = F3(
 						nValue,
 						A3($elm$core$Dict$insertHelp, key, value, nLeft),
 						nRight);
-				case 'EQ':
+				case 1:
 					return A5($elm$core$Dict$RBNode_elm_builtin, nColor, nKey, value, nLeft, nRight);
 				default:
 					return A5(
@@ -5313,13 +5306,13 @@ var $elm$core$Dict$insertHelp = F3(
 var $elm$core$Dict$insert = F3(
 	function (key, value, dict) {
 		var _v0 = A3($elm$core$Dict$insertHelp, key, value, dict);
-		if ((_v0.$ === 'RBNode_elm_builtin') && (_v0.a.$ === 'Red')) {
+		if ((_v0.$ === -1) && (!_v0.a)) {
 			var _v1 = _v0.a;
 			var k = _v0.b;
 			var v = _v0.c;
 			var l = _v0.d;
 			var r = _v0.e;
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, k, v, l, r);
+			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
 		} else {
 			var x = _v0;
 			return x;
@@ -5327,15 +5320,14 @@ var $elm$core$Dict$insert = F3(
 	});
 var $elm$core$Set$insert = F2(
 	function (key, _v0) {
-		var dict = _v0.a;
-		return $elm$core$Set$Set_elm_builtin(
-			A3($elm$core$Dict$insert, key, _Utils_Tuple0, dict));
+		var dict = _v0;
+		return A3($elm$core$Dict$insert, key, 0, dict);
 	});
 var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
 		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
+			if (dict.$ === -2) {
 				return $elm$core$Maybe$Nothing;
 			} else {
 				var key = dict.b;
@@ -5343,14 +5335,14 @@ var $elm$core$Dict$get = F2(
 				var left = dict.d;
 				var right = dict.e;
 				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
-				switch (_v1.$) {
-					case 'LT':
+				switch (_v1) {
+					case 0:
 						var $temp$targetKey = targetKey,
 							$temp$dict = left;
 						targetKey = $temp$targetKey;
 						dict = $temp$dict;
 						continue get;
-					case 'EQ':
+					case 1:
 						return $elm$core$Maybe$Just(value);
 					default:
 						var $temp$targetKey = targetKey,
@@ -5365,7 +5357,7 @@ var $elm$core$Dict$get = F2(
 var $elm$core$Dict$member = F2(
 	function (key, dict) {
 		var _v0 = A2($elm$core$Dict$get, key, dict);
-		if (_v0.$ === 'Just') {
+		if (!_v0.$) {
 			return true;
 		} else {
 			return false;
@@ -5373,13 +5365,13 @@ var $elm$core$Dict$member = F2(
 	});
 var $elm$core$Set$member = F2(
 	function (key, _v0) {
-		var dict = _v0.a;
+		var dict = _v0;
 		return A2($elm$core$Dict$member, key, dict);
 	});
 var $elm$core$Dict$getMin = function (dict) {
 	getMin:
 	while (true) {
-		if ((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) {
+		if ((dict.$ === -1) && (dict.d.$ === -1)) {
 			var left = dict.d;
 			var $temp$dict = left;
 			dict = $temp$dict;
@@ -5390,8 +5382,8 @@ var $elm$core$Dict$getMin = function (dict) {
 	}
 };
 var $elm$core$Dict$moveRedLeft = function (dict) {
-	if (((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) && (dict.e.$ === 'RBNode_elm_builtin')) {
-		if ((dict.e.d.$ === 'RBNode_elm_builtin') && (dict.e.d.a.$ === 'Red')) {
+	if (((dict.$ === -1) && (dict.d.$ === -1)) && (dict.e.$ === -1)) {
+		if ((dict.e.d.$ === -1) && (!dict.e.d.a)) {
 			var clr = dict.a;
 			var k = dict.b;
 			var v = dict.c;
@@ -5414,17 +5406,17 @@ var $elm$core$Dict$moveRedLeft = function (dict) {
 			var rRight = _v2.e;
 			return A5(
 				$elm$core$Dict$RBNode_elm_builtin,
-				$elm$core$Dict$Red,
+				0,
 				rlK,
 				rlV,
 				A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
 					rlL),
-				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, rK, rV, rlR, rRight));
+				A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rlR, rRight));
 		} else {
 			var clr = dict.a;
 			var k = dict.b;
@@ -5441,22 +5433,22 @@ var $elm$core$Dict$moveRedLeft = function (dict) {
 			var rV = _v5.c;
 			var rLeft = _v5.d;
 			var rRight = _v5.e;
-			if (clr.$ === 'Black') {
+			if (clr === 1) {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
 			}
 		}
 	} else {
@@ -5464,8 +5456,8 @@ var $elm$core$Dict$moveRedLeft = function (dict) {
 	}
 };
 var $elm$core$Dict$moveRedRight = function (dict) {
-	if (((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) && (dict.e.$ === 'RBNode_elm_builtin')) {
-		if ((dict.d.d.$ === 'RBNode_elm_builtin') && (dict.d.d.a.$ === 'Red')) {
+	if (((dict.$ === -1) && (dict.d.$ === -1)) && (dict.e.$ === -1)) {
+		if ((dict.d.d.$ === -1) && (!dict.d.d.a)) {
 			var clr = dict.a;
 			var k = dict.b;
 			var v = dict.c;
@@ -5488,17 +5480,17 @@ var $elm$core$Dict$moveRedRight = function (dict) {
 			var rRight = _v4.e;
 			return A5(
 				$elm$core$Dict$RBNode_elm_builtin,
-				$elm$core$Dict$Red,
+				0,
 				lK,
 				lV,
-				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, llK, llV, llLeft, llRight),
+				A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
 				A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
 					lRight,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight)));
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight)));
 		} else {
 			var clr = dict.a;
 			var k = dict.b;
@@ -5515,22 +5507,22 @@ var $elm$core$Dict$moveRedRight = function (dict) {
 			var rV = _v6.c;
 			var rLeft = _v6.d;
 			var rRight = _v6.e;
-			if (clr.$ === 'Black') {
+			if (clr === 1) {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
 			}
 		}
 	} else {
@@ -5539,7 +5531,7 @@ var $elm$core$Dict$moveRedRight = function (dict) {
 };
 var $elm$core$Dict$removeHelpPrepEQGT = F7(
 	function (targetKey, dict, color, key, value, left, right) {
-		if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) {
+		if ((left.$ === -1) && (!left.a)) {
 			var _v1 = left.a;
 			var lK = left.b;
 			var lV = left.c;
@@ -5551,13 +5543,13 @@ var $elm$core$Dict$removeHelpPrepEQGT = F7(
 				lK,
 				lV,
 				lLeft,
-				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, lRight, right));
+				A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, lRight, right));
 		} else {
 			_v2$2:
 			while (true) {
-				if ((right.$ === 'RBNode_elm_builtin') && (right.a.$ === 'Black')) {
-					if (right.d.$ === 'RBNode_elm_builtin') {
-						if (right.d.a.$ === 'Black') {
+				if ((right.$ === -1) && (right.a === 1)) {
+					if (right.d.$ === -1) {
+						if (right.d.a === 1) {
 							var _v3 = right.a;
 							var _v4 = right.d;
 							var _v5 = _v4.a;
@@ -5578,7 +5570,7 @@ var $elm$core$Dict$removeHelpPrepEQGT = F7(
 		}
 	});
 var $elm$core$Dict$removeMin = function (dict) {
-	if ((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) {
+	if ((dict.$ === -1) && (dict.d.$ === -1)) {
 		var color = dict.a;
 		var key = dict.b;
 		var value = dict.c;
@@ -5586,8 +5578,8 @@ var $elm$core$Dict$removeMin = function (dict) {
 		var lColor = left.a;
 		var lLeft = left.d;
 		var right = dict.e;
-		if (lColor.$ === 'Black') {
-			if ((lLeft.$ === 'RBNode_elm_builtin') && (lLeft.a.$ === 'Red')) {
+		if (lColor === 1) {
+			if ((lLeft.$ === -1) && (!lLeft.a)) {
 				var _v3 = lLeft.a;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
@@ -5598,7 +5590,7 @@ var $elm$core$Dict$removeMin = function (dict) {
 					right);
 			} else {
 				var _v4 = $elm$core$Dict$moveRedLeft(dict);
-				if (_v4.$ === 'RBNode_elm_builtin') {
+				if (_v4.$ === -1) {
 					var nColor = _v4.a;
 					var nKey = _v4.b;
 					var nValue = _v4.c;
@@ -5630,7 +5622,7 @@ var $elm$core$Dict$removeMin = function (dict) {
 };
 var $elm$core$Dict$removeHelp = F2(
 	function (targetKey, dict) {
-		if (dict.$ === 'RBEmpty_elm_builtin') {
+		if (dict.$ === -2) {
 			return $elm$core$Dict$RBEmpty_elm_builtin;
 		} else {
 			var color = dict.a;
@@ -5639,10 +5631,10 @@ var $elm$core$Dict$removeHelp = F2(
 			var left = dict.d;
 			var right = dict.e;
 			if (_Utils_cmp(targetKey, key) < 0) {
-				if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Black')) {
+				if ((left.$ === -1) && (left.a === 1)) {
 					var _v4 = left.a;
 					var lLeft = left.d;
-					if ((lLeft.$ === 'RBNode_elm_builtin') && (lLeft.a.$ === 'Red')) {
+					if ((lLeft.$ === -1) && (!lLeft.a)) {
 						var _v6 = lLeft.a;
 						return A5(
 							$elm$core$Dict$RBNode_elm_builtin,
@@ -5653,7 +5645,7 @@ var $elm$core$Dict$removeHelp = F2(
 							right);
 					} else {
 						var _v7 = $elm$core$Dict$moveRedLeft(dict);
-						if (_v7.$ === 'RBNode_elm_builtin') {
+						if (_v7.$ === -1) {
 							var nColor = _v7.a;
 							var nKey = _v7.b;
 							var nValue = _v7.c;
@@ -5689,7 +5681,7 @@ var $elm$core$Dict$removeHelp = F2(
 	});
 var $elm$core$Dict$removeHelpEQGT = F2(
 	function (targetKey, dict) {
-		if (dict.$ === 'RBNode_elm_builtin') {
+		if (dict.$ === -1) {
 			var color = dict.a;
 			var key = dict.b;
 			var value = dict.c;
@@ -5697,7 +5689,7 @@ var $elm$core$Dict$removeHelpEQGT = F2(
 			var right = dict.e;
 			if (_Utils_eq(targetKey, key)) {
 				var _v1 = $elm$core$Dict$getMin(right);
-				if (_v1.$ === 'RBNode_elm_builtin') {
+				if (_v1.$ === -1) {
 					var minKey = _v1.b;
 					var minValue = _v1.c;
 					return A5(
@@ -5726,13 +5718,13 @@ var $elm$core$Dict$removeHelpEQGT = F2(
 var $elm$core$Dict$remove = F2(
 	function (key, dict) {
 		var _v0 = A2($elm$core$Dict$removeHelp, key, dict);
-		if ((_v0.$ === 'RBNode_elm_builtin') && (_v0.a.$ === 'Red')) {
+		if ((_v0.$ === -1) && (!_v0.a)) {
 			var _v1 = _v0.a;
 			var k = _v0.b;
 			var v = _v0.c;
 			var l = _v0.d;
 			var r = _v0.e;
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, k, v, l, r);
+			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
 		} else {
 			var x = _v0;
 			return x;
@@ -5740,63 +5732,68 @@ var $elm$core$Dict$remove = F2(
 	});
 var $elm$core$Set$remove = F2(
 	function (key, _v0) {
-		var dict = _v0.a;
-		return $elm$core$Set$Set_elm_builtin(
-			A2($elm$core$Dict$remove, key, dict));
+		var dict = _v0;
+		return A2($elm$core$Dict$remove, key, dict);
 	});
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $author$project$Main$scrollTo = _Platform_outgoingPort('scrollTo', $elm$json$Json$Encode$string);
 var $author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
-			case 'SetResponse':
+			case 0:
 				var qid = msg.a;
 				var val = msg.b;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{
-							responses: A3($elm$core$Dict$insert, qid, val, model.responses)
+							o: A3($elm$core$Dict$insert, qid, val, model.o)
 						}),
 					$elm$core$Platform$Cmd$none);
-			case 'ToggleSection':
+			case 1:
 				var code = msg.a;
-				var collapsed = A2($elm$core$Set$member, code, model.collapsed) ? A2($elm$core$Set$remove, code, model.collapsed) : A2($elm$core$Set$insert, code, model.collapsed);
+				var collapsed = A2($elm$core$Set$member, code, model.p) ? A2($elm$core$Set$remove, code, model.p) : A2($elm$core$Set$insert, code, model.p);
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{collapsed: collapsed}),
+						{p: collapsed}),
 					$elm$core$Platform$Cmd$none);
-			case 'OpenReport':
+			case 2:
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{reportOpen: true}),
+						{N: true}),
 					$author$project$Main$scrollTo('app'));
-			case 'CloseReport':
+			case 3:
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{reportOpen: false}),
+						{N: false}),
 					$elm$core$Platform$Cmd$none);
-			case 'ExportDocx':
+			case 4:
 				return _Utils_Tuple2(
 					model,
 					$author$project$Main$generateDocx(
-						A3($elm$json$Json$Encode$dict, $elm$core$Basics$identity, $elm$json$Json$Encode$string, model.responses)));
+						A3($elm$json$Json$Encode$dict, $elm$core$Basics$identity, $elm$json$Json$Encode$string, model.o)));
+			case 5:
+				return _Utils_Tuple2(
+					model,
+					$author$project$Main$generateCsv(
+						A3($elm$json$Json$Encode$dict, $elm$core$Basics$identity, $elm$json$Json$Encode$string, model.o)));
 			default:
 				var code = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
 						{
-							collapsed: A2($elm$core$Set$remove, code, model.collapsed)
+							p: A2($elm$core$Set$remove, code, model.p)
 						}),
 					$author$project$Main$scrollTo('section-' + code));
 		}
 	});
-var $author$project$Main$ExportDocx = {$: 'ExportDocx'};
-var $author$project$Main$OpenReport = {$: 'OpenReport'};
+var $author$project$Main$ExportCsv = {$: 5};
+var $author$project$Main$ExportDocx = {$: 4};
+var $author$project$Main$OpenReport = {$: 2};
 var $elm$html$Html$button = _VirtualDom_node('button');
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -5824,4104 +5821,4104 @@ var $elm$core$List$filter = F2(
 	});
 var $elm$core$Basics$neq = _Utils_notEqual;
 var $elm$core$Basics$not = _Basics_not;
-var $author$project$Questions$Critical = {$: 'Critical'};
-var $author$project$Questions$EmailInput = {$: 'EmailInput'};
-var $author$project$Questions$Minor = {$: 'Minor'};
-var $author$project$Questions$RadioYesNo = {$: 'RadioYesNo'};
-var $author$project$Questions$Standard = {$: 'Standard'};
-var $author$project$Questions$TelInput = {$: 'TelInput'};
-var $author$project$Questions$TextArea = {$: 'TextArea'};
-var $author$project$Questions$TextInput = {$: 'TextInput'};
-var $author$project$Questions$Unscored = {$: 'Unscored'};
+var $author$project$Questions$Critical = 0;
+var $author$project$Questions$EmailInput = 2;
+var $author$project$Questions$Minor = 2;
+var $author$project$Questions$RadioYesNo = 0;
+var $author$project$Questions$Standard = 1;
+var $author$project$Questions$TelInput = 3;
+var $author$project$Questions$TextArea = 4;
+var $author$project$Questions$TextInput = 1;
+var $author$project$Questions$Unscored = 3;
 var $author$project$Questions$questions = _List_fromArray(
 	[
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'GNRL-01', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TextInput, isCritical: false, isScored: false, label: 'Solution Provider Name', section: 'GNRL', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'GNRL-02', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TextInput, isCritical: false, isScored: false, label: 'Solution Name', section: 'GNRL', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'GNRL-03', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TextArea, isCritical: false, isScored: false, label: 'Solution Description', section: 'GNRL', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'GNRL-04', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TextInput, isCritical: false, isScored: false, label: 'Solution Provider Contact Name', section: 'GNRL', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'GNRL-05', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TextInput, isCritical: false, isScored: false, label: 'Solution Provider Contact Title', section: 'GNRL', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'GNRL-06', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$EmailInput, isCritical: false, isScored: false, label: 'Solution Provider Contact Email', section: 'GNRL', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'GNRL-07', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TelInput, isCritical: false, isScored: false, label: 'Solution Provider Contact Phone Number', section: 'GNRL', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'GNRL-08', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TextInput, isCritical: false, isScored: false, label: 'Country of Company Headquarters', section: 'GNRL', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'GNRL-09', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TextInput, isCritical: false, isScored: false, label: 'Employee Work Locations (all)', section: 'GNRL', weight: 0},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'COMP-01',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have a dedicated software and system development team(s) (e.g., customer support, implementation, product management, etc.)?',
-		section: 'COMP',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Include circumstances that may involve offshoring or multinational agreements.'),
-		hasAdditional: false,
-		id: 'COMP-02',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: false,
-		label: 'Describe your organization’s business background and ownership structure, including all parent and subsidiary relationships.',
-		section: 'COMP',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'COMP-03',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have you operated without unplanned disruptions to this solution in the past 12 months?',
-		section: 'COMP',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'COMP-04',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a dedicated information security staff or office?',
-		section: 'COMP',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Share any details that would help information security analysts assess your solution.'),
-		hasAdditional: false,
-		id: 'COMP-05',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: false,
-		label: 'Use this area to share information about your environment that will assist those who are assessing your company\'s data security program.',
-		section: 'COMP',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('If you are only offering a service, or are offering a product that is not cloud-based, answer \"no\".'),
-		hasAdditional: false,
-		id: 'REQU-01',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Are you offering a cloud-based product?',
-		section: 'REQU',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('This includes any interface for end users and interfaces used by administrators at the institution.'),
-		hasAdditional: false,
-		id: 'REQU-02',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Does your product or service have an interface?',
-		section: 'REQU',
-		weight: 0
-	},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'REQU-03', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$RadioYesNo, isCritical: false, isScored: false, label: 'Are you providing consulting services?', section: 'REQU', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'REQU-04', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$RadioYesNo, isCritical: false, isScored: false, label: 'Does your solution have AI features, or are there plans to implement AI features in the next 12 months?', section: 'REQU', weight: 0},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Answer \"yes\" if your solution handles personal health information (PHI), either directly or via a third party.'),
-		hasAdditional: false,
-		id: 'REQU-05',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Does your solution process protected health information (PHI) or any data covered by the Health Insurance Portability and Accountability Act (HIPAA)?',
-		section: 'REQU',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Answer yes if your solution handles PCI (credit card) information, either directly or via a third party.'),
-		hasAdditional: false,
-		id: 'REQU-06',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Is the solution designed to process, store, or transmit credit card information?',
-		section: 'REQU',
-		weight: 0
-	},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'REQU-07', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TextArea, isCritical: false, isScored: false, label: 'Does operating your solution require the institution to operate a physical or virtual appliance in their own environment or to provide inbound firewall exceptions to allow your employees to remotely administer systems in the institution\'s environment?', section: 'REQU', weight: 0},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('This includes patient data, student data, employment data, human research data, financial data, etc.'),
-		hasAdditional: false,
-		id: 'REQU-08',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Does your solution have access to personal or institutional data?',
-		section: 'REQU',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DOCU-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have a well-documented business continuity plan (BCP), with a clear owner, that is tested annually?',
-		section: 'DOCU',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DOCU-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have a well-documented disaster recovery plan (DRP), with a clear owner, that is tested annually?',
-		section: 'DOCU',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: true,
-		id: 'DOCU-03',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have you undergone a SSAE 18/SOC 2 audit?',
-		section: 'DOCU',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: true,
-		id: 'DOCU-04',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you conform with a specific industry standard security framework (e.g., NIST Cybersecurity Framework, CIS Controls, ISO 27001, etc.)?',
-		section: 'DOCU',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: true,
-		id: 'DOCU-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Can you provide overall system and/or application architecture diagrams, including a full description of the data flow for all components of the system?',
-		section: 'DOCU',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: true,
-		id: 'DOCU-06',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your organization have a data privacy policy?',
-		section: 'DOCU',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: true,
-		id: 'DOCU-07',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a documented, and currently implemented, employee onboarding and offboarding policy?',
-		section: 'DOCU',
-		weight: 10
-	},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'ITAC-01', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TextInput, isCritical: false, isScored: false, label: 'Solution Provider Accessibility Contact Name', section: 'ITAC', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'ITAC-02', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TextInput, isCritical: false, isScored: false, label: 'Solution Provider Accessibility Contact Title', section: 'ITAC', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'ITAC-03', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$EmailInput, isCritical: false, isScored: false, label: 'Solution Provider Accessibility Contact Email', section: 'ITAC', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'ITAC-04', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TelInput, isCritical: false, isScored: false, label: 'Solution Provider Accessibility Contact Phone Number', section: 'ITAC', weight: 0},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('VPAT can also be added as an attachment'),
-		hasAdditional: false,
-		id: 'ITAC-05',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Web Link to Accessibility Statement or VPAT',
-		section: 'ITAC',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('If your answer is “I do not know,” select “no.” If the VPAT/ACR is for an older version of the product or has not been updated, its information does not accurately reflect the accessibility of the product under consideration and the response should be \"no.\" Provide a link or attachment to the most recent VPAT/ACR.'),
-		hasAdditional: true,
-		id: 'ITAC-06',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Has a VPAT or ACR been created or updated for the solution and version under consideration within the past 12 months?',
-		section: 'ITAC',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'ITAC-07',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Will your company agree to meet your stated accessibility standard or WCAG 2.1 AA as part of your contractual agreement for the solution?',
-		section: 'ITAC',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Solutions \"substantially conform\" if they entirely meet WCAG 2.1 AA or if almost all user and administrator features conform. Documentation about limitations and/or workarounds should be provided where WCAG conformance is not presently achieved. If the solution substantially conforms to a newer standard such as WCAG 2.2 AA, answer \"yes.\"'),
-		hasAdditional: false,
-		id: 'ITAC-08',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Does the solution substantially conform to WCAG 2.1 AA?',
-		section: 'ITAC',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Reporting and fixing accessibility issues is critical to a mature process. If the process for this question is merely a \"feature request\" and tracker, the answer to this question should be \"no.\"'),
-		hasAdditional: false,
-		id: 'ITAC-09',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have a documented and implemented process for reporting and tracking accessibility issues?',
-		section: 'ITAC',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('If specific configurations, settings, themes, author guides, or instructions are needed to ensure accessibility, are instructions on how to do so provided for administrators and end users?'),
-		hasAdditional: true,
-		id: 'ITAC-10',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have documentation to support the accessibility features of your solution?',
-		section: 'ITAC',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Audit results, including VPAT/ACRs, are voluntary reports often generated by the creator of the product. Audits conducted and reports generated by expert third parties give greater confidence to customers.'),
-		hasAdditional: false,
-		id: 'ITAC-11',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Has a third-party expert conducted an audit of the most recent version of your solution?',
-		section: 'ITAC',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'ITAC-12',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a documented and implemented process for verifying accessibility conformance?',
-		section: 'ITAC',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Various federal and state governments in the United States and around the world have mandated accessibility technical requirements that should be considered and may be required when selling solutions to institutions in these jurisdictions.'),
-		hasAdditional: false,
-		id: 'ITAC-13',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have you adopted a technical or legal standard of conformance for the solution?',
-		section: 'ITAC',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('A detailed accessibility roadmap should reference improvements and progress on known accessibility issues as appropriate but does not necessarily need to list unreleased product features.'),
-		hasAdditional: false,
-		id: 'ITAC-14',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Can you provide a current, detailed accessibility roadmap with delivery timelines?',
-		section: 'ITAC',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('How do you ensure that your professional staff keeps current with digital accessibility laws and best practices? Is your staff able to evaluate and test this product with assistive technologies such as a screen reader or alternative input devices? Examples of staff certification may include IAAP certifications <https://www.accessibilityassociation.org/s/professional-certifications> or §508 Trusted Tester <https://www.dhs.gov/trusted-tester>.'),
-		hasAdditional: false,
-		id: 'ITAC-15',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you expect your staff to maintain a current skill set in IT accessibility?',
-		section: 'ITAC',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Describe where accessibility falls in the development and product lifecycle. Is it at the beginning of your project development or after the product is otherwise complete before launch? Do you incorporate accessibility in your development methods, such as Agile scrums? Does your customer-facing accessibility reporting match your development processes (i.e., Agile methods are best represented using a roadmap and timeline; revised VPAT/ACRs provide a snapshot in time of a given release)?'),
-		hasAdditional: false,
-		id: 'ITAC-16',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have documented processes and procedures for implementing accessibility into your development lifecycle?',
-		section: 'ITAC',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'ITAC-17',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Can all functions of the application or service be performed using only the keyboard?',
-		section: 'ITAC',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Third-party overlays or add-ons are not sufficient for products to conform with accessibility standards. If there is an accessibility mode, does it address a specific accessibility need? Are plans in place to remove the accessible version, and are these distinctions delineated on your roadmap and timeline?'),
-		hasAdditional: false,
-		id: 'ITAC-18',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your product rely on activating a special \"accessibility mode,\" a \"lite version,\" or using an alternate interface (including “overlay” or AI-based alternates)  for accessibility purposes?',
-		section: 'ITAC',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'THRD-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you perform security assessments of third-party companies with which you share data (e.g., hosting providers, cloud services, PaaS, IaaS, SaaS)?',
-		section: 'THRD',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('List each third party and why institutional data is shared with them. Format example: [Third Party Name] - Reason'),
-		hasAdditional: false,
-		id: 'THRD-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have contractual language in place with third parties governing access to institutional data?',
-		section: 'THRD',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'THRD-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do the contracts in place with these third parties address liability in the event of a data breach?',
-		section: 'THRD',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Robust answers from the solution provider improve the quality and efficiency of the security assessment process.'),
-		hasAdditional: false,
-		id: 'THRD-04',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have an implemented third-party management strategy?',
-		section: 'THRD',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Make sure you address any national or regional regulations.'),
-		hasAdditional: false,
-		id: 'THRD-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a process and implemented procedures for managing your hardware supply chain (e.g., telecommunications equipment, export licensing, computing devices)?',
-		section: 'THRD',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CONS-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Will the consultant require access to the institution\'s network resources?',
-		section: 'CONS',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CONS-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Has the consultant received training on (sensitive, HIPAA, PCI, etc.) data handling?',
-		section: 'CONS',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CONS-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Is the data encrypted (at rest) while in the consultant\'s possession?',
-		section: 'CONS',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CONS-04',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Can access be restricted based on source IP address?',
-		section: 'CONS',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CONS-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Will the consulting take place on-premises?',
-		section: 'CONS',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CONS-06',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Will the consultant require access to hardware in the institution\'s data centers?',
-		section: 'CONS',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CONS-07',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Will the consultant require an account within the institution\'s domain (@*.edu)?',
-		section: 'CONS',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CONS-08',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Will any data be transferred to the consultant\'s possession?',
-		section: 'CONS',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CONS-09',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Will the consultant need remote access to the institution\'s network or systems?',
-		section: 'CONS',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('This includes end users, administrators, service accounts, etc. PBAC would include various dynamic controls such as conditional access, risk-based access, location-based access, or system activity–based access.'),
-		hasAdditional: false,
-		id: 'APPL-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Are access controls for institutional accounts based on structured rules, such as role-based access control (RBAC), attribute-based access control (ABAC), or policy-based access control (PBAC)?',
-		section: 'APPL',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'APPL-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Are you using a web application firewall (WAF)?',
-		section: 'APPL',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('If the web application only works with a subset of modern supported browsers, please indicate that here.'),
-		hasAdditional: false,
-		id: 'APPL-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Are only currently supported operating system(s), software, and libraries leveraged by the system(s)/application(s) that will have access to institution\'s data?',
-		section: 'APPL',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'APPL-04',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Does your application require access to location or GPS data?',
-		section: 'APPL',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'APPL-05',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: true,
-		isScored: true,
-		label: 'Does your application provide separation of duties between security administration, system administration, and standard user functions?',
-		section: 'APPL',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'APPL-06',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you subject your code to static code analysis and/or static application security testing prior to release?',
-		section: 'APPL',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'APPL-07',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have software testing processes (dynamic or static) that are established and followed?',
-		section: 'APPL',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('This includes system administrators and third-party personnel with access to the system. PBAC would include various dynamic controls such as conditional access, risk-based access, location-based access, or system activity–based access.'),
-		hasAdditional: false,
-		id: 'APPL-08',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are access controls for staff within your organization based on structured rules, such as RBAC, ABAC, or PBAC?',
-		section: 'APPL',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'APPL-09',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Does the system provide data input validation and error messages?',
-		section: 'APPL',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Include any in-house developed or contract development.'),
-		hasAdditional: false,
-		id: 'APPL-10',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a process and implemented procedures for managing your software supply chain (e.g., libraries, repositories, frameworks, etc.)',
-		section: 'APPL',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'APPL-11',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have your developers been trained in secure coding techniques?',
-		section: 'APPL',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'APPL-12',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Was your application developed using secure coding techniques?',
-		section: 'APPL',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Select N/A if there is no mobile version of your app.'),
-		hasAdditional: false,
-		id: 'APPL-13',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'If mobile, is the application available from a trusted source (e.g., App Store, Google Play Store)?',
-		section: 'APPL',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'APPL-14',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a fully implemented policy or procedure that details how your employees obtain administrator access to institutional instance of the application?',
-		section: 'APPL',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Answer \"yes\" only if user AND administrator authentication is supported. If partially supported, answer \"no.\" Ensure you respond to any guidance in the Additional Information column.'),
-		hasAdditional: false,
-		id: 'AAAI-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Does your solution support single sign-on (SSO) protocols for user and administrator authentication?',
-		section: 'AAAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'For customers not using SSO, does your solution support local authentication protocols for user and administrator authentication?',
-		section: 'AAAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: true,
-		isScored: true,
-		label: 'For customers not using SSO, can you enforce password/passphrase complexity requirements (provided by the institution)?',
-		section: 'AAAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Answer \"yes\" if your solution has internal limits to password complexity (max langth, certain special characters unsupported, etc.).'),
-		hasAdditional: false,
-		id: 'AAAI-04',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'For customers not using SSO, does the system have password complexity or length limitations and/or restrictions?',
-		section: 'AAAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-05',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'For customers not using SSO, do you have documented password/passphrase reset procedures that are currently implemented in the system and/or customer support?',
-		section: 'AAAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-06',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Does your organization participate in InCommon or another eduGAIN-affiliated trust federation?',
-		section: 'AAAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-07',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Are there any passwords/passphrases hard-coded into your systems or solutions?',
-		section: 'AAAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-08',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Are you storing any passwords in plaintext?',
-		section: 'AAAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-09',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Are audit logs available that include AT LEAST all of the following: login, logout, actions performed, and source IP address?',
-		section: 'AAAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Ensure that all elements of AAAI-10 are clearly stated in your response.'),
-		hasAdditional: false,
-		id: 'AAAI-10',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: true,
-		isScored: false,
-		label: 'Describe or provide a reference to the (a) system capability to log security/authorization changes, as well as user and administrator security events (i.e., physical or electronic), such as login failures, access denied, changes accepted; and (b) all requirements necessary to implement logging and monitoring on the system. Include (c) information about SIEM/log collector usage.',
-		section: 'AAAI',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Ensure that all elements of AAAI-11 are clearly stated in your response.'),
-		hasAdditional: false,
-		id: 'AAAI-11',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: true,
-		isScored: true,
-		label: 'Can you provide the institution documentation regarding the retention period for those logs, how logs are protected, and whether they are accessible to the customer (and if so, how)?',
-		section: 'AAAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-12',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'For customers not using SSO, does your application support integration with other authentication and authorization systems?',
-		section: 'AAAI',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-13',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you allow the customer to specify attribute mappings for any needed information beyond a user identifier? (e.g., Reference eduPerson, ePPA/ePPN/ePE)',
-		section: 'AAAI',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-14',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'For customers not using SSO, does your application support directory integration for user accounts?',
-		section: 'AAAI',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('An answer of \"yes\" should be well-supported in the Additional Information column, and all elements of interest should be sufficiently addressed.'),
-		hasAdditional: false,
-		id: 'AAAI-15',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your solution support any of the following web SSO standards: SAML2 (with redirect flow), OIDC, CAS, or other?',
-		section: 'AAAI',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-16',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$EmailInput,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you support differentiation between email address and user identifier?',
-		section: 'AAAI',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-17',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'For customers not using SSO, does your application and/or user frontend/portal support multifactor authentication (e.g., Duo, Google Authenticator, OTP, etc.)?',
-		section: 'AAAI',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AAAI-18',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your application automatically lock the session or log out an account after a period of inactivity?',
-		section: 'AAAI',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Will the institution be notified of major changes to your environment that could impact the institution\'s security posture?',
-		section: 'CHNG',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Ensure that all relevant details pertaining to CHNG-06 are clearly stated in your response.'),
-		hasAdditional: false,
-		id: 'CHNG-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Does the system support client customizations from one release to another?',
-		section: 'CHNG',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have an implemented system configuration management process (e.g.,secure \"gold\" images, etc.)?',
-		section: 'CHNG',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: true,
-		id: 'CHNG-04',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a documented change management process?',
-		section: 'CHNG',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your change management process minimally include authorization, impact analysis, testing, and validation before moving changes to production?',
-		section: 'CHNG',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-06',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your change management process verify that all required third-party libraries and dependencies are still supported with each major change?',
-		section: 'CHNG',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-07',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have policy and procedure, currently implemented, managing how critical patches are applied to all systems and applications?',
-		section: 'CHNG',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-08',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have you implemented policies and procedures that guide how security risks are mitigated until patches can be applied?',
-		section: 'CHNG',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-09',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do clients have the option to not participate in or postpone an upgrade to a new release?',
-		section: 'CHNG',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('List the current version you support and what percentage of customers are utilizing that version.'),
-		hasAdditional: false,
-		id: 'CHNG-10',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a fully implemented solution support strategy that defines how many concurrent versions you support?',
-		section: 'CHNG',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-11',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a release schedule for product updates?',
-		section: 'CHNG',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-12',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a technology roadmap, for at least the next two years, for enhancements and bug fixes for the solution being assessed?',
-		section: 'CHNG',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-13',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Can solution updates be completed without institutional involvement (i.e., technically or organizationally)?',
-		section: 'CHNG',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-14',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are upgrades or system changes installed during off-peak hours or in a manner that does not impact the customer?',
-		section: 'CHNG',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-15',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Do procedures exist to provide that emergency changes are documented and authorized (including after-the-fact approval)?',
-		section: 'CHNG',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'CHNG-16',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a systems management and configuration strategy that encompasses servers, appliances, cloud services, applications, and mobile devices (company and employee owned)?',
-		section: 'CHNG',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Will the institution\'s data be stored on any devices (database servers, file servers, SAN, NAS, etc.) configured with non-RFC 1918/4193 (i.e., publicly routable) IP addresses?',
-		section: 'DATA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Is the transport of sensitive data encrypted using security protocols/algorithms (e.g., system-to-client)?',
-		section: 'DATA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Is the storage of sensitive data encrypted using security protocols/algorithms (e.g., disk encryption, at-rest, files, and within a running database)?',
-		section: 'DATA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-04',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do all cryptographic modules in use in your solution conform to the Federal Information Processing Standards (FIPS PUB 140-2 or 140-3)?',
-		section: 'DATA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-05',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Will the institution\'s data be available within the system for a period of time at the completion of this contract?',
-		section: 'DATA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-06',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: true,
-		isScored: true,
-		label: 'Are ownership rights to all data, inputs, outputs, and metadata retained even through a provider acquisition or bankruptcy event?',
-		section: 'DATA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-07',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do backups containing the institution\'s data ever leave the institution\'s data zone either physically or via network routing?',
-		section: 'DATA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-08',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Is media used for long-term retention of business data and archival purposes stored in a secure, environmentally protected area?',
-		section: 'DATA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Please specify if it will be returned, deleted, or both.'),
-		hasAdditional: false,
-		id: 'DATA-09',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'At the completion of this contract, will data be returned to the institution and/or deleted from all your systems and archives?',
-		section: 'DATA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-10',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Can the institution extract a full or partial backup of data?',
-		section: 'DATA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-11',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do current backups include all operating system software, utilities, security software, application software, and data files necessary for recovery?',
-		section: 'DATA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-12',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are you performing off-site backups (i.e., digitally moved off site)?',
-		section: 'DATA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-13',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are physical backups taken off-site (i.e., physically moved off site)?',
-		section: 'DATA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-14',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are data backups encrypted?',
-		section: 'DATA',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-15',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a media handling process that is documented and currently implemented that meets established business needs and regulatory requirements, including end-of-life, repurposing, and data-sanitization procedures?',
-		section: 'DATA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-16',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Does the process described in DATA-15 adhere to DoD 5220.22-M and/or NIST SP 800-88 standards?',
-		section: 'DATA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-17',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your staff (or third party) have access to institutional data (e.g., financial, PHI, or other sensitive information) through any means?',
-		section: 'DATA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-18',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a documented and currently implemented strategy for securing employee workstations when they work remotely (i.e., not in a trusted computing environment)?',
-		section: 'DATA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-19',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Does the environment provide for dedicated single-tenant capabilities? If not, describe how your solution or environment separates data from different customers (e.g., logically, physically, single tenancy, multi-tenancy).',
-		section: 'DATA',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-20',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are ownership rights to all data, inputs, outputs, and metadata retained by the institution?',
-		section: 'DATA',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DATA-21',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'In the event of imminent bankruptcy, closing of business, or retirement of service, will you provide 90 days for customers to get their data out of the system and migrate applications?',
-		section: 'DATA',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Ensure that response addresses involatile storage and lists retention periods.'),
-		hasAdditional: false,
-		id: 'DATA-22',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are involatile backup copies made according to predefined schedules and securely stored and protected?',
-		section: 'DATA',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Summarize your cryptographic key management process.'),
-		hasAdditional: false,
-		id: 'DATA-23',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a cryptographic key management process (generation, exchange, storage, safeguards, use, vetting, and replacement) that is documented and currently implemented, for all system components (e.g., database, system, web, etc.)?',
-		section: 'DATA',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('If you are using an option not listed, or a combination of options, select \"Other.\" Your selection here will determine which questions below are required.'),
-		hasAdditional: false,
-		id: 'DCTR-01',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Select your hosting option.',
-		section: 'DCTR',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-02',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is a SOC 2 Type 2 report available for the hosting environment?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Please indicate which geographic regions you can provide storage in the Additional Info column.'),
-		hasAdditional: false,
-		id: 'DCTR-03',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are you generally able to accommodate storing each institution\'s data within its geographic region?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-04',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are the data centers staffed 24 hours a day, seven days a week (i.e., 24 x 7 x 365)?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are your servers separated from other companies via a physical barrier, such as a cage or hard walls?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-06',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Does a physical barrier fully enclose the physical space, preventing unauthorized physical contact with any of your devices?',
-		section: 'DCTR',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-07',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are your primary and secondary data centers geographically diverse?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-08',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is the service hosted in a high-availability environment?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-09',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is redundant power available for all data centers where institutional data will reside?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-10',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Are redundant power strategies tested?',
-		section: 'DCTR',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-11',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does the center where the data will reside have cooling and fire-suppression systems that are active and regularly tested?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('State the ISP provider(s) in addition to the number of ISPs that provide connectivity.'),
-		hasAdditional: false,
-		id: 'DCTR-12',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have Internet Service Provider (ISP) redundancy?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-13',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TelInput,
-		isCritical: false,
-		isScored: true,
-		label: 'Does every data center where the institution\'s data will reside have multiple telephone company or network provider entrances to the facility?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-14',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you require multifactor authentication for all administrative accounts in your environment?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DCTR-15',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Are you using your cloud provider\'s available hardening tools or pre-hardened images?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Describe your key management practices.'),
-		hasAdditional: false,
-		id: 'DCTR-16',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your cloud solution provider have access to your encryption keys?',
-		section: 'DCTR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'FIDP-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Are you utilizing a stateful packet inspection (SPI) firewall?',
-		section: 'FIDP',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'FIDP-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have a documented policy for firewall change requests?',
-		section: 'FIDP',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'FIDP-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Have you implemented an intrusion detection system (network-based)?',
-		section: 'FIDP',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'FIDP-04',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you employ host-based intrusion detection?',
-		section: 'FIDP',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'FIDP-05',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Are audit logs available for all changes to the network, firewall, IDS, and IPS systems?',
-		section: 'FIDP',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'FIDP-06',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is authority for firewall change approval documented? Please list approver names or titles in Additional Info.',
-		section: 'FIDP',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'FIDP-07',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have you implemented an intrusion prevention system (network-based)?',
-		section: 'FIDP',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'FIDP-08',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you employ host-based intrusion prevention?',
-		section: 'FIDP',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'FIDP-09',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are you employing any next-generation persistent threat (NGPT) monitoring?',
-		section: 'FIDP',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('In addition to stating your intrusion monitoring strategy, provide a brief summary of its implementation.'),
-		hasAdditional: false,
-		id: 'FIDP-10',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Is intrusion monitoring performed internally or by a third-party service?',
-		section: 'FIDP',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'FIDP-11',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you monitor for intrusions on a 24 x 7 x 365 basis?',
-		section: 'FIDP',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have a documented patch management process?',
-		section: 'PPPR',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Can your organization comply with institutional policies on privacy and data protection with regard to users of institutional systems, if required?',
-		section: 'PPPR',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('State the country that governs and regulates your company.'),
-		hasAdditional: false,
-		id: 'PPPR-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Is your company subject to the institution\'s geographic region\'s laws and regulations?',
-		section: 'PPPR',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-04',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Can you accommodate encryption requirements using open standards?',
-		section: 'PPPR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a documented systems development life cycle (SDLC)?',
-		section: 'PPPR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-06',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you perform background screenings or multi-state background checks on all employees prior to their first day of work?',
-		section: 'PPPR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-07',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you require new employees to fill out agreements and review policies?',
-		section: 'PPPR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-08',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a documented information security policy?',
-		section: 'PPPR',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-09',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are information security principles designed into the product lifecycle?',
-		section: 'PPPR',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-10',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Will you comply with applicable breach notification laws?',
-		section: 'PPPR',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-11',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have an information security awareness program?',
-		section: 'PPPR',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-12',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is security awareness training mandatory for all employees?',
-		section: 'PPPR',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-13',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have process and procedure(s) documented, and currently followed, that require a review and update of the access list(s) for privileged accounts?',
-		section: 'PPPR',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-14',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have documented, and currently implemented, internal audit processes and procedures?',
-		section: 'PPPR',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PPPR-15',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your organization have physical security controls and policies in place?',
-		section: 'PPPR',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'HFIH-01',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a formal incident response plan?',
-		section: 'HFIH',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'HFIH-02',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you either have an internal incident response team or retain an external team?',
-		section: 'HFIH',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'HFIH-03',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have the capability to respond to incidents on a 24 x 7 x 365 basis?',
-		section: 'HFIH',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'HFIH-04',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you carry cyber-risk insurance to protect against unforeseen service outages, data that is lost or stolen, and security incidents?',
-		section: 'HFIH',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'VULN-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Are your systems and applications scanned with an authenticated user account for vulnerabilities (that are remediated) prior to new releases?',
-		section: 'VULN',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'VULN-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: true,
-		isScored: true,
-		label: 'Will you provide results of application and system vulnerability scans to the institution?',
-		section: 'VULN',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'VULN-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: true,
-		isScored: true,
-		label: 'Will you allow the institution to perform its own vulnerability testing and/or scanning of your systems and/or application, provided that testing is performed at a mutually agreed upon time and date?',
-		section: 'VULN',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'VULN-04',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have your systems and applications had a third-party security assessment completed in the last year?',
-		section: 'VULN',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Ensure that all elements of VULN-05 are clearly stated in your response.'),
-		hasAdditional: false,
-		id: 'VULN-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you regularly scan for common web application security vulnerabilities (e.g., SQL injection, XSS, XSRF, etc.)?',
-		section: 'VULN',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'VULN-06',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are your systems and applications regularly scanned externally for vulnerabilities?',
-		section: 'VULN',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do your workforce members receive regular training related to the Health Insurance Portability and Accountability Act (HIPAA) Privacy and Security Rules and the HITECH Act?',
-		section: 'HIPA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Have you identified areas of risk?',
-		section: 'HIPA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Have the relevant policies/plans been tested?',
-		section: 'HIPA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-04',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Have you entered into a Business Associate Agreements with all subcontractors who may have access to protected health information (PHI)?',
-		section: 'HIPA',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you monitor or receive information regarding changes in HIPAA regulations?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-06',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Has your organization designated HIPAA Privacy and Security officers as required by the rules?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-07',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you comply with the requirements of the Health Information Technology for Economic and Clinical Health Act (HITECH)?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-08',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have you conducted a risk analysis as required under the HIPAA Security Rule?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-09',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have you taken actions to mitigate the identified risks?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-10',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your application require user and system administrator password changes at a frequency no greater than 90 days?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-11',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your application require users to set their own password after an administrator reset or on first use of the account?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-12',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your application lock out an account after a number of failed login attempts?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-13',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your application automatically lock or log-out an account after a period of inactivity?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-14',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are passwords visible in plain text, whether when stored or entered, including service level accounts (i.e., database accounts, etc.)?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-15',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'If the application is institution-hosted, can all service level and administrative account passwords be changed by the institution?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-16',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your application provide the ability to define user access levels?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-17',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your application support varying levels of access to administrative tasks defined individually per user?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-18',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your application support varying levels of access to records based on user ID?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-19',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is there a limit to the number of groups to which a user can be assigned?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-20',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Do accounts used for solution provider-supplied remote support abide by the same authentication policies and access logging as the rest of the system?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-21',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does the application log record access including specific user, date/time of access, and originating IP or device?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-22',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does the application log administrative activity, such as user account access changes and password changes, including specific user, date/time of changes, and originating IP or device?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-23',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you retain logs for at least as long as required by HIPAA regulations?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-24',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Can the application logs be archived?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-25',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Can the application logs be saved externally?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-26',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a disaster recovery plan and emergency mode operation plan?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-27',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Can you provide a HIPAA compliance attestation document?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-28',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are you willing to enter into a Business Associate Agreement (BAA)?',
-		section: 'HIPA',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
-		hasAdditional: false,
-		id: 'HIPA-29',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do your data backup and retention policies and practices meet HIPAA requirements?',
-		section: 'HIPA',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have a current, executed within the past year, Attestation of Compliance (AoC) or Report on Compliance (RoC)?',
-		section: 'PCID',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Is the application listed as an approved Payment Application Data Security Standard (PA-DSS) application?',
-		section: 'PCID',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Does the system or solutions use a third party to collect, store, process, or transmit cardholder (payment/credit/debt card) data?',
-		section: 'PCID',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-04',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do your systems or solutions store, process, or transmit cardholder (payment/credit/debt card) data?',
-		section: 'PCID',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are you compliant with the Payment Card Industry Data Security Standard (PCI DSS)?',
-		section: 'PCID',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-06',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Are you classified as a service provider?',
-		section: 'PCID',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-07',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Are you on the list of Visa approved service providers?',
-		section: 'PCID',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-08',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are you classified as a merchant? If so, what level (1, 2, 3, 4)?',
-		section: 'PCID',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-09',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: false,
-		label: 'Describe the architecture employed by the system to verify and authorize credit card transactions.',
-		section: 'PCID',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-10',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'What payment processors/gateways does the system support?',
-		section: 'PCID',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-11',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Can the application be installed in a PCI DSS–compliant manner?',
-		section: 'PCID',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
-		hasAdditional: false,
-		id: 'PCID-12',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Include documentation describing the system\'s abilities to comply with the PCI DSS and any features or capabilities of the system that must be added or changed in order to operate in compliance with the standards.',
-		section: 'PCID',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'OPEM-01',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you support role-based access control (RBAC) for system administrators?',
-		section: 'OPEM',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'OPEM-02',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Can your employees access customer systems remotely?',
-		section: 'OPEM',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'OPEM-03',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Can you provide overall system and/or application architecture diagrams including a full description of the data communications architecture for all components of the system?',
-		section: 'OPEM',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'OPEM-04',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you require remote management of the system?',
-		section: 'OPEM',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'OPEM-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'If you answered \"yes\" to OPEM-04, are your remote actions and changes logged or otherwise visible to the campus?',
-		section: 'OPEM',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'OPEM-06',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'If you maintain remote access to the system, will you handle data in a FERPA-compliant manner?',
-		section: 'OPEM',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'OPEM-07',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you support campus status monitoring through SNMPv3 or other means?',
-		section: 'OPEM',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Please detail your monitoring strategy'),
-		hasAdditional: false,
-		id: 'OPEM-08',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: false,
-		label: 'Describe or provide a reference to any other safeguards used to monitor for malicious activity.',
-		section: 'OPEM',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Include the number of years and in what capacity.'),
-		hasAdditional: false,
-		id: 'OPEM-09',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: false,
-		label: 'Describe how long your organization has conducted business in this area.',
-		section: 'OPEM',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'OPEM-10',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have existing higher education customers?',
-		section: 'OPEM',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('FERPA-related data includes any data maintained by (or on behalf of) the institution that is directly related to an identifiable student.'),
-		hasAdditional: false,
-		id: 'PRGN-01',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Does your solution process FERPA-related data?',
-		section: 'PRGN',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('GDPR data includes any data related to an identified or identifiable natural person physically located in the European Economic Area (EEA).'),
-		hasAdditional: false,
-		id: 'PRGN-02',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Does your solution process GDPR-related or PIPL-related data?',
-		section: 'PRGN',
-		weight: 0
-	},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'PRGN-03', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$RadioYesNo, isCritical: false, isScored: false, label: 'Does your solution process personal data regulated by state law(s) (e.g., CCPA)?', section: 'PRGN', weight: 0},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'PRGN-04', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$TextArea, isCritical: false, isScored: false, label: 'Does your solution process user-provided data that may contain regulated information?', section: 'PRGN', weight: 0},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('If multiple notices are implicated, provide all that apply. If any other documents are incorporated by reference, provide them as well.'),
-		hasAdditional: false,
-		id: 'PRGN-05',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Web Link to Product/Service Privacy Notice',
-		section: 'PRGN',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PCOM-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Have you had a personal data breach in the past three years that involved reporting to a governmental agency, notice to individuals (including voluntary notice), or notice to another organization or institution?',
-		section: 'PCOM',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Share any additional details that would help data privacy analysts assess your solution.'),
-		hasAdditional: false,
-		id: 'PCOM-02',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: true,
-		isScored: false,
-		label: 'Use this area to share information about your privacy practices that will assist those who are assessing your company data privacy program.',
-		section: 'PCOM',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PCOM-03',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have you had any violations of your internal privacy policies or violations of applicable privacy law in the past 36 months?',
-		section: 'PCOM',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('This can include another office, such as information security, dedicated to privacy protection.'),
-		hasAdditional: false,
-		id: 'PCOM-04',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a dedicated data privacy staff or office?',
-		section: 'PCOM',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('SOC 2 Type II audits can be conducted for any or all of five trust principles (confidentiality, integrity, availability, security, and privacy). Answer \"yes\" if your audit included the privacy principle.'),
-		hasAdditional: false,
-		id: 'PDOC-01',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'If you have completed a SOC 2 audit, does it include the Privacy Trust Service Principle?',
-		section: 'PDOC',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Standard privacy frameworks help organizations enhance data protection, mitigate privacy risks, and demonstrate compliance with appropriate industry and regulatory standards. This is particularly important when providing services in different jurisdictions.'),
-		hasAdditional: false,
-		id: 'PDOC-02',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Do you conform with a specific industry-standard privacy framework (e.g., NIST Privacy Framework, GDPR, ISO 27701)?',
-		section: 'PDOC',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PDOC-03',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your employee onboarding and offboarding policy include training of employees on information security and data privacy?',
-		section: 'PDOC',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Inclusion of language in contractual agreements ensures third parties are aware of and have agreed to their obligations to maintain standards and comply with all regulatory requirements in regards to protection of personal data they handle on behalf of your organization.'),
-		hasAdditional: false,
-		id: 'PTHP-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have contractual agreements with third parties that require them to maintain standards and to comply with all regulatory requirements?',
-		section: 'PTHP',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Privacy impact assessments ensure that third-party collection, processing, or access to personal data aligns with and supports your organization\'s own efforts and commitments to clients. This is particularly important when a specific third party operates from or is subject to a jurisdiction different from that of your organization.'),
-		hasAdditional: false,
-		id: 'PTHP-02',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you perform privacy impact assesments of third parties that collect, process, or have access to personal data to ensure they meet industry and regulatory standards and to mitigate harmful, unethical, or discriminatory impacts on data subjects?',
-		section: 'PTHP',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('The change management process minimizes disruption and maximizes benefits and should contain a privacy review process.'),
-		hasAdditional: false,
-		id: 'PCHG-01',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your change management process include privacy review and approval?',
-		section: 'PCHG',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Policy and procedure should include specific steps to take in the process of mitigating privacy risks.'),
-		hasAdditional: false,
-		id: 'PCHG-02',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have policy and procedure, currently implemented, guiding how privacy risks are mitigated until they can be resolved?',
-		section: 'PCHG',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Demographic information is generally defined as the statistical characteristics of a population used to study and understand certain aspects of that population. It can include characteristics such as age, gender, ethnicity, education, religion, geolocation, and occupation. If the information being collected, processed, or stored falls under a particular regulation (or law), check that regulation for a specific definition of demographic information.'),
-		hasAdditional: false,
-		id: 'PDAT-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you collect, process, or store demographic information?',
-		section: 'PDAT',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Genetic information would include information about genetic tests, genetic tests of family members, actual manifestations of diseases, and family medical records. Biometric information includes elements such as facial recognition, fingerprints, and voice recognition.'),
-		hasAdditional: false,
-		id: 'PDAT-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you capture or create genetic, biometric, or behaviometric information (e.g., facial recognition or fingerprints)?',
-		section: 'PDAT',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Institutional data is created, collected, maintained, transmitted, or stored by or for a college or university to conduct operations. Many institutions have their own specific definitions. Institutional data would include data such as financial information, student education records, faculty/staff/alumni data, research data, and data collected for government reporting purposes.'),
-		hasAdditional: false,
-		id: 'PDAT-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you combine institutional data (including \"de-identified,\" \"anonymized,\" or otherwise masked data) with personal data from any other sources?',
-		section: 'PDAT',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Given the vast number of privacy regulations and laws throughout the world, it is important to know when, where, why, and how institutional data is being shared outside the United States. This information is necessary to ensure compliance and to protect the institutional data.'),
-		hasAdditional: false,
-		id: 'PDAT-04',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is institutional data coming into or going out of the United States at any point during collection, processing, storage, or archiving?',
-		section: 'PDAT',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Device information can be captured for a variety of reasons, from analytics to marketing to network management and security. It is important to know the details in order to be clear on the privacy implications.'),
-		hasAdditional: false,
-		id: 'PDAT-05',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you capture device information (e.g., IP address, MAC address)?',
-		section: 'PDAT',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Web tracking can be used to identify users via their IP address, login information, browser information, etc.'),
-		hasAdditional: false,
-		id: 'PDAT-06',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does any part of this service/project involve a web/app tracking component (e.g., use of web-tracking pixels, cookies)?',
-		section: 'PDAT',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Accessing institutional data may be necessary for legitimate business purposes.'),
-		hasAdditional: false,
-		id: 'PDAT-07',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your staff (or a third party) have access to institutional data (e.g., financial, PHI, or other sensitive information) through any means?',
-		section: 'PDAT',
-		weight: 5
-	},
-		{compliantResponse: $elm$core$Maybe$Nothing, guidance: $elm$core$Maybe$Nothing, hasAdditional: false, id: 'PDAT-08', importance: $author$project$Questions$Unscored, inputType: $author$project$Questions$RadioYesNo, isCritical: false, isScored: false, label: 'Will you handle personal data in a manner compliant with all relevant laws, regulations, and applicable institution policies?', section: 'PDAT', weight: 0},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PRPO-01',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a documented privacy management process?',
-		section: 'PRPO',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('The question is assessing your compliance with Privacy by Design (PbD) principles. This concept, embedded in regulations such as GDPR (Article 25) and other global privacy laws, requires that privacy is not an afterthought—it must be part of the design and architecture of systems and processes from the outset.'),
-		hasAdditional: false,
-		id: 'PRPO-02',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Are privacy principles designed into the product lifecycle (i.e., privacy-by-design)?',
-		section: 'PRPO',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PRPO-03',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Will you comply with applicable breach notification laws?',
-		section: 'PRPO',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('These policies may include specific user consent practices, data classification standards, and handling of sensitive information.'),
-		hasAdditional: false,
-		id: 'PRPO-04',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Will you comply with the institution\'s policies regarding user privacy and data protection?',
-		section: 'PRPO',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Indicates whether your organization is legally bound by state, federal, or local laws where the institution operates.'),
-		hasAdditional: false,
-		id: 'PRPO-05',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is your company subject to the laws and regulations of the institution\'s geographic region?',
-		section: 'PRPO',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Privacy awareness/training refers to the ongoing education provided to individuals who handle sensitive data to ensure they understand privacy obligations, data protection principles, and regulatory requirements (e.g., FERPA, HIPAA, GDPR).'),
-		hasAdditional: false,
-		id: 'PRPO-06',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have a privacy awareness/training program?',
-		section: 'PRPO',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PRPO-07',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is privacy awareness training mandatory for all employees?',
-		section: 'PRPO',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PRPO-08',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is AI privacy and ethics awareness/training required for all employees who work with AI?',
-		section: 'PRPO',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Examples of such automated decisions could include automatically denying or approving user access requests, flagging or blocking transactions based on risk scores, or AI-driven decisions that affect user outcomes (e.g., eligibility, grading, pricing).'),
-		hasAdditional: false,
-		id: 'PRPO-09',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have any decision-making processes that are completely automated (i.e., there is no human involvement)?',
-		section: 'PRPO',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PRPO-10',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a documented process for managing automated processing, including validations, monitoring, and data subject requests?',
-		section: 'PRPO',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PRPO-11',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a documented policy for sharing information with law enforcement?',
-		section: 'PRPO',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'PRPO-12',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you share any institutional data with law enforcement without a valid warrant or subpoena?',
-		section: 'PRPO',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Provide an overview of your incident response team membership and its charge, highlighting the privacy analyst/officer.'),
-		hasAdditional: false,
-		id: 'PRPO-13',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your incident response team include a privacy analyst/officer?',
-		section: 'PRPO',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('See GDPR Chapter 1, Art. 4, for definitions.'),
-		hasAdditional: false,
-		id: 'INTL-01',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Will data be collected from or processed in or stored in the European Economic Area (EEA)?',
-		section: 'INTL',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('See GDPR Chapter 4, Section 4, for DPO information.'),
-		hasAdditional: false,
-		id: 'INTL-02',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a data protection officer (DPO)?',
-		section: 'INTL',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('See GDPR Chapter 5, Art. 46, for SCC information.'),
-		hasAdditional: false,
-		id: 'INTL-03',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Will you sign appropriate GDPR Standard Contractual Clauses (SCCs) with the institution?',
-		section: 'INTL',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('See PIPL Chapter 1 for definitions.'),
-		hasAdditional: false,
-		id: 'INTL-04',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Will data be collected from or processed in or stored in China?',
-		section: 'INTL',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('See PIPL Chapter 5 for requirements.'),
-		hasAdditional: false,
-		id: 'INTL-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you comply with PIPL security, privacy, and data localization requirements?',
-		section: 'INTL',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-01',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have you performed a Data Privacy Impact Assesssment for the solution/project?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-02',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you provide an end-user privacy notice about privacy policies and procedures that identify the purpose(s) for which personal information is collected, used, retained, and disclosed?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-03',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you describe the choices available to the individual and obtain implicit or explicit consent with respect to the collection, use, and disclosure of personal information?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('This includes quality assurance, marketing and advertising, etc.'),
-		hasAdditional: false,
-		id: 'DRPV-04',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you collect personal information only for the purpose(s) identified in the agreement with an institution or, if there is none, the purpose(s) identified in the privacy notice?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a documented list of personal data your service maintains?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-06',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you retain personal information for only as long as necessary to fulfill the stated purpose(s) or as required by law or regulation and thereafter appropriately dispose of such information?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Such processes would include descriptions of request processes individuals can follow to review thier information and written processes a data subject may use to ask for changes or corrections to data held about them.'),
-		hasAdditional: false,
-		id: 'DRPV-07',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you provide individuals with access to their personal information for review and update (i.e., data subject rights)?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-08',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you disclose personal information to third parties only for the purpose(s) identified in the privacy notice or with the implicit or explicit consent of the individual?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-09',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you protect personal information against unauthorized access (both physical and logical)?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-10',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you maintain accurate, complete, and relevant personal information for the purposes identified in the privacy notice?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-11',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have procedures to address privacy-related noncompliance complaints and disputes?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-12',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you \"anonymize,\" \"de-identify,\" or otherwise mask personal data?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-13',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you or your subprocessors use or disclose \"anonymized,\" \"de-identified,\" or otherwise masked data for any purpose other than those identified in the agreement with an institution (e.g., sharing with ad networks or data brokers, marketing, creation of profiles, analytics unrelated to services provided to institution)?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Provide evidence of existing processes or policies. The internal privacy policy should explain your organization\'s policies and practices regarding the collection of personal information and other data about individuals.'),
-		hasAdditional: false,
-		id: 'DRPV-14',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you certify stop-processing requests, including any data that is processed by a third party on your behalf?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DRPV-15',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have a process to review code for ethical considerations?',
-		section: 'DRPV',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DPAI-01',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your service use AI for the processing of institutional data?',
-		section: 'DPAI',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DPAI-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Is any institutional data retained in AI processing?',
-		section: 'DPAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DPAI-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you have agreements in place with third parties or subprocessors regarding the protection of customer data and use of AI?',
-		section: 'DPAI',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DPAI-04',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Will institutional data be processed through a third party or subprocessor that also uses AI?',
-		section: 'DPAI',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DPAI-05',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is AI processing limited to fully licensed commercial enterprise AI services?',
-		section: 'DPAI',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Provide detailed response to the type of data needed for the AI service to function appropriately, the sources of the data, and whether any data shared with the AI service comes from data sources outside the institution.'),
-		hasAdditional: false,
-		id: 'DPAI-06',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Will institutional data be used or processed by any shared AI services?',
-		section: 'DPAI',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DPAI-07',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have safeguards in place to protect institutional data and data privacy from unintended AI queries or processing?',
-		section: 'DPAI',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'DPAI-08',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you provide choice to the user to opt out of AI use?',
-		section: 'DPAI',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Answer \"yes\" even if you do not create your own machine learning solutions, and answer the questions as they apply to your contractual relationship with the third party you utilize.'),
-		hasAdditional: false,
-		id: 'AIQU-01',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Does your solution leverage machine learning (ML) or do you plan to do so in the next 12 months?',
-		section: 'AIQU',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Answer \"yes\" even if you do not train your own LLM models, and answer the questions as they apply to your contractual relationship with the third party you utilize.'),
-		hasAdditional: false,
-		id: 'AIQU-02',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: false,
-		label: 'Does your solution leverage a large language model (LLM) or do you plan to do so in the next 12 months?',
-		section: 'AIQU',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Examples include NIST AI RMF, OWASP Top 10, RAFT, and MITRE ATLAS.'),
-		hasAdditional: false,
-		id: 'AIGN-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Does your solution have an AI risk model when developing or implementing your solution\'s AI model?',
-		section: 'AIGN',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIGN-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Can your solution\'s AI features be disabled by tenant and/or user?',
-		section: 'AIGN',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIGN-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Have your staff completed responsible AI training?',
-		section: 'AIGN',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Describe capabilities such as content (text, image, audio, speech, video, or code) generation, visual interpretation, and predictive analytics. This encompasses all AI implementations, including third-party AI geatures. Clarify use cases or limits of the model.'),
-		hasAdditional: false,
-		id: 'AIGN-04',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: false,
-		label: 'Please describe the capabilities of your solution\'s AI features.',
-		section: 'AIGN',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIGN-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Does your solution support business rules to protect sensitive data from being ingested by the AI model?',
-		section: 'AIGN',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIPL-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Are your AI developer\'s policies, processes, procedures, and practices across the organization related to the mapping, measuring, and managing of AI risks conspicuously posted, unambiguous, and implemented effectively?',
-		section: 'AIPL',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIPL-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Have you identified and measured AI risks?',
-		section: 'AIPL',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIPL-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'In the event of an incident, can your solution\'s AI features be disabled in a timely manner?',
-		section: 'AIPL',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIPL-04',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'If disabled because of an incident, can your solution\'s AI features be re-enabled in a timely manner?',
-		section: 'AIPL',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Responsible AI development per NIST AI RMF, page 25.'),
-		hasAdditional: false,
-		id: 'AIPL-05',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you have documented technical and procedural processes to address potential negative impacts of AI as described by the AI Risk Management Framework (RMF)?',
-		section: 'AIPL',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Please answer based on whether your AI model supports the removal or unlearning of sensitive data, whether it is introduced intentionally or unintentionally. Consider whether data can be traced and deleted from training sets, vector stores, memory, or other components of the AI system. This includes data removal in compliance with privacy regulations and customer requests.'),
-		hasAdditional: false,
-		id: 'AISC-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'If sensitive data is introduced to your solution\'s AI model, can the data be removed from the AI model by request?',
-		section: 'AISC',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('No'),
-		guidance: $elm$core$Maybe$Just('Please answer based on whether your solution uses user input data (e.g., prompts, uploads, queries) to fine-tune, train, or otherwise influence the behavior of your AI model. Consider any use of user data for model improvement, personalization, or aggregated learning.'),
-		hasAdditional: false,
-		id: 'AISC-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Is user input data used to influence your solution\'s AI model?',
-		section: 'AISC',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Please answer based on whether your AI features generate audit logs that record user identity, timestamp, and actions taken. Include log retention, immutability, access for administrators or auditors, and how logs support compliance and incident response.'),
-		hasAdditional: false,
-		id: 'AISC-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you provide logging for your solution\'s AI feature(s) that includes user, date, and action taken?',
-		section: 'AISC',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Nothing,
-		guidance: $elm$core$Maybe$Just('Please describe how your solution validates user inputs, including detection of anomalies, malicious inputs, and sensitive data. Indicate where validation occurs and how it supports security and compliance.'),
-		hasAdditional: false,
-		id: 'AISC-04',
-		importance: $author$project$Questions$Unscored,
-		inputType: $author$project$Questions$TextArea,
-		isCritical: false,
-		isScored: false,
-		label: 'Please describe how you validate user inputs.',
-		section: 'AISC',
-		weight: 0
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AISC-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you plan for and mitigate supply-chain risk related to your AI features?',
-		section: 'AISC',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Please answer based on whether training data is kept separate from production data to protect institutional information. Include how organizational data is segregated, anonymized, or excluded from training, and state whether institutions can opt out of data use for model improvement.'),
-		hasAdditional: false,
-		id: 'AIML-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you separate ML training data from your ML solution data?',
-		section: 'AIML',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIML-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you authenticate and verify your ML model\'s feedback?',
-		section: 'AIML',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIML-03',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is your ML training data vetted, validated, and verified before training the solution\'s AI model?',
-		section: 'AIML',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIML-04',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Is your ML training data monitored and audited?',
-		section: 'AIML',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIML-05',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have you limited access to your ML training data to only staff with an explicit business need?',
-		section: 'AIML',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIML-06',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Have you implemented adversarial training or other model defense mechanisms to protect your ML-related features?',
-		section: 'AIML',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIML-07',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you make your ML model transparent through documentation and log inputs and outputs?',
-		section: 'AIML',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AIML-08',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you watermark your ML training data?',
-		section: 'AIML',
-		weight: 5
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AILM-01',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you limit your solution\'s LLM privileges by default?',
-		section: 'AILM',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AILM-02',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Is your LLM training data vetted, validated, and verified before training the solution\'s AI model?',
-		section: 'AILM',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AILM-03',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do any actions taken by your solution\'s LLM features or plugins require human intervention?',
-		section: 'AILM',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AILM-04',
-		importance: $author$project$Questions$Critical,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: true,
-		isScored: true,
-		label: 'Do you limit multiple LLM model plugins being called as part of a single input?',
-		section: 'AILM',
-		weight: 20
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AILM-05',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you limit your solution\'s LLM resource use per request, per step, and per action?',
-		section: 'AILM',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Nothing,
-		hasAdditional: false,
-		id: 'AILM-06',
-		importance: $author$project$Questions$Standard,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you leverage LLM model tuning or other model validation mechanisms?',
-		section: 'AILM',
-		weight: 10
-	},
-		{
-		compliantResponse: $elm$core$Maybe$Just('Yes'),
-		guidance: $elm$core$Maybe$Just('Looking for taint tracing or tracking of LLM plugins to mitigate malicious inputs tuning and prompt engineering.'),
-		hasAdditional: false,
-		id: 'AILM-07',
-		importance: $author$project$Questions$Minor,
-		inputType: $author$project$Questions$RadioYesNo,
-		isCritical: false,
-		isScored: true,
-		label: 'Do you perform taint tracing or tracking on all plugin content related to the LLM?',
-		section: 'AILM',
-		weight: 5
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'GNRL-01', t: 3, a$: 1, X: false, a0: false, E: 'Solution Provider Name', aG: 'GNRL', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'GNRL-02', t: 3, a$: 1, X: false, a0: false, E: 'Solution Name', aG: 'GNRL', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'GNRL-03', t: 3, a$: 4, X: false, a0: false, E: 'Solution Description', aG: 'GNRL', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'GNRL-04', t: 3, a$: 1, X: false, a0: false, E: 'Solution Provider Contact Name', aG: 'GNRL', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'GNRL-05', t: 3, a$: 1, X: false, a0: false, E: 'Solution Provider Contact Title', aG: 'GNRL', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'GNRL-06', t: 3, a$: 2, X: false, a0: false, E: 'Solution Provider Contact Email', aG: 'GNRL', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'GNRL-07', t: 3, a$: 3, X: false, a0: false, E: 'Solution Provider Contact Phone Number', aG: 'GNRL', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'GNRL-08', t: 3, a$: 1, X: false, a0: false, E: 'Country of Company Headquarters', aG: 'GNRL', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'GNRL-09', t: 3, a$: 1, X: false, a0: false, E: 'Employee Work Locations (all)', aG: 'GNRL', aL: 0},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'COMP-01',
+		t: 1,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have a dedicated software and system development team(s) (e.g., customer support, implementation, product management, etc.)?',
+		aG: 'COMP',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Include circumstances that may involve offshoring or multinational agreements.'),
+		aX: false,
+		c: 'COMP-02',
+		t: 3,
+		a$: 4,
+		X: false,
+		a0: false,
+		E: 'Describe your organization’s business background and ownership structure, including all parent and subsidiary relationships.',
+		aG: 'COMP',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'COMP-03',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have you operated without unplanned disruptions to this solution in the past 12 months?',
+		aG: 'COMP',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'COMP-04',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a dedicated information security staff or office?',
+		aG: 'COMP',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Share any details that would help information security analysts assess your solution.'),
+		aX: false,
+		c: 'COMP-05',
+		t: 3,
+		a$: 4,
+		X: false,
+		a0: false,
+		E: 'Use this area to share information about your environment that will assist those who are assessing your company\'s data security program.',
+		aG: 'COMP',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('If you are only offering a service, or are offering a product that is not cloud-based, answer \"no\".'),
+		aX: false,
+		c: 'REQU-01',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Are you offering a cloud-based product?',
+		aG: 'REQU',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('This includes any interface for end users and interfaces used by administrators at the institution.'),
+		aX: false,
+		c: 'REQU-02',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Does your product or service have an interface?',
+		aG: 'REQU',
+		aL: 0
+	},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'REQU-03', t: 3, a$: 0, X: false, a0: false, E: 'Are you providing consulting services?', aG: 'REQU', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'REQU-04', t: 3, a$: 0, X: false, a0: false, E: 'Does your solution have AI features, or are there plans to implement AI features in the next 12 months?', aG: 'REQU', aL: 0},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Answer \"yes\" if your solution handles personal health information (PHI), either directly or via a third party.'),
+		aX: false,
+		c: 'REQU-05',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Does your solution process protected health information (PHI) or any data covered by the Health Insurance Portability and Accountability Act (HIPAA)?',
+		aG: 'REQU',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Answer yes if your solution handles PCI (credit card) information, either directly or via a third party.'),
+		aX: false,
+		c: 'REQU-06',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Is the solution designed to process, store, or transmit credit card information?',
+		aG: 'REQU',
+		aL: 0
+	},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'REQU-07', t: 3, a$: 4, X: false, a0: false, E: 'Does operating your solution require the institution to operate a physical or virtual appliance in their own environment or to provide inbound firewall exceptions to allow your employees to remotely administer systems in the institution\'s environment?', aG: 'REQU', aL: 0},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('This includes patient data, student data, employment data, human research data, financial data, etc.'),
+		aX: false,
+		c: 'REQU-08',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Does your solution have access to personal or institutional data?',
+		aG: 'REQU',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DOCU-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have a well-documented business continuity plan (BCP), with a clear owner, that is tested annually?',
+		aG: 'DOCU',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DOCU-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have a well-documented disaster recovery plan (DRP), with a clear owner, that is tested annually?',
+		aG: 'DOCU',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: true,
+		c: 'DOCU-03',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have you undergone a SSAE 18/SOC 2 audit?',
+		aG: 'DOCU',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: true,
+		c: 'DOCU-04',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you conform with a specific industry standard security framework (e.g., NIST Cybersecurity Framework, CIS Controls, ISO 27001, etc.)?',
+		aG: 'DOCU',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: true,
+		c: 'DOCU-05',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Can you provide overall system and/or application architecture diagrams, including a full description of the data flow for all components of the system?',
+		aG: 'DOCU',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: true,
+		c: 'DOCU-06',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your organization have a data privacy policy?',
+		aG: 'DOCU',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: true,
+		c: 'DOCU-07',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a documented, and currently implemented, employee onboarding and offboarding policy?',
+		aG: 'DOCU',
+		aL: 10
+	},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'ITAC-01', t: 3, a$: 1, X: false, a0: false, E: 'Solution Provider Accessibility Contact Name', aG: 'ITAC', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'ITAC-02', t: 3, a$: 1, X: false, a0: false, E: 'Solution Provider Accessibility Contact Title', aG: 'ITAC', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'ITAC-03', t: 3, a$: 2, X: false, a0: false, E: 'Solution Provider Accessibility Contact Email', aG: 'ITAC', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'ITAC-04', t: 3, a$: 3, X: false, a0: false, E: 'Solution Provider Accessibility Contact Phone Number', aG: 'ITAC', aL: 0},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('VPAT can also be added as an attachment'),
+		aX: false,
+		c: 'ITAC-05',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Web Link to Accessibility Statement or VPAT',
+		aG: 'ITAC',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('If your answer is “I do not know,” select “no.” If the VPAT/ACR is for an older version of the product or has not been updated, its information does not accurately reflect the accessibility of the product under consideration and the response should be \"no.\" Provide a link or attachment to the most recent VPAT/ACR.'),
+		aX: true,
+		c: 'ITAC-06',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Has a VPAT or ACR been created or updated for the solution and version under consideration within the past 12 months?',
+		aG: 'ITAC',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'ITAC-07',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Will your company agree to meet your stated accessibility standard or WCAG 2.1 AA as part of your contractual agreement for the solution?',
+		aG: 'ITAC',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Solutions \"substantially conform\" if they entirely meet WCAG 2.1 AA or if almost all user and administrator features conform. Documentation about limitations and/or workarounds should be provided where WCAG conformance is not presently achieved. If the solution substantially conforms to a newer standard such as WCAG 2.2 AA, answer \"yes.\"'),
+		aX: false,
+		c: 'ITAC-08',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Does the solution substantially conform to WCAG 2.1 AA?',
+		aG: 'ITAC',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Reporting and fixing accessibility issues is critical to a mature process. If the process for this question is merely a \"feature request\" and tracker, the answer to this question should be \"no.\"'),
+		aX: false,
+		c: 'ITAC-09',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have a documented and implemented process for reporting and tracking accessibility issues?',
+		aG: 'ITAC',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('If specific configurations, settings, themes, author guides, or instructions are needed to ensure accessibility, are instructions on how to do so provided for administrators and end users?'),
+		aX: true,
+		c: 'ITAC-10',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have documentation to support the accessibility features of your solution?',
+		aG: 'ITAC',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Audit results, including VPAT/ACRs, are voluntary reports often generated by the creator of the product. Audits conducted and reports generated by expert third parties give greater confidence to customers.'),
+		aX: false,
+		c: 'ITAC-11',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Has a third-party expert conducted an audit of the most recent version of your solution?',
+		aG: 'ITAC',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'ITAC-12',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a documented and implemented process for verifying accessibility conformance?',
+		aG: 'ITAC',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Various federal and state governments in the United States and around the world have mandated accessibility technical requirements that should be considered and may be required when selling solutions to institutions in these jurisdictions.'),
+		aX: false,
+		c: 'ITAC-13',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have you adopted a technical or legal standard of conformance for the solution?',
+		aG: 'ITAC',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('A detailed accessibility roadmap should reference improvements and progress on known accessibility issues as appropriate but does not necessarily need to list unreleased product features.'),
+		aX: false,
+		c: 'ITAC-14',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Can you provide a current, detailed accessibility roadmap with delivery timelines?',
+		aG: 'ITAC',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('How do you ensure that your professional staff keeps current with digital accessibility laws and best practices? Is your staff able to evaluate and test this product with assistive technologies such as a screen reader or alternative input devices? Examples of staff certification may include IAAP certifications <https://www.accessibilityassociation.org/s/professional-certifications> or §508 Trusted Tester <https://www.dhs.gov/trusted-tester>.'),
+		aX: false,
+		c: 'ITAC-15',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you expect your staff to maintain a current skill set in IT accessibility?',
+		aG: 'ITAC',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Describe where accessibility falls in the development and product lifecycle. Is it at the beginning of your project development or after the product is otherwise complete before launch? Do you incorporate accessibility in your development methods, such as Agile scrums? Does your customer-facing accessibility reporting match your development processes (i.e., Agile methods are best represented using a roadmap and timeline; revised VPAT/ACRs provide a snapshot in time of a given release)?'),
+		aX: false,
+		c: 'ITAC-16',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have documented processes and procedures for implementing accessibility into your development lifecycle?',
+		aG: 'ITAC',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'ITAC-17',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Can all functions of the application or service be performed using only the keyboard?',
+		aG: 'ITAC',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Third-party overlays or add-ons are not sufficient for products to conform with accessibility standards. If there is an accessibility mode, does it address a specific accessibility need? Are plans in place to remove the accessible version, and are these distinctions delineated on your roadmap and timeline?'),
+		aX: false,
+		c: 'ITAC-18',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your product rely on activating a special \"accessibility mode,\" a \"lite version,\" or using an alternate interface (including “overlay” or AI-based alternates)  for accessibility purposes?',
+		aG: 'ITAC',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'THRD-01',
+		t: 0,
+		a$: 4,
+		X: true,
+		a0: true,
+		E: 'Do you perform security assessments of third-party companies with which you share data (e.g., hosting providers, cloud services, PaaS, IaaS, SaaS)?',
+		aG: 'THRD',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('List each third party and why institutional data is shared with them. Format example: [Third Party Name] - Reason'),
+		aX: false,
+		c: 'THRD-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have contractual language in place with third parties governing access to institutional data?',
+		aG: 'THRD',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'THRD-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do the contracts in place with these third parties address liability in the event of a data breach?',
+		aG: 'THRD',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Robust answers from the solution provider improve the quality and efficiency of the security assessment process.'),
+		aX: false,
+		c: 'THRD-04',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have an implemented third-party management strategy?',
+		aG: 'THRD',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Make sure you address any national or regional regulations.'),
+		aX: false,
+		c: 'THRD-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a process and implemented procedures for managing your hardware supply chain (e.g., telecommunications equipment, export licensing, computing devices)?',
+		aG: 'THRD',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CONS-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Will the consultant require access to the institution\'s network resources?',
+		aG: 'CONS',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CONS-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Has the consultant received training on (sensitive, HIPAA, PCI, etc.) data handling?',
+		aG: 'CONS',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CONS-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Is the data encrypted (at rest) while in the consultant\'s possession?',
+		aG: 'CONS',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CONS-04',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Can access be restricted based on source IP address?',
+		aG: 'CONS',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CONS-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Will the consulting take place on-premises?',
+		aG: 'CONS',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CONS-06',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Will the consultant require access to hardware in the institution\'s data centers?',
+		aG: 'CONS',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CONS-07',
+		t: 1,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Will the consultant require an account within the institution\'s domain (@*.edu)?',
+		aG: 'CONS',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CONS-08',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Will any data be transferred to the consultant\'s possession?',
+		aG: 'CONS',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CONS-09',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Will the consultant need remote access to the institution\'s network or systems?',
+		aG: 'CONS',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('This includes end users, administrators, service accounts, etc. PBAC would include various dynamic controls such as conditional access, risk-based access, location-based access, or system activity–based access.'),
+		aX: false,
+		c: 'APPL-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Are access controls for institutional accounts based on structured rules, such as role-based access control (RBAC), attribute-based access control (ABAC), or policy-based access control (PBAC)?',
+		aG: 'APPL',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'APPL-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Are you using a web application firewall (WAF)?',
+		aG: 'APPL',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('If the web application only works with a subset of modern supported browsers, please indicate that here.'),
+		aX: false,
+		c: 'APPL-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Are only currently supported operating system(s), software, and libraries leveraged by the system(s)/application(s) that will have access to institution\'s data?',
+		aG: 'APPL',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'APPL-04',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Does your application require access to location or GPS data?',
+		aG: 'APPL',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'APPL-05',
+		t: 0,
+		a$: 4,
+		X: true,
+		a0: true,
+		E: 'Does your application provide separation of duties between security administration, system administration, and standard user functions?',
+		aG: 'APPL',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'APPL-06',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you subject your code to static code analysis and/or static application security testing prior to release?',
+		aG: 'APPL',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'APPL-07',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have software testing processes (dynamic or static) that are established and followed?',
+		aG: 'APPL',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('This includes system administrators and third-party personnel with access to the system. PBAC would include various dynamic controls such as conditional access, risk-based access, location-based access, or system activity–based access.'),
+		aX: false,
+		c: 'APPL-08',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are access controls for staff within your organization based on structured rules, such as RBAC, ABAC, or PBAC?',
+		aG: 'APPL',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'APPL-09',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Does the system provide data input validation and error messages?',
+		aG: 'APPL',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Include any in-house developed or contract development.'),
+		aX: false,
+		c: 'APPL-10',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a process and implemented procedures for managing your software supply chain (e.g., libraries, repositories, frameworks, etc.)',
+		aG: 'APPL',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'APPL-11',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have your developers been trained in secure coding techniques?',
+		aG: 'APPL',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'APPL-12',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Was your application developed using secure coding techniques?',
+		aG: 'APPL',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Select N/A if there is no mobile version of your app.'),
+		aX: false,
+		c: 'APPL-13',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'If mobile, is the application available from a trusted source (e.g., App Store, Google Play Store)?',
+		aG: 'APPL',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'APPL-14',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a fully implemented policy or procedure that details how your employees obtain administrator access to institutional instance of the application?',
+		aG: 'APPL',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Answer \"yes\" only if user AND administrator authentication is supported. If partially supported, answer \"no.\" Ensure you respond to any guidance in the Additional Information column.'),
+		aX: false,
+		c: 'AAAI-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Does your solution support single sign-on (SSO) protocols for user and administrator authentication?',
+		aG: 'AAAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'For customers not using SSO, does your solution support local authentication protocols for user and administrator authentication?',
+		aG: 'AAAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-03',
+		t: 0,
+		a$: 4,
+		X: true,
+		a0: true,
+		E: 'For customers not using SSO, can you enforce password/passphrase complexity requirements (provided by the institution)?',
+		aG: 'AAAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Answer \"yes\" if your solution has internal limits to password complexity (max langth, certain special characters unsupported, etc.).'),
+		aX: false,
+		c: 'AAAI-04',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'For customers not using SSO, does the system have password complexity or length limitations and/or restrictions?',
+		aG: 'AAAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-05',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'For customers not using SSO, do you have documented password/passphrase reset procedures that are currently implemented in the system and/or customer support?',
+		aG: 'AAAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-06',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Does your organization participate in InCommon or another eduGAIN-affiliated trust federation?',
+		aG: 'AAAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-07',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Are there any passwords/passphrases hard-coded into your systems or solutions?',
+		aG: 'AAAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-08',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Are you storing any passwords in plaintext?',
+		aG: 'AAAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-09',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Are audit logs available that include AT LEAST all of the following: login, logout, actions performed, and source IP address?',
+		aG: 'AAAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Ensure that all elements of AAAI-10 are clearly stated in your response.'),
+		aX: false,
+		c: 'AAAI-10',
+		t: 3,
+		a$: 4,
+		X: true,
+		a0: false,
+		E: 'Describe or provide a reference to the (a) system capability to log security/authorization changes, as well as user and administrator security events (i.e., physical or electronic), such as login failures, access denied, changes accepted; and (b) all requirements necessary to implement logging and monitoring on the system. Include (c) information about SIEM/log collector usage.',
+		aG: 'AAAI',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Ensure that all elements of AAAI-11 are clearly stated in your response.'),
+		aX: false,
+		c: 'AAAI-11',
+		t: 0,
+		a$: 4,
+		X: true,
+		a0: true,
+		E: 'Can you provide the institution documentation regarding the retention period for those logs, how logs are protected, and whether they are accessible to the customer (and if so, how)?',
+		aG: 'AAAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-12',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'For customers not using SSO, does your application support integration with other authentication and authorization systems?',
+		aG: 'AAAI',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-13',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you allow the customer to specify attribute mappings for any needed information beyond a user identifier? (e.g., Reference eduPerson, ePPA/ePPN/ePE)',
+		aG: 'AAAI',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-14',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'For customers not using SSO, does your application support directory integration for user accounts?',
+		aG: 'AAAI',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('An answer of \"yes\" should be well-supported in the Additional Information column, and all elements of interest should be sufficiently addressed.'),
+		aX: false,
+		c: 'AAAI-15',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your solution support any of the following web SSO standards: SAML2 (with redirect flow), OIDC, CAS, or other?',
+		aG: 'AAAI',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-16',
+		t: 2,
+		a$: 2,
+		X: false,
+		a0: true,
+		E: 'Do you support differentiation between email address and user identifier?',
+		aG: 'AAAI',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-17',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'For customers not using SSO, does your application and/or user frontend/portal support multifactor authentication (e.g., Duo, Google Authenticator, OTP, etc.)?',
+		aG: 'AAAI',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AAAI-18',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your application automatically lock the session or log out an account after a period of inactivity?',
+		aG: 'AAAI',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Will the institution be notified of major changes to your environment that could impact the institution\'s security posture?',
+		aG: 'CHNG',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Ensure that all relevant details pertaining to CHNG-06 are clearly stated in your response.'),
+		aX: false,
+		c: 'CHNG-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Does the system support client customizations from one release to another?',
+		aG: 'CHNG',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have an implemented system configuration management process (e.g.,secure \"gold\" images, etc.)?',
+		aG: 'CHNG',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: true,
+		c: 'CHNG-04',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a documented change management process?',
+		aG: 'CHNG',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your change management process minimally include authorization, impact analysis, testing, and validation before moving changes to production?',
+		aG: 'CHNG',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-06',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your change management process verify that all required third-party libraries and dependencies are still supported with each major change?',
+		aG: 'CHNG',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-07',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have policy and procedure, currently implemented, managing how critical patches are applied to all systems and applications?',
+		aG: 'CHNG',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-08',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have you implemented policies and procedures that guide how security risks are mitigated until patches can be applied?',
+		aG: 'CHNG',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-09',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do clients have the option to not participate in or postpone an upgrade to a new release?',
+		aG: 'CHNG',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('List the current version you support and what percentage of customers are utilizing that version.'),
+		aX: false,
+		c: 'CHNG-10',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a fully implemented solution support strategy that defines how many concurrent versions you support?',
+		aG: 'CHNG',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-11',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a release schedule for product updates?',
+		aG: 'CHNG',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-12',
+		t: 2,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Do you have a technology roadmap, for at least the next two years, for enhancements and bug fixes for the solution being assessed?',
+		aG: 'CHNG',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-13',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Can solution updates be completed without institutional involvement (i.e., technically or organizationally)?',
+		aG: 'CHNG',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-14',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are upgrades or system changes installed during off-peak hours or in a manner that does not impact the customer?',
+		aG: 'CHNG',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-15',
+		t: 2,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Do procedures exist to provide that emergency changes are documented and authorized (including after-the-fact approval)?',
+		aG: 'CHNG',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'CHNG-16',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a systems management and configuration strategy that encompasses servers, appliances, cloud services, applications, and mobile devices (company and employee owned)?',
+		aG: 'CHNG',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Will the institution\'s data be stored on any devices (database servers, file servers, SAN, NAS, etc.) configured with non-RFC 1918/4193 (i.e., publicly routable) IP addresses?',
+		aG: 'DATA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Is the transport of sensitive data encrypted using security protocols/algorithms (e.g., system-to-client)?',
+		aG: 'DATA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Is the storage of sensitive data encrypted using security protocols/algorithms (e.g., disk encryption, at-rest, files, and within a running database)?',
+		aG: 'DATA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-04',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do all cryptographic modules in use in your solution conform to the Federal Information Processing Standards (FIPS PUB 140-2 or 140-3)?',
+		aG: 'DATA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-05',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Will the institution\'s data be available within the system for a period of time at the completion of this contract?',
+		aG: 'DATA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-06',
+		t: 0,
+		a$: 4,
+		X: true,
+		a0: true,
+		E: 'Are ownership rights to all data, inputs, outputs, and metadata retained even through a provider acquisition or bankruptcy event?',
+		aG: 'DATA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-07',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do backups containing the institution\'s data ever leave the institution\'s data zone either physically or via network routing?',
+		aG: 'DATA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-08',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Is media used for long-term retention of business data and archival purposes stored in a secure, environmentally protected area?',
+		aG: 'DATA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Please specify if it will be returned, deleted, or both.'),
+		aX: false,
+		c: 'DATA-09',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'At the completion of this contract, will data be returned to the institution and/or deleted from all your systems and archives?',
+		aG: 'DATA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-10',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Can the institution extract a full or partial backup of data?',
+		aG: 'DATA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-11',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do current backups include all operating system software, utilities, security software, application software, and data files necessary for recovery?',
+		aG: 'DATA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-12',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are you performing off-site backups (i.e., digitally moved off site)?',
+		aG: 'DATA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-13',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are physical backups taken off-site (i.e., physically moved off site)?',
+		aG: 'DATA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-14',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are data backups encrypted?',
+		aG: 'DATA',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-15',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a media handling process that is documented and currently implemented that meets established business needs and regulatory requirements, including end-of-life, repurposing, and data-sanitization procedures?',
+		aG: 'DATA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-16',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Does the process described in DATA-15 adhere to DoD 5220.22-M and/or NIST SP 800-88 standards?',
+		aG: 'DATA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-17',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your staff (or third party) have access to institutional data (e.g., financial, PHI, or other sensitive information) through any means?',
+		aG: 'DATA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-18',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a documented and currently implemented strategy for securing employee workstations when they work remotely (i.e., not in a trusted computing environment)?',
+		aG: 'DATA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-19',
+		t: 2,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Does the environment provide for dedicated single-tenant capabilities? If not, describe how your solution or environment separates data from different customers (e.g., logically, physically, single tenancy, multi-tenancy).',
+		aG: 'DATA',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-20',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are ownership rights to all data, inputs, outputs, and metadata retained by the institution?',
+		aG: 'DATA',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DATA-21',
+		t: 2,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'In the event of imminent bankruptcy, closing of business, or retirement of service, will you provide 90 days for customers to get their data out of the system and migrate applications?',
+		aG: 'DATA',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Ensure that response addresses involatile storage and lists retention periods.'),
+		aX: false,
+		c: 'DATA-22',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are involatile backup copies made according to predefined schedules and securely stored and protected?',
+		aG: 'DATA',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Summarize your cryptographic key management process.'),
+		aX: false,
+		c: 'DATA-23',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a cryptographic key management process (generation, exchange, storage, safeguards, use, vetting, and replacement) that is documented and currently implemented, for all system components (e.g., database, system, web, etc.)?',
+		aG: 'DATA',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('If you are using an option not listed, or a combination of options, select \"Other.\" Your selection here will determine which questions below are required.'),
+		aX: false,
+		c: 'DCTR-01',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Select your hosting option.',
+		aG: 'DCTR',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-02',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is a SOC 2 Type 2 report available for the hosting environment?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Please indicate which geographic regions you can provide storage in the Additional Info column.'),
+		aX: false,
+		c: 'DCTR-03',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are you generally able to accommodate storing each institution\'s data within its geographic region?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-04',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are the data centers staffed 24 hours a day, seven days a week (i.e., 24 x 7 x 365)?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are your servers separated from other companies via a physical barrier, such as a cage or hard walls?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-06',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Does a physical barrier fully enclose the physical space, preventing unauthorized physical contact with any of your devices?',
+		aG: 'DCTR',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-07',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are your primary and secondary data centers geographically diverse?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-08',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is the service hosted in a high-availability environment?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-09',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is redundant power available for all data centers where institutional data will reside?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-10',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Are redundant power strategies tested?',
+		aG: 'DCTR',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-11',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does the center where the data will reside have cooling and fire-suppression systems that are active and regularly tested?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('State the ISP provider(s) in addition to the number of ISPs that provide connectivity.'),
+		aX: false,
+		c: 'DCTR-12',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Do you have Internet Service Provider (ISP) redundancy?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-13',
+		t: 1,
+		a$: 3,
+		X: false,
+		a0: true,
+		E: 'Does every data center where the institution\'s data will reside have multiple telephone company or network provider entrances to the facility?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-14',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you require multifactor authentication for all administrative accounts in your environment?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DCTR-15',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Are you using your cloud provider\'s available hardening tools or pre-hardened images?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Describe your key management practices.'),
+		aX: false,
+		c: 'DCTR-16',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Does your cloud solution provider have access to your encryption keys?',
+		aG: 'DCTR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'FIDP-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Are you utilizing a stateful packet inspection (SPI) firewall?',
+		aG: 'FIDP',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'FIDP-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have a documented policy for firewall change requests?',
+		aG: 'FIDP',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'FIDP-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Have you implemented an intrusion detection system (network-based)?',
+		aG: 'FIDP',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'FIDP-04',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you employ host-based intrusion detection?',
+		aG: 'FIDP',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'FIDP-05',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Are audit logs available for all changes to the network, firewall, IDS, and IPS systems?',
+		aG: 'FIDP',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'FIDP-06',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is authority for firewall change approval documented? Please list approver names or titles in Additional Info.',
+		aG: 'FIDP',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'FIDP-07',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have you implemented an intrusion prevention system (network-based)?',
+		aG: 'FIDP',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'FIDP-08',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you employ host-based intrusion prevention?',
+		aG: 'FIDP',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'FIDP-09',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are you employing any next-generation persistent threat (NGPT) monitoring?',
+		aG: 'FIDP',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('In addition to stating your intrusion monitoring strategy, provide a brief summary of its implementation.'),
+		aX: false,
+		c: 'FIDP-10',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Is intrusion monitoring performed internally or by a third-party service?',
+		aG: 'FIDP',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'FIDP-11',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you monitor for intrusions on a 24 x 7 x 365 basis?',
+		aG: 'FIDP',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have a documented patch management process?',
+		aG: 'PPPR',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Can your organization comply with institutional policies on privacy and data protection with regard to users of institutional systems, if required?',
+		aG: 'PPPR',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('State the country that governs and regulates your company.'),
+		aX: false,
+		c: 'PPPR-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Is your company subject to the institution\'s geographic region\'s laws and regulations?',
+		aG: 'PPPR',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-04',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Can you accommodate encryption requirements using open standards?',
+		aG: 'PPPR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a documented systems development life cycle (SDLC)?',
+		aG: 'PPPR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-06',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Do you perform background screenings or multi-state background checks on all employees prior to their first day of work?',
+		aG: 'PPPR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-07',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you require new employees to fill out agreements and review policies?',
+		aG: 'PPPR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-08',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a documented information security policy?',
+		aG: 'PPPR',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-09',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are information security principles designed into the product lifecycle?',
+		aG: 'PPPR',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-10',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Will you comply with applicable breach notification laws?',
+		aG: 'PPPR',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-11',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have an information security awareness program?',
+		aG: 'PPPR',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-12',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is security awareness training mandatory for all employees?',
+		aG: 'PPPR',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-13',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have process and procedure(s) documented, and currently followed, that require a review and update of the access list(s) for privileged accounts?',
+		aG: 'PPPR',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-14',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have documented, and currently implemented, internal audit processes and procedures?',
+		aG: 'PPPR',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PPPR-15',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your organization have physical security controls and policies in place?',
+		aG: 'PPPR',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'HFIH-01',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a formal incident response plan?',
+		aG: 'HFIH',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'HFIH-02',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you either have an internal incident response team or retain an external team?',
+		aG: 'HFIH',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'HFIH-03',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have the capability to respond to incidents on a 24 x 7 x 365 basis?',
+		aG: 'HFIH',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'HFIH-04',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you carry cyber-risk insurance to protect against unforeseen service outages, data that is lost or stolen, and security incidents?',
+		aG: 'HFIH',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'VULN-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Are your systems and applications scanned with an authenticated user account for vulnerabilities (that are remediated) prior to new releases?',
+		aG: 'VULN',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'VULN-02',
+		t: 0,
+		a$: 4,
+		X: true,
+		a0: true,
+		E: 'Will you provide results of application and system vulnerability scans to the institution?',
+		aG: 'VULN',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'VULN-03',
+		t: 0,
+		a$: 4,
+		X: true,
+		a0: true,
+		E: 'Will you allow the institution to perform its own vulnerability testing and/or scanning of your systems and/or application, provided that testing is performed at a mutually agreed upon time and date?',
+		aG: 'VULN',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'VULN-04',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have your systems and applications had a third-party security assessment completed in the last year?',
+		aG: 'VULN',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Ensure that all elements of VULN-05 are clearly stated in your response.'),
+		aX: false,
+		c: 'VULN-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you regularly scan for common web application security vulnerabilities (e.g., SQL injection, XSS, XSRF, etc.)?',
+		aG: 'VULN',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'VULN-06',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are your systems and applications regularly scanned externally for vulnerabilities?',
+		aG: 'VULN',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do your workforce members receive regular training related to the Health Insurance Portability and Accountability Act (HIPAA) Privacy and Security Rules and the HITECH Act?',
+		aG: 'HIPA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Have you identified areas of risk?',
+		aG: 'HIPA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Have the relevant policies/plans been tested?',
+		aG: 'HIPA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-04',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Have you entered into a Business Associate Agreements with all subcontractors who may have access to protected health information (PHI)?',
+		aG: 'HIPA',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you monitor or receive information regarding changes in HIPAA regulations?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-06',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Has your organization designated HIPAA Privacy and Security officers as required by the rules?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-07',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you comply with the requirements of the Health Information Technology for Economic and Clinical Health Act (HITECH)?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-08',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have you conducted a risk analysis as required under the HIPAA Security Rule?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-09',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have you taken actions to mitigate the identified risks?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-10',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your application require user and system administrator password changes at a frequency no greater than 90 days?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-11',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your application require users to set their own password after an administrator reset or on first use of the account?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-12',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your application lock out an account after a number of failed login attempts?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-13',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your application automatically lock or log-out an account after a period of inactivity?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-14',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are passwords visible in plain text, whether when stored or entered, including service level accounts (i.e., database accounts, etc.)?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-15',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'If the application is institution-hosted, can all service level and administrative account passwords be changed by the institution?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-16',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Does your application provide the ability to define user access levels?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-17',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your application support varying levels of access to administrative tasks defined individually per user?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-18',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your application support varying levels of access to records based on user ID?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-19',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is there a limit to the number of groups to which a user can be assigned?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-20',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Do accounts used for solution provider-supplied remote support abide by the same authentication policies and access logging as the rest of the system?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-21',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does the application log record access including specific user, date/time of access, and originating IP or device?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-22',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does the application log administrative activity, such as user account access changes and password changes, including specific user, date/time of changes, and originating IP or device?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-23',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you retain logs for at least as long as required by HIPAA regulations?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-24',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Can the application logs be archived?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-25',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Can the application logs be saved externally?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-26',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a disaster recovery plan and emergency mode operation plan?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-27',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Can you provide a HIPAA compliance attestation document?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-28',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are you willing to enter into a Business Associate Agreement (BAA)?',
+		aG: 'HIPA',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to HIPAA regulations documentation for supplemental guidance in this section.'),
+		aX: false,
+		c: 'HIPA-29',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do your data backup and retention policies and practices meet HIPAA requirements?',
+		aG: 'HIPA',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have a current, executed within the past year, Attestation of Compliance (AoC) or Report on Compliance (RoC)?',
+		aG: 'PCID',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Is the application listed as an approved Payment Application Data Security Standard (PA-DSS) application?',
+		aG: 'PCID',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Does the system or solutions use a third party to collect, store, process, or transmit cardholder (payment/credit/debt card) data?',
+		aG: 'PCID',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-04',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do your systems or solutions store, process, or transmit cardholder (payment/credit/debt card) data?',
+		aG: 'PCID',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are you compliant with the Payment Card Industry Data Security Standard (PCI DSS)?',
+		aG: 'PCID',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-06',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Are you classified as a service provider?',
+		aG: 'PCID',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-07',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Are you on the list of Visa approved service providers?',
+		aG: 'PCID',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-08',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are you classified as a merchant? If so, what level (1, 2, 3, 4)?',
+		aG: 'PCID',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-09',
+		t: 3,
+		a$: 4,
+		X: false,
+		a0: false,
+		E: 'Describe the architecture employed by the system to verify and authorize credit card transactions.',
+		aG: 'PCID',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-10',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'What payment processors/gateways does the system support?',
+		aG: 'PCID',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-11',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Can the application be installed in a PCI DSS–compliant manner?',
+		aG: 'PCID',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Refer to PCI DSS Security Standards for supplemental guidance in this section'),
+		aX: false,
+		c: 'PCID-12',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Include documentation describing the system\'s abilities to comply with the PCI DSS and any features or capabilities of the system that must be added or changed in order to operate in compliance with the standards.',
+		aG: 'PCID',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'OPEM-01',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you support role-based access control (RBAC) for system administrators?',
+		aG: 'OPEM',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'OPEM-02',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Can your employees access customer systems remotely?',
+		aG: 'OPEM',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'OPEM-03',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Can you provide overall system and/or application architecture diagrams including a full description of the data communications architecture for all components of the system?',
+		aG: 'OPEM',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'OPEM-04',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you require remote management of the system?',
+		aG: 'OPEM',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'OPEM-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'If you answered \"yes\" to OPEM-04, are your remote actions and changes logged or otherwise visible to the campus?',
+		aG: 'OPEM',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'OPEM-06',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'If you maintain remote access to the system, will you handle data in a FERPA-compliant manner?',
+		aG: 'OPEM',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'OPEM-07',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you support campus status monitoring through SNMPv3 or other means?',
+		aG: 'OPEM',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Please detail your monitoring strategy'),
+		aX: false,
+		c: 'OPEM-08',
+		t: 3,
+		a$: 4,
+		X: false,
+		a0: false,
+		E: 'Describe or provide a reference to any other safeguards used to monitor for malicious activity.',
+		aG: 'OPEM',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Include the number of years and in what capacity.'),
+		aX: false,
+		c: 'OPEM-09',
+		t: 3,
+		a$: 4,
+		X: false,
+		a0: false,
+		E: 'Describe how long your organization has conducted business in this area.',
+		aG: 'OPEM',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'OPEM-10',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have existing higher education customers?',
+		aG: 'OPEM',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('FERPA-related data includes any data maintained by (or on behalf of) the institution that is directly related to an identifiable student.'),
+		aX: false,
+		c: 'PRGN-01',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Does your solution process FERPA-related data?',
+		aG: 'PRGN',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('GDPR data includes any data related to an identified or identifiable natural person physically located in the European Economic Area (EEA).'),
+		aX: false,
+		c: 'PRGN-02',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Does your solution process GDPR-related or PIPL-related data?',
+		aG: 'PRGN',
+		aL: 0
+	},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'PRGN-03', t: 3, a$: 0, X: false, a0: false, E: 'Does your solution process personal data regulated by state law(s) (e.g., CCPA)?', aG: 'PRGN', aL: 0},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'PRGN-04', t: 3, a$: 4, X: false, a0: false, E: 'Does your solution process user-provided data that may contain regulated information?', aG: 'PRGN', aL: 0},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('If multiple notices are implicated, provide all that apply. If any other documents are incorporated by reference, provide them as well.'),
+		aX: false,
+		c: 'PRGN-05',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Web Link to Product/Service Privacy Notice',
+		aG: 'PRGN',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PCOM-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Have you had a personal data breach in the past three years that involved reporting to a governmental agency, notice to individuals (including voluntary notice), or notice to another organization or institution?',
+		aG: 'PCOM',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Share any additional details that would help data privacy analysts assess your solution.'),
+		aX: false,
+		c: 'PCOM-02',
+		t: 3,
+		a$: 4,
+		X: true,
+		a0: false,
+		E: 'Use this area to share information about your privacy practices that will assist those who are assessing your company data privacy program.',
+		aG: 'PCOM',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PCOM-03',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have you had any violations of your internal privacy policies or violations of applicable privacy law in the past 36 months?',
+		aG: 'PCOM',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('This can include another office, such as information security, dedicated to privacy protection.'),
+		aX: false,
+		c: 'PCOM-04',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a dedicated data privacy staff or office?',
+		aG: 'PCOM',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('SOC 2 Type II audits can be conducted for any or all of five trust principles (confidentiality, integrity, availability, security, and privacy). Answer \"yes\" if your audit included the privacy principle.'),
+		aX: false,
+		c: 'PDOC-01',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'If you have completed a SOC 2 audit, does it include the Privacy Trust Service Principle?',
+		aG: 'PDOC',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Standard privacy frameworks help organizations enhance data protection, mitigate privacy risks, and demonstrate compliance with appropriate industry and regulatory standards. This is particularly important when providing services in different jurisdictions.'),
+		aX: false,
+		c: 'PDOC-02',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Do you conform with a specific industry-standard privacy framework (e.g., NIST Privacy Framework, GDPR, ISO 27701)?',
+		aG: 'PDOC',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PDOC-03',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your employee onboarding and offboarding policy include training of employees on information security and data privacy?',
+		aG: 'PDOC',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Inclusion of language in contractual agreements ensures third parties are aware of and have agreed to their obligations to maintain standards and comply with all regulatory requirements in regards to protection of personal data they handle on behalf of your organization.'),
+		aX: false,
+		c: 'PTHP-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have contractual agreements with third parties that require them to maintain standards and to comply with all regulatory requirements?',
+		aG: 'PTHP',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Privacy impact assessments ensure that third-party collection, processing, or access to personal data aligns with and supports your organization\'s own efforts and commitments to clients. This is particularly important when a specific third party operates from or is subject to a jurisdiction different from that of your organization.'),
+		aX: false,
+		c: 'PTHP-02',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you perform privacy impact assesments of third parties that collect, process, or have access to personal data to ensure they meet industry and regulatory standards and to mitigate harmful, unethical, or discriminatory impacts on data subjects?',
+		aG: 'PTHP',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('The change management process minimizes disruption and maximizes benefits and should contain a privacy review process.'),
+		aX: false,
+		c: 'PCHG-01',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your change management process include privacy review and approval?',
+		aG: 'PCHG',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Policy and procedure should include specific steps to take in the process of mitigating privacy risks.'),
+		aX: false,
+		c: 'PCHG-02',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have policy and procedure, currently implemented, guiding how privacy risks are mitigated until they can be resolved?',
+		aG: 'PCHG',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Demographic information is generally defined as the statistical characteristics of a population used to study and understand certain aspects of that population. It can include characteristics such as age, gender, ethnicity, education, religion, geolocation, and occupation. If the information being collected, processed, or stored falls under a particular regulation (or law), check that regulation for a specific definition of demographic information.'),
+		aX: false,
+		c: 'PDAT-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you collect, process, or store demographic information?',
+		aG: 'PDAT',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Genetic information would include information about genetic tests, genetic tests of family members, actual manifestations of diseases, and family medical records. Biometric information includes elements such as facial recognition, fingerprints, and voice recognition.'),
+		aX: false,
+		c: 'PDAT-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you capture or create genetic, biometric, or behaviometric information (e.g., facial recognition or fingerprints)?',
+		aG: 'PDAT',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Institutional data is created, collected, maintained, transmitted, or stored by or for a college or university to conduct operations. Many institutions have their own specific definitions. Institutional data would include data such as financial information, student education records, faculty/staff/alumni data, research data, and data collected for government reporting purposes.'),
+		aX: false,
+		c: 'PDAT-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you combine institutional data (including \"de-identified,\" \"anonymized,\" or otherwise masked data) with personal data from any other sources?',
+		aG: 'PDAT',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Given the vast number of privacy regulations and laws throughout the world, it is important to know when, where, why, and how institutional data is being shared outside the United States. This information is necessary to ensure compliance and to protect the institutional data.'),
+		aX: false,
+		c: 'PDAT-04',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is institutional data coming into or going out of the United States at any point during collection, processing, storage, or archiving?',
+		aG: 'PDAT',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Device information can be captured for a variety of reasons, from analytics to marketing to network management and security. It is important to know the details in order to be clear on the privacy implications.'),
+		aX: false,
+		c: 'PDAT-05',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you capture device information (e.g., IP address, MAC address)?',
+		aG: 'PDAT',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Web tracking can be used to identify users via their IP address, login information, browser information, etc.'),
+		aX: false,
+		c: 'PDAT-06',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does any part of this service/project involve a web/app tracking component (e.g., use of web-tracking pixels, cookies)?',
+		aG: 'PDAT',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Accessing institutional data may be necessary for legitimate business purposes.'),
+		aX: false,
+		c: 'PDAT-07',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your staff (or a third party) have access to institutional data (e.g., financial, PHI, or other sensitive information) through any means?',
+		aG: 'PDAT',
+		aL: 5
+	},
+		{ab: $elm$core$Maybe$Nothing, aW: $elm$core$Maybe$Nothing, aX: false, c: 'PDAT-08', t: 3, a$: 0, X: false, a0: false, E: 'Will you handle personal data in a manner compliant with all relevant laws, regulations, and applicable institution policies?', aG: 'PDAT', aL: 0},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PRPO-01',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a documented privacy management process?',
+		aG: 'PRPO',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('The question is assessing your compliance with Privacy by Design (PbD) principles. This concept, embedded in regulations such as GDPR (Article 25) and other global privacy laws, requires that privacy is not an afterthought—it must be part of the design and architecture of systems and processes from the outset.'),
+		aX: false,
+		c: 'PRPO-02',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Are privacy principles designed into the product lifecycle (i.e., privacy-by-design)?',
+		aG: 'PRPO',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PRPO-03',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Will you comply with applicable breach notification laws?',
+		aG: 'PRPO',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('These policies may include specific user consent practices, data classification standards, and handling of sensitive information.'),
+		aX: false,
+		c: 'PRPO-04',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Will you comply with the institution\'s policies regarding user privacy and data protection?',
+		aG: 'PRPO',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Indicates whether your organization is legally bound by state, federal, or local laws where the institution operates.'),
+		aX: false,
+		c: 'PRPO-05',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is your company subject to the laws and regulations of the institution\'s geographic region?',
+		aG: 'PRPO',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Privacy awareness/training refers to the ongoing education provided to individuals who handle sensitive data to ensure they understand privacy obligations, data protection principles, and regulatory requirements (e.g., FERPA, HIPAA, GDPR).'),
+		aX: false,
+		c: 'PRPO-06',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have a privacy awareness/training program?',
+		aG: 'PRPO',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PRPO-07',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is privacy awareness training mandatory for all employees?',
+		aG: 'PRPO',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PRPO-08',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is AI privacy and ethics awareness/training required for all employees who work with AI?',
+		aG: 'PRPO',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Examples of such automated decisions could include automatically denying or approving user access requests, flagging or blocking transactions based on risk scores, or AI-driven decisions that affect user outcomes (e.g., eligibility, grading, pricing).'),
+		aX: false,
+		c: 'PRPO-09',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have any decision-making processes that are completely automated (i.e., there is no human involvement)?',
+		aG: 'PRPO',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PRPO-10',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a documented process for managing automated processing, including validations, monitoring, and data subject requests?',
+		aG: 'PRPO',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PRPO-11',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a documented policy for sharing information with law enforcement?',
+		aG: 'PRPO',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'PRPO-12',
+		t: 0,
+		a$: 4,
+		X: true,
+		a0: true,
+		E: 'Do you share any institutional data with law enforcement without a valid warrant or subpoena?',
+		aG: 'PRPO',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Provide an overview of your incident response team membership and its charge, highlighting the privacy analyst/officer.'),
+		aX: false,
+		c: 'PRPO-13',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your incident response team include a privacy analyst/officer?',
+		aG: 'PRPO',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('See GDPR Chapter 1, Art. 4, for definitions.'),
+		aX: false,
+		c: 'INTL-01',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Will data be collected from or processed in or stored in the European Economic Area (EEA)?',
+		aG: 'INTL',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('See GDPR Chapter 4, Section 4, for DPO information.'),
+		aX: false,
+		c: 'INTL-02',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a data protection officer (DPO)?',
+		aG: 'INTL',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('See GDPR Chapter 5, Art. 46, for SCC information.'),
+		aX: false,
+		c: 'INTL-03',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Will you sign appropriate GDPR Standard Contractual Clauses (SCCs) with the institution?',
+		aG: 'INTL',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('See PIPL Chapter 1 for definitions.'),
+		aX: false,
+		c: 'INTL-04',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Will data be collected from or processed in or stored in China?',
+		aG: 'INTL',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('See PIPL Chapter 5 for requirements.'),
+		aX: false,
+		c: 'INTL-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you comply with PIPL security, privacy, and data localization requirements?',
+		aG: 'INTL',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-01',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have you performed a Data Privacy Impact Assesssment for the solution/project?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-02',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Do you provide an end-user privacy notice about privacy policies and procedures that identify the purpose(s) for which personal information is collected, used, retained, and disclosed?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-03',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Do you describe the choices available to the individual and obtain implicit or explicit consent with respect to the collection, use, and disclosure of personal information?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('This includes quality assurance, marketing and advertising, etc.'),
+		aX: false,
+		c: 'DRPV-04',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you collect personal information only for the purpose(s) identified in the agreement with an institution or, if there is none, the purpose(s) identified in the privacy notice?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a documented list of personal data your service maintains?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-06',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you retain personal information for only as long as necessary to fulfill the stated purpose(s) or as required by law or regulation and thereafter appropriately dispose of such information?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Such processes would include descriptions of request processes individuals can follow to review thier information and written processes a data subject may use to ask for changes or corrections to data held about them.'),
+		aX: false,
+		c: 'DRPV-07',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Do you provide individuals with access to their personal information for review and update (i.e., data subject rights)?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-08',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you disclose personal information to third parties only for the purpose(s) identified in the privacy notice or with the implicit or explicit consent of the individual?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-09',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you protect personal information against unauthorized access (both physical and logical)?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-10',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you maintain accurate, complete, and relevant personal information for the purposes identified in the privacy notice?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-11',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have procedures to address privacy-related noncompliance complaints and disputes?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-12',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you \"anonymize,\" \"de-identify,\" or otherwise mask personal data?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-13',
+		t: 1,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Do you or your subprocessors use or disclose \"anonymized,\" \"de-identified,\" or otherwise masked data for any purpose other than those identified in the agreement with an institution (e.g., sharing with ad networks or data brokers, marketing, creation of profiles, analytics unrelated to services provided to institution)?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Provide evidence of existing processes or policies. The internal privacy policy should explain your organization\'s policies and practices regarding the collection of personal information and other data about individuals.'),
+		aX: false,
+		c: 'DRPV-14',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you certify stop-processing requests, including any data that is processed by a third party on your behalf?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DRPV-15',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have a process to review code for ethical considerations?',
+		aG: 'DRPV',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DPAI-01',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your service use AI for the processing of institutional data?',
+		aG: 'DPAI',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DPAI-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Is any institutional data retained in AI processing?',
+		aG: 'DPAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DPAI-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you have agreements in place with third parties or subprocessors regarding the protection of customer data and use of AI?',
+		aG: 'DPAI',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DPAI-04',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Will institutional data be processed through a third party or subprocessor that also uses AI?',
+		aG: 'DPAI',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DPAI-05',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is AI processing limited to fully licensed commercial enterprise AI services?',
+		aG: 'DPAI',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Provide detailed response to the type of data needed for the AI service to function appropriately, the sources of the data, and whether any data shared with the AI service comes from data sources outside the institution.'),
+		aX: false,
+		c: 'DPAI-06',
+		t: 2,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Will institutional data be used or processed by any shared AI services?',
+		aG: 'DPAI',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DPAI-07',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you have safeguards in place to protect institutional data and data privacy from unintended AI queries or processing?',
+		aG: 'DPAI',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'DPAI-08',
+		t: 2,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Do you provide choice to the user to opt out of AI use?',
+		aG: 'DPAI',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Answer \"yes\" even if you do not create your own machine learning solutions, and answer the questions as they apply to your contractual relationship with the third party you utilize.'),
+		aX: false,
+		c: 'AIQU-01',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Does your solution leverage machine learning (ML) or do you plan to do so in the next 12 months?',
+		aG: 'AIQU',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Answer \"yes\" even if you do not train your own LLM models, and answer the questions as they apply to your contractual relationship with the third party you utilize.'),
+		aX: false,
+		c: 'AIQU-02',
+		t: 3,
+		a$: 0,
+		X: false,
+		a0: false,
+		E: 'Does your solution leverage a large language model (LLM) or do you plan to do so in the next 12 months?',
+		aG: 'AIQU',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Examples include NIST AI RMF, OWASP Top 10, RAFT, and MITRE ATLAS.'),
+		aX: false,
+		c: 'AIGN-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Does your solution have an AI risk model when developing or implementing your solution\'s AI model?',
+		aG: 'AIGN',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIGN-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Can your solution\'s AI features be disabled by tenant and/or user?',
+		aG: 'AIGN',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIGN-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Have your staff completed responsible AI training?',
+		aG: 'AIGN',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Describe capabilities such as content (text, image, audio, speech, video, or code) generation, visual interpretation, and predictive analytics. This encompasses all AI implementations, including third-party AI geatures. Clarify use cases or limits of the model.'),
+		aX: false,
+		c: 'AIGN-04',
+		t: 3,
+		a$: 4,
+		X: false,
+		a0: false,
+		E: 'Please describe the capabilities of your solution\'s AI features.',
+		aG: 'AIGN',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIGN-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Does your solution support business rules to protect sensitive data from being ingested by the AI model?',
+		aG: 'AIGN',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIPL-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Are your AI developer\'s policies, processes, procedures, and practices across the organization related to the mapping, measuring, and managing of AI risks conspicuously posted, unambiguous, and implemented effectively?',
+		aG: 'AIPL',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIPL-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Have you identified and measured AI risks?',
+		aG: 'AIPL',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIPL-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'In the event of an incident, can your solution\'s AI features be disabled in a timely manner?',
+		aG: 'AIPL',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIPL-04',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'If disabled because of an incident, can your solution\'s AI features be re-enabled in a timely manner?',
+		aG: 'AIPL',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Responsible AI development per NIST AI RMF, page 25.'),
+		aX: false,
+		c: 'AIPL-05',
+		t: 2,
+		a$: 4,
+		X: false,
+		a0: true,
+		E: 'Do you have documented technical and procedural processes to address potential negative impacts of AI as described by the AI Risk Management Framework (RMF)?',
+		aG: 'AIPL',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Please answer based on whether your AI model supports the removal or unlearning of sensitive data, whether it is introduced intentionally or unintentionally. Consider whether data can be traced and deleted from training sets, vector stores, memory, or other components of the AI system. This includes data removal in compliance with privacy regulations and customer requests.'),
+		aX: false,
+		c: 'AISC-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'If sensitive data is introduced to your solution\'s AI model, can the data be removed from the AI model by request?',
+		aG: 'AISC',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('No'),
+		aW: $elm$core$Maybe$Just('Please answer based on whether your solution uses user input data (e.g., prompts, uploads, queries) to fine-tune, train, or otherwise influence the behavior of your AI model. Consider any use of user data for model improvement, personalization, or aggregated learning.'),
+		aX: false,
+		c: 'AISC-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Is user input data used to influence your solution\'s AI model?',
+		aG: 'AISC',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Please answer based on whether your AI features generate audit logs that record user identity, timestamp, and actions taken. Include log retention, immutability, access for administrators or auditors, and how logs support compliance and incident response.'),
+		aX: false,
+		c: 'AISC-03',
+		t: 0,
+		a$: 4,
+		X: true,
+		a0: true,
+		E: 'Do you provide logging for your solution\'s AI feature(s) that includes user, date, and action taken?',
+		aG: 'AISC',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Nothing,
+		aW: $elm$core$Maybe$Just('Please describe how your solution validates user inputs, including detection of anomalies, malicious inputs, and sensitive data. Indicate where validation occurs and how it supports security and compliance.'),
+		aX: false,
+		c: 'AISC-04',
+		t: 3,
+		a$: 4,
+		X: false,
+		a0: false,
+		E: 'Please describe how you validate user inputs.',
+		aG: 'AISC',
+		aL: 0
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AISC-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you plan for and mitigate supply-chain risk related to your AI features?',
+		aG: 'AISC',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Please answer based on whether training data is kept separate from production data to protect institutional information. Include how organizational data is segregated, anonymized, or excluded from training, and state whether institutions can opt out of data use for model improvement.'),
+		aX: false,
+		c: 'AIML-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you separate ML training data from your ML solution data?',
+		aG: 'AIML',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIML-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you authenticate and verify your ML model\'s feedback?',
+		aG: 'AIML',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIML-03',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is your ML training data vetted, validated, and verified before training the solution\'s AI model?',
+		aG: 'AIML',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIML-04',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Is your ML training data monitored and audited?',
+		aG: 'AIML',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIML-05',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have you limited access to your ML training data to only staff with an explicit business need?',
+		aG: 'AIML',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIML-06',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Have you implemented adversarial training or other model defense mechanisms to protect your ML-related features?',
+		aG: 'AIML',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIML-07',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you make your ML model transparent through documentation and log inputs and outputs?',
+		aG: 'AIML',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AIML-08',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you watermark your ML training data?',
+		aG: 'AIML',
+		aL: 5
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AILM-01',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you limit your solution\'s LLM privileges by default?',
+		aG: 'AILM',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AILM-02',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Is your LLM training data vetted, validated, and verified before training the solution\'s AI model?',
+		aG: 'AILM',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AILM-03',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do any actions taken by your solution\'s LLM features or plugins require human intervention?',
+		aG: 'AILM',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AILM-04',
+		t: 0,
+		a$: 0,
+		X: true,
+		a0: true,
+		E: 'Do you limit multiple LLM model plugins being called as part of a single input?',
+		aG: 'AILM',
+		aL: 20
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AILM-05',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you limit your solution\'s LLM resource use per request, per step, and per action?',
+		aG: 'AILM',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Nothing,
+		aX: false,
+		c: 'AILM-06',
+		t: 1,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you leverage LLM model tuning or other model validation mechanisms?',
+		aG: 'AILM',
+		aL: 10
+	},
+		{
+		ab: $elm$core$Maybe$Just('Yes'),
+		aW: $elm$core$Maybe$Just('Looking for taint tracing or tracking of LLM plugins to mitigate malicious inputs tuning and prompt engineering.'),
+		aX: false,
+		c: 'AILM-07',
+		t: 2,
+		a$: 0,
+		X: false,
+		a0: true,
+		E: 'Do you perform taint tracing or tracking on all plugin content related to the LLM?',
+		aG: 'AILM',
+		aL: 5
 	}
 	]);
 var $elm$core$Basics$round = _Basics_round;
@@ -10045,7 +10042,7 @@ var $elm$core$List$sum = function (numbers) {
 var $elm$core$String$toLower = _String_toLower;
 var $elm$core$Maybe$withDefault = F2(
 	function (_default, maybe) {
-		if (maybe.$ === 'Just') {
+		if (!maybe.$) {
 			var value = maybe.a;
 			return value;
 		} else {
@@ -10057,11 +10054,11 @@ var $author$project$Main$computeScores = function (responses) {
 		var answer = A2(
 			$elm$core$Maybe$withDefault,
 			'',
-			A2($elm$core$Dict$get, q.id, responses));
+			A2($elm$core$Dict$get, q.c, responses));
 		var isAnswered = answer !== '';
 		var isCompliant = function () {
-			var _v1 = q.compliantResponse;
-			if (_v1.$ === 'Just') {
+			var _v1 = q.ab;
+			if (!_v1.$) {
 				var cr = _v1.a;
 				return _Utils_eq(
 					$elm$core$String$toLower(answer),
@@ -10071,23 +10068,23 @@ var $author$project$Main$computeScores = function (responses) {
 			}
 		}();
 		var isNA = $elm$core$String$toLower(answer) === 'n/a';
-		var points = (isCompliant && (!isNA)) ? q.weight : 0;
-		var potential = isNA ? 0 : q.weight;
-		return {answer: answer, isAnswered: isAnswered, isCompliant: isCompliant, isNA: isNA, points: points, potential: potential, q: q};
+		var points = (isCompliant && (!isNA)) ? q.aL : 0;
+		var potential = isNA ? 0 : q.aL;
+		return {J: answer, D: isAnswered, W: isCompliant, Y: isNA, M: points, h: potential, l: q};
 	};
 	var toFinding = function (r) {
 		return {
-			answer: r.answer,
-			expected: A2($elm$core$Maybe$withDefault, '', r.q.compliantResponse),
-			id: r.q.id,
-			importance: r.q.importance,
-			label: r.q.label
+			J: r.J,
+			ao: A2($elm$core$Maybe$withDefault, '', r.l.ab),
+			c: r.l.c,
+			t: r.l.t,
+			E: r.l.E
 		};
 	};
 	var scored = A2(
 		$elm$core$List$filter,
 		function ($) {
-			return $.isScored;
+			return $.a0;
 		},
 		$author$project$Questions$questions);
 	var results = A2($elm$core$List$map, toResult, scored);
@@ -10095,14 +10092,14 @@ var $author$project$Main$computeScores = function (responses) {
 		A2(
 			$elm$core$List$map,
 			function ($) {
-				return $.points;
+				return $.M;
 			},
 			results));
 	var totalPotential = $elm$core$List$sum(
 		A2(
 			$elm$core$List$map,
 			function ($) {
-				return $.potential;
+				return $.h;
 			},
 			results));
 	var unansweredCritical = A2(
@@ -10110,15 +10107,15 @@ var $author$project$Main$computeScores = function (responses) {
 		A2(
 			$elm$core$Basics$composeL,
 			function ($) {
-				return $.id;
+				return $.c;
 			},
 			function ($) {
-				return $.q;
+				return $.l;
 			}),
 		A2(
 			$elm$core$List$filter,
 			function (r) {
-				return r.q.isCritical && (!r.isAnswered);
+				return r.l.X && (!r.D);
 			},
 			results));
 	var overallPct = (!totalPotential) ? 0 : $elm$core$Basics$round((totalActual / totalPotential) * 100);
@@ -10128,7 +10125,7 @@ var $author$project$Main$computeScores = function (responses) {
 		A2(
 			$elm$core$List$filter,
 			function (r) {
-				return r.isAnswered && ((!r.isCompliant) && (!r.isNA));
+				return r.D && ((!r.W) && (!r.Y));
 			},
 			results));
 	var critResults = A2(
@@ -10136,24 +10133,24 @@ var $author$project$Main$computeScores = function (responses) {
 		A2(
 			$elm$core$Basics$composeL,
 			function ($) {
-				return $.isCritical;
+				return $.X;
 			},
 			function ($) {
-				return $.q;
+				return $.l;
 			}),
 		results);
 	var critPotential = $elm$core$List$sum(
 		A2(
 			$elm$core$List$map,
 			function ($) {
-				return $.potential;
+				return $.h;
 			},
 			critResults));
 	var critActual = $elm$core$List$sum(
 		A2(
 			$elm$core$List$map,
 			function ($) {
-				return $.points;
+				return $.M;
 			},
 			critResults));
 	var critPct = (!critPotential) ? 0 : $elm$core$Basics$round((critActual / critPotential) * 100);
@@ -10161,21 +10158,21 @@ var $author$project$Main$computeScores = function (responses) {
 		var sectionResults = A2(
 			$elm$core$List$filter,
 			function (r) {
-				return _Utils_eq(r.q.section, code);
+				return _Utils_eq(r.l.aG, code);
 			},
 			results);
 		var sUnanswered = $elm$core$List$length(
 			A2(
 				$elm$core$List$filter,
 				function (r) {
-					return r.q.isCritical && (!r.isAnswered);
+					return r.l.X && (!r.D);
 				},
 				sectionResults));
 		var sPot = $elm$core$List$sum(
 			A2(
 				$elm$core$List$map,
 				function ($) {
-					return $.potential;
+					return $.h;
 				},
 				sectionResults));
 		var sNonCompliant = A2(
@@ -10184,22 +10181,22 @@ var $author$project$Main$computeScores = function (responses) {
 			A2(
 				$elm$core$List$filter,
 				function (r) {
-					return r.isAnswered && ((!r.isCompliant) && (!r.isNA));
+					return r.D && ((!r.W) && (!r.Y));
 				},
 				sectionResults));
 		var sAct = $elm$core$List$sum(
 			A2(
 				$elm$core$List$map,
 				function ($) {
-					return $.points;
+					return $.M;
 				},
 				sectionResults));
 		return {
-			actual: sAct,
-			name: $author$project$Questions$sectionName(code),
-			nonCompliant: sNonCompliant,
-			potential: sPot,
-			unanswered: sUnanswered
+			H: sAct,
+			au: $author$project$Questions$sectionName(code),
+			v: sNonCompliant,
+			h: sPot,
+			aJ: sUnanswered
 		};
 	};
 	var bySection = A3(
@@ -10219,16 +10216,16 @@ var $author$project$Main$computeScores = function (responses) {
 		A2(
 			$elm$core$List$filter,
 			function (q) {
-				return A2($elm$core$Dict$member, q.id, responses);
+				return A2($elm$core$Dict$member, q.c, responses);
 			},
 			$author$project$Questions$questions));
-	return {answeredCount: answeredCount, bySection: bySection, critActual: critActual, critPct: critPct, critPotential: critPotential, nonCompliant: nonCompliant, overallPct: overallPct, totalActual: totalActual, totalPotential: totalPotential, unansweredCritical: unansweredCritical};
+	return {T: answeredCount, K: bySection, ac: critActual, U: critPct, V: critPotential, v: nonCompliant, Z: overallPct, _: totalActual, Q: totalPotential, aa: unansweredCritical};
 };
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$html$Html$header = _VirtualDom_node('header');
 var $elm$html$Html$nav = _VirtualDom_node('nav');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 'Normal', a: a};
+	return {$: 0, a: a};
 };
 var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
 var $elm$html$Html$Events$on = F2(
@@ -10256,10 +10253,10 @@ var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $author$project$Main$CloseReport = {$: 'CloseReport'};
+var $author$project$Main$CloseReport = {$: 3};
 var $elm$core$Maybe$andThen = F2(
 	function (callback, maybeValue) {
-		if (maybeValue.$ === 'Just') {
+		if (!maybeValue.$) {
 			var value = maybeValue.a;
 			return callback(value);
 		} else {
@@ -10269,7 +10266,7 @@ var $elm$core$Maybe$andThen = F2(
 var $elm$core$List$maybeCons = F3(
 	function (f, mx, xs) {
 		var _v0 = f(mx);
-		if (_v0.$ === 'Just') {
+		if (!_v0.$) {
 			var x = _v0.a;
 			return A2($elm$core$List$cons, x, xs);
 		} else {
@@ -10303,7 +10300,7 @@ var $elm$core$List$head = function (list) {
 };
 var $elm$core$Maybe$map = F2(
 	function (f, maybe) {
-		if (maybe.$ === 'Just') {
+		if (!maybe.$) {
 			var value = maybe.a;
 			return $elm$core$Maybe$Just(
 				f(value));
@@ -10318,18 +10315,18 @@ var $author$project$Main$questionLabel = function (qid) {
 		A2(
 			$elm$core$Maybe$map,
 			function ($) {
-				return $.label;
+				return $.E;
 			},
 			$elm$core$List$head(
 				A2(
 					$elm$core$List$filter,
 					function (q) {
-						return _Utils_eq(q.id, qid);
+						return _Utils_eq(q.c, qid);
 					},
 					$author$project$Questions$questions))));
 };
 var $elm$virtual_dom$VirtualDom$MayStopPropagation = function (a) {
-	return {$: 'MayStopPropagation', a: a};
+	return {$: 1, a: a};
 };
 var $elm$html$Html$Events$stopPropagationOn = F2(
 	function (event, decoder) {
@@ -10466,21 +10463,21 @@ var $elm$core$List$take = F2(
 	});
 var $author$project$Main$viewFinding = function (f) {
 	var tagText = function () {
-		var _v1 = f.importance;
-		switch (_v1.$) {
-			case 'Critical':
+		var _v1 = f.t;
+		switch (_v1) {
+			case 0:
 				return 'Critical';
-			case 'Standard':
+			case 1:
 				return 'Standard';
-			case 'Minor':
+			case 2:
 				return 'Minor';
 			default:
 				return '';
 		}
 	}();
 	var tagCls = function () {
-		var _v0 = f.importance;
-		if (_v0.$ === 'Critical') {
+		var _v0 = f.t;
+		if (!_v0) {
 			return 'finding-tag critical';
 		} else {
 			return 'finding-tag';
@@ -10502,7 +10499,7 @@ var $author$project$Main$viewFinding = function (f) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(f.id)
+						$elm$html$Html$text(f.c)
 					])),
 				A2(
 				$elm$html$Html$div,
@@ -10512,7 +10509,7 @@ var $author$project$Main$viewFinding = function (f) {
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(f.label),
+						$elm$html$Html$text(f.E),
 						A2(
 						$elm$html$Html$span,
 						_List_fromArray(
@@ -10531,7 +10528,7 @@ var $author$project$Main$viewReport = F2(
 		var vendorName = A2(
 			$elm$core$Maybe$withDefault,
 			'Untitled Assessment',
-			A2($elm$core$Dict$get, 'GNRL-01', model.responses));
+			A2($elm$core$Dict$get, 'GNRL-01', model.o));
 		var unansweredEls = A2(
 			$elm$core$List$map,
 			function (qid) {
@@ -10566,7 +10563,7 @@ var $author$project$Main$viewReport = F2(
 								]))
 						]));
 			},
-			scores.unansweredCritical);
+			scores.aa);
 		var unansweredEl = $elm$core$List$isEmpty(unansweredEls) ? A2(
 			$elm$html$Html$div,
 			_List_fromArray(
@@ -10591,10 +10588,10 @@ var $author$project$Main$viewReport = F2(
 				return A2(
 					$elm$core$Maybe$andThen,
 					function (ss) {
-						if (!ss.potential) {
+						if (!ss.h) {
 							return $elm$core$Maybe$Nothing;
 						} else {
-							var pct = $elm$core$Basics$round((ss.actual / ss.potential) * 100);
+							var pct = $elm$core$Basics$round((ss.H / ss.h) * 100);
 							var fillCls = 'score-card-fill ' + $author$project$Main$scoreClass(pct);
 							return $elm$core$Maybe$Just(
 								A2(
@@ -10649,7 +10646,7 @@ var $author$project$Main$viewReport = F2(
 										])));
 						}
 					},
-					A2($elm$core$Dict$get, code, scores.bySection));
+					A2($elm$core$Dict$get, code, scores.K));
 			},
 			$author$project$Questions$sections);
 		var otherFindings = A2(
@@ -10658,9 +10655,9 @@ var $author$project$Main$viewReport = F2(
 			A2(
 				$elm$core$List$filter,
 				function (f) {
-					return !_Utils_eq(f.importance, $author$project$Questions$Critical);
+					return !(!f.t);
 				},
-				scores.nonCompliant));
+				scores.v));
 		var otherEl = $elm$core$List$isEmpty(otherFindings) ? A2(
 			$elm$html$Html$div,
 			_List_fromArray(
@@ -10680,9 +10677,9 @@ var $author$project$Main$viewReport = F2(
 		var critFindings = A2(
 			$elm$core$List$filter,
 			function (f) {
-				return _Utils_eq(f.importance, $author$project$Questions$Critical);
+				return !f.t;
 			},
-			scores.nonCompliant);
+			scores.v);
 		var findingsEl = $elm$core$List$isEmpty(critFindings) ? A2(
 			$elm$html$Html$div,
 			_List_fromArray(
@@ -10784,6 +10781,17 @@ var $author$project$Main$viewReport = F2(
 													_List_fromArray(
 														[
 															$elm$html$Html$Attributes$class('btn-ghost-inv'),
+															$elm$html$Html$Events$onClick($author$project$Main$ExportCsv)
+														]),
+													_List_fromArray(
+														[
+															$elm$html$Html$text('⬇ .csv')
+														])),
+													A2(
+													$elm$html$Html$button,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$class('btn-ghost-inv'),
 															$elm$html$Html$Events$onClick($author$project$Main$ExportDocx)
 														]),
 													_List_fromArray(
@@ -10817,7 +10825,7 @@ var $author$project$Main$viewReport = F2(
 													_List_fromArray(
 														[
 															$elm$html$Html$text(
-															$author$project$Main$pctStr(scores.overallPct))
+															$author$project$Main$pctStr(scores.Z))
 														])),
 													A2(
 													$elm$html$Html$span,
@@ -10847,7 +10855,7 @@ var $author$project$Main$viewReport = F2(
 													_List_fromArray(
 														[
 															$elm$html$Html$text(
-															$author$project$Main$pctStr(scores.critPct))
+															$author$project$Main$pctStr(scores.U))
 														])),
 													A2(
 													$elm$html$Html$span,
@@ -10877,7 +10885,7 @@ var $author$project$Main$viewReport = F2(
 													_List_fromArray(
 														[
 															$elm$html$Html$text(
-															$elm$core$String$fromInt(scores.totalActual))
+															$elm$core$String$fromInt(scores._))
 														])),
 													A2(
 													$elm$html$Html$span,
@@ -10907,7 +10915,7 @@ var $author$project$Main$viewReport = F2(
 													_List_fromArray(
 														[
 															$elm$html$Html$text(
-															$elm$core$String$fromInt(scores.totalPotential))
+															$elm$core$String$fromInt(scores.Q))
 														])),
 													A2(
 													$elm$html$Html$span,
@@ -10938,7 +10946,7 @@ var $author$project$Main$viewReport = F2(
 														[
 															$elm$html$Html$text(
 															$elm$core$String$fromInt(
-																$elm$core$List$length(scores.nonCompliant)))
+																$elm$core$List$length(scores.v)))
 														])),
 													A2(
 													$elm$html$Html$span,
@@ -10969,7 +10977,7 @@ var $author$project$Main$viewReport = F2(
 														[
 															$elm$html$Html$text(
 															$elm$core$String$fromInt(
-																$elm$core$List$length(scores.unansweredCritical)))
+																$elm$core$List$length(scores.aa)))
 														])),
 													A2(
 													$elm$html$Html$span,
@@ -11066,6 +11074,17 @@ var $author$project$Main$viewReport = F2(
 									$elm$html$Html$button,
 									_List_fromArray(
 										[
+											$elm$html$Html$Attributes$class('btn btn-ghost'),
+											$elm$html$Html$Events$onClick($author$project$Main$ExportCsv)
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text('⬇ Export .csv')
+										])),
+									A2(
+									$elm$html$Html$button,
+									_List_fromArray(
+										[
 											$elm$html$Html$Attributes$class('btn btn-accent'),
 											$elm$html$Html$Events$onClick($author$project$Main$ExportDocx)
 										]),
@@ -11078,12 +11097,12 @@ var $author$project$Main$viewReport = F2(
 				]));
 	});
 var $author$project$Main$ToggleSection = function (a) {
-	return {$: 'ToggleSection', a: a};
+	return {$: 1, a: a};
 };
 var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
 var $author$project$Main$SetResponse = F2(
 	function (a, b) {
-		return {$: 'SetResponse', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$json$Json$Encode$bool = _Json_wrap;
 var $elm$html$Html$Attributes$boolProperty = F2(
@@ -11095,8 +11114,8 @@ var $elm$html$Html$Attributes$boolProperty = F2(
 	});
 var $elm$html$Html$Attributes$checked = $elm$html$Html$Attributes$boolProperty('checked');
 var $author$project$Main$importanceBadge = function (imp) {
-	switch (imp.$) {
-		case 'Critical':
+	switch (imp) {
+		case 0:
 			return A2(
 				$elm$html$Html$span,
 				_List_fromArray(
@@ -11107,7 +11126,7 @@ var $author$project$Main$importanceBadge = function (imp) {
 					[
 						$elm$html$Html$text('Critical')
 					]));
-		case 'Standard':
+		case 1:
 			return A2(
 				$elm$html$Html$span,
 				_List_fromArray(
@@ -11118,7 +11137,7 @@ var $author$project$Main$importanceBadge = function (imp) {
 					[
 						$elm$html$Html$text('Standard')
 					]));
-		case 'Minor':
+		case 2:
 			return A2(
 				$elm$html$Html$span,
 				_List_fromArray(
@@ -11172,8 +11191,8 @@ var $elm$html$Html$Attributes$value = $elm$html$Html$Attributes$stringProperty('
 var $author$project$Main$viewQuestion = F2(
 	function (responses, q) {
 		var guidanceEl = function () {
-			var _v2 = q.guidance;
-			if (_v2.$ === 'Just') {
+			var _v2 = q.aW;
+			if (!_v2.$) {
 				var g = _v2.a;
 				return A2(
 					$elm$html$Html$p,
@@ -11189,7 +11208,7 @@ var $author$project$Main$viewQuestion = F2(
 				return $elm$html$Html$text('');
 			}
 		}();
-		var critStar = q.isCritical ? A2(
+		var critStar = q.X ? A2(
 			$elm$html$Html$span,
 			_List_fromArray(
 				[
@@ -11202,11 +11221,11 @@ var $author$project$Main$viewQuestion = F2(
 		var answer = A2(
 			$elm$core$Maybe$withDefault,
 			'',
-			A2($elm$core$Dict$get, q.id, responses));
+			A2($elm$core$Dict$get, q.c, responses));
 		var inputEl = function () {
-			var _v1 = q.inputType;
-			switch (_v1.$) {
-				case 'RadioYesNo':
+			var _v1 = q.a$;
+			switch (_v1) {
+				case 0:
 					return A2(
 						$elm$html$Html$div,
 						_List_fromArray(
@@ -11229,12 +11248,12 @@ var $author$project$Main$viewQuestion = F2(
 											_List_fromArray(
 												[
 													$elm$html$Html$Attributes$type_('radio'),
-													$elm$html$Html$Attributes$name(q.id),
+													$elm$html$Html$Attributes$name(q.c),
 													$elm$html$Html$Attributes$value(opt),
 													$elm$html$Html$Attributes$checked(
 													_Utils_eq(answer, opt)),
 													$elm$html$Html$Events$onInput(
-													$author$project$Main$SetResponse(q.id))
+													$author$project$Main$SetResponse(q.c))
 												]),
 											_List_Nil),
 											$elm$html$Html$text(opt)
@@ -11242,7 +11261,7 @@ var $author$project$Main$viewQuestion = F2(
 							},
 							_List_fromArray(
 								['Yes', 'No', 'N/A'])));
-				case 'TextInput':
+				case 1:
 					return A2(
 						$elm$html$Html$input,
 						_List_fromArray(
@@ -11250,10 +11269,10 @@ var $author$project$Main$viewQuestion = F2(
 								$elm$html$Html$Attributes$type_('text'),
 								$elm$html$Html$Attributes$value(answer),
 								$elm$html$Html$Events$onInput(
-								$author$project$Main$SetResponse(q.id))
+								$author$project$Main$SetResponse(q.c))
 							]),
 						_List_Nil);
-				case 'EmailInput':
+				case 2:
 					return A2(
 						$elm$html$Html$input,
 						_List_fromArray(
@@ -11261,10 +11280,10 @@ var $author$project$Main$viewQuestion = F2(
 								$elm$html$Html$Attributes$type_('email'),
 								$elm$html$Html$Attributes$value(answer),
 								$elm$html$Html$Events$onInput(
-								$author$project$Main$SetResponse(q.id))
+								$author$project$Main$SetResponse(q.c))
 							]),
 						_List_Nil);
-				case 'TelInput':
+				case 3:
 					return A2(
 						$elm$html$Html$input,
 						_List_fromArray(
@@ -11272,7 +11291,7 @@ var $author$project$Main$viewQuestion = F2(
 								$elm$html$Html$Attributes$type_('tel'),
 								$elm$html$Html$Attributes$value(answer),
 								$elm$html$Html$Events$onInput(
-								$author$project$Main$SetResponse(q.id))
+								$author$project$Main$SetResponse(q.c))
 							]),
 						_List_Nil);
 				default:
@@ -11283,14 +11302,14 @@ var $author$project$Main$viewQuestion = F2(
 								$elm$html$Html$Attributes$rows(3),
 								$elm$html$Html$Attributes$value(answer),
 								$elm$html$Html$Events$onInput(
-								$author$project$Main$SetResponse(q.id))
+								$author$project$Main$SetResponse(q.c))
 							]),
 						_List_Nil);
 			}
 		}();
 		var isCompliant = function () {
-			var _v0 = q.compliantResponse;
-			if (_v0.$ === 'Just') {
+			var _v0 = q.ab;
+			if (!_v0.$) {
 				var cr = _v0.a;
 				return _Utils_eq(
 					$elm$core$String$toLower(answer),
@@ -11315,8 +11334,8 @@ var $author$project$Main$viewQuestion = F2(
 				]),
 			_List_Nil) : $elm$html$Html$text(''));
 		var additionalEl = function () {
-			if (q.hasAdditional) {
-				var addId = q.id + '_add';
+			if (q.aX) {
+				var addId = q.c + '_add';
 				var addAnswer = A2(
 					$elm$core$Maybe$withDefault,
 					'',
@@ -11356,7 +11375,7 @@ var $author$project$Main$viewQuestion = F2(
 			_List_fromArray(
 				[
 					$elm$html$Html$Attributes$class(cardClass),
-					$elm$html$Html$Attributes$id('q-' + q.id)
+					$elm$html$Html$Attributes$id('q-' + q.c)
 				]),
 			_List_fromArray(
 				[
@@ -11376,9 +11395,9 @@ var $author$project$Main$viewQuestion = F2(
 								]),
 							_List_fromArray(
 								[
-									$elm$html$Html$text(q.id)
+									$elm$html$Html$text(q.c)
 								])),
-							$author$project$Main$importanceBadge(q.importance),
+							$author$project$Main$importanceBadge(q.t),
 							critStar,
 							complianceDot
 						])),
@@ -11390,7 +11409,7 @@ var $author$project$Main$viewQuestion = F2(
 						]),
 					_List_fromArray(
 						[
-							$elm$html$Html$text(q.label)
+							$elm$html$Html$text(q.E)
 						])),
 					guidanceEl,
 					inputEl,
@@ -11401,17 +11420,17 @@ var $author$project$Main$viewSection = F3(
 	function (model, scores, _v0) {
 		var code = _v0.a;
 		var name = _v0.b;
-		var ss = A2($elm$core$Dict$get, code, scores.bySection);
+		var ss = A2($elm$core$Dict$get, code, scores.K);
 		var sectionQs = A2(
 			$elm$core$List$filter,
 			function (q) {
-				return _Utils_eq(q.section, code);
+				return _Utils_eq(q.aG, code);
 			},
 			$author$project$Questions$questions);
 		var scoreBadge = function () {
-			if (ss.$ === 'Just') {
+			if (!ss.$) {
 				var s = ss.a;
-				if (!s.potential) {
+				if (!s.h) {
 					return A2(
 						$elm$html$Html$span,
 						_List_fromArray(
@@ -11423,7 +11442,7 @@ var $author$project$Main$viewSection = F3(
 								$elm$html$Html$text('N/A')
 							]));
 				} else {
-					var pct = $elm$core$Basics$round((s.actual / s.potential) * 100);
+					var pct = $elm$core$Basics$round((s.H / s.h) * 100);
 					var cls = 'section-score-badge ' + $author$project$Main$scoreClass(pct);
 					return A2(
 						$elm$html$Html$span,
@@ -11441,7 +11460,7 @@ var $author$project$Main$viewSection = F3(
 				return $elm$html$Html$text('');
 			}
 		}();
-		var isCollapsed = A2($elm$core$Set$member, code, model.collapsed);
+		var isCollapsed = A2($elm$core$Set$member, code, model.p);
 		var headerClass = isCollapsed ? 'section-header collapsed' : 'section-header';
 		var bodyClass = isCollapsed ? 'section-body hidden' : 'section-body';
 		return A2(
@@ -11524,12 +11543,12 @@ var $author$project$Main$viewSection = F3(
 						]),
 					A2(
 						$elm$core$List$map,
-						$author$project$Main$viewQuestion(model.responses),
+						$author$project$Main$viewQuestion(model.o),
 						sectionQs))
 				]));
 	});
 var $author$project$Main$GoToSection = function (a) {
-	return {$: 'GoToSection', a: a};
+	return {$: 6, a: a};
 };
 var $elm$virtual_dom$VirtualDom$attribute = F2(
 	function (key, value) {
@@ -11543,14 +11562,14 @@ var $author$project$Main$viewSidebarItem = F3(
 	function (model, scores, _v0) {
 		var code = _v0.a;
 		var name = _v0.b;
-		var ss = A2($elm$core$Dict$get, code, scores.bySection);
+		var ss = A2($elm$core$Dict$get, code, scores.K);
 		var scoreEl = function () {
-			if (ss.$ === 'Just') {
+			if (!ss.$) {
 				var s = ss.a;
-				if (!s.potential) {
+				if (!s.h) {
 					return $elm$html$Html$text('');
 				} else {
-					var pct = $elm$core$Basics$round((s.actual / s.potential) * 100);
+					var pct = $elm$core$Basics$round((s.H / s.h) * 100);
 					var cls = 'nav-score ' + $author$project$Main$scoreClass(pct);
 					return A2(
 						$elm$html$Html$span,
@@ -11606,14 +11625,14 @@ var $author$project$Main$view = function (model) {
 	var vendorName = A2(
 		$elm$core$Maybe$withDefault,
 		'Untitled Assessment',
-		A2($elm$core$Dict$get, 'GNRL-01', model.responses));
+		A2($elm$core$Dict$get, 'GNRL-01', model.o));
 	var totalQs = $elm$core$List$length($author$project$Questions$questions);
-	var scores = $author$project$Main$computeScores(model.responses);
-	var showReport = scores.answeredCount > 0;
-	var overallPct = scores.overallPct;
+	var scores = $author$project$Main$computeScores(model.o);
+	var showReport = scores.T > 0;
+	var overallPct = scores.Z;
 	var scoreBarClass = 'score-bar-fill ' + $author$project$Main$scoreClass(overallPct);
-	var critPct = scores.critPct;
-	var answeredCount = scores.answeredCount;
+	var critPct = scores.U;
+	var answeredCount = scores.T;
 	var progressPct = (!totalQs) ? 0 : $elm$core$Basics$round((answeredCount / totalQs) * 100);
 	return A2(
 		$elm$html$Html$div,
@@ -11690,7 +11709,7 @@ var $author$project$Main$view = function (model) {
 												_List_fromArray(
 													[
 														$elm$html$Html$text(
-														(!scores.totalPotential) ? '--%' : $author$project$Main$pctStr(overallPct))
+														(!scores.Q) ? '--%' : $author$project$Main$pctStr(overallPct))
 													])),
 												A2(
 												$elm$html$Html$span,
@@ -11720,7 +11739,7 @@ var $author$project$Main$view = function (model) {
 												_List_fromArray(
 													[
 														$elm$html$Html$text(
-														(!scores.critPotential) ? '--%' : $author$project$Main$pctStr(critPct))
+														(!scores.V) ? '--%' : $author$project$Main$pctStr(critPct))
 													])),
 												A2(
 												$elm$html$Html$span,
@@ -11838,7 +11857,7 @@ var $author$project$Main$view = function (model) {
 								_List_fromArray(
 									[
 										$elm$html$Html$text(
-										'Score: ' + ($elm$core$String$fromInt(scores.totalActual) + (' / ' + $elm$core$String$fromInt(scores.totalPotential))))
+										'Score: ' + ($elm$core$String$fromInt(scores._) + (' / ' + $elm$core$String$fromInt(scores.Q))))
 									])),
 								A2(
 								$elm$html$Html$span,
@@ -11846,7 +11865,7 @@ var $author$project$Main$view = function (model) {
 								_List_fromArray(
 									[
 										$elm$html$Html$text(
-										'Critical: ' + ($elm$core$String$fromInt(scores.critActual) + (' / ' + $elm$core$String$fromInt(scores.critPotential))))
+										'Critical: ' + ($elm$core$String$fromInt(scores.ac) + (' / ' + $elm$core$String$fromInt(scores.V))))
 									])),
 								A2(
 								$elm$html$Html$span,
@@ -11855,7 +11874,7 @@ var $author$project$Main$view = function (model) {
 									[
 										$elm$html$Html$text(
 										$elm$core$String$fromInt(
-											$elm$core$List$length(scores.nonCompliant)) + ' non-compliant')
+											$elm$core$List$length(scores.v)) + ' non-compliant')
 									]))
 							]))
 					])),
@@ -11933,6 +11952,17 @@ var $author$project$Main$view = function (model) {
 													_List_fromArray(
 														[
 															$elm$html$Html$Attributes$class('btn btn-ghost'),
+															$elm$html$Html$Events$onClick($author$project$Main$ExportCsv)
+														]),
+													_List_fromArray(
+														[
+															$elm$html$Html$text('⬇ Export .csv')
+														])),
+													A2(
+													$elm$html$Html$button,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$class('btn btn-ghost'),
 															$elm$html$Html$Events$onClick($author$project$Main$ExportDocx)
 														]),
 													_List_fromArray(
@@ -11971,17 +12001,17 @@ var $author$project$Main$view = function (model) {
 											]))
 									]))))
 					])),
-				model.reportOpen ? A2($author$project$Main$viewReport, model, scores) : $elm$html$Html$text('')
+				model.N ? A2($author$project$Main$viewReport, model, scores) : $elm$html$Html$text('')
 			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
 	{
-		init: $author$project$Main$init,
-		subscriptions: function (_v0) {
+		a_: $author$project$Main$init,
+		a5: function (_v0) {
 			return $elm$core$Platform$Sub$none;
 		},
-		update: $author$project$Main$update,
-		view: $author$project$Main$view
+		a7: $author$project$Main$update,
+		a8: $author$project$Main$view
 	});
 _Platform_export({'Main':{'init':$author$project$Main$main(
-	$elm$json$Json$Decode$succeed(_Utils_Tuple0))(0)}});}(this));
+	$elm$json$Json$Decode$succeed(0))(0)}});}(this));

@@ -14,6 +14,9 @@ import Questions exposing (..)
 port generateDocx : Encode.Value -> Cmd msg
 
 
+port generateCsv : Encode.Value -> Cmd msg
+
+
 port scrollTo : String -> Cmd msg
 
 
@@ -80,6 +83,7 @@ type Msg
     | OpenReport
     | CloseReport
     | ExportDocx
+    | ExportCsv
     | GoToSection String
 
 
@@ -114,6 +118,9 @@ update msg model =
 
         ExportDocx ->
             ( model, generateDocx (Encode.dict identity Encode.string model.responses) )
+
+        ExportCsv ->
+            ( model, generateCsv (Encode.dict identity Encode.string model.responses) )
 
         GoToSection code ->
             ( { model | collapsed = Set.remove code model.collapsed }
@@ -688,6 +695,7 @@ viewReport model scores =
                         ]
                     , div [ class "report-header-btns" ]
                         [ button [ class "btn-ghost-inv", onClick CloseReport ] [ text "Close" ]
+                        , button [ class "btn-ghost-inv", onClick ExportCsv ] [ text "⬇ .csv" ]
                         , button [ class "btn-ghost-inv", onClick ExportDocx ] [ text "⬇ .docx" ]
                         ]
                     ]
@@ -730,6 +738,7 @@ viewReport model scores =
                 ]
             , div [ class "report-footer" ]
                 [ button [ class "btn btn-ghost", onClick CloseReport ] [ text "Close" ]
+                , button [ class "btn btn-ghost", onClick ExportCsv ] [ text "⬇ Export .csv" ]
                 , button [ class "btn btn-accent", onClick ExportDocx ] [ text "⬇ Export .docx" ]
                 ]
             ]
@@ -851,6 +860,7 @@ view model =
 
                           else
                             text ""
+                        , button [ class "btn btn-ghost", onClick ExportCsv ] [ text "⬇ Export .csv" ]
                         , button [ class "btn btn-ghost", onClick ExportDocx ] [ text "⬇ Export .docx" ]
                         ]
                     ]

@@ -162,6 +162,42 @@ app.ports.scrollTo.subscribe(function(id) {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
+app.ports.generateCsv.subscribe(function(responses) {
+  var vendorName = responses['GNRL-01'] || 'Untitled Assessment';
+  var rows = [['ID', 'Section', 'Question', 'Importance', 'Critical', 'Response', 'Additional Info']];
+
+  QUESTIONS.forEach(function(q) {
+    var answer = responses[q.id] || '';
+    var addAnswer = responses[q.id + '_add'] || '';
+    rows.push([
+      q.id,
+      q.section,
+      q.label,
+      q.importance,
+      q.isCritical ? 'Yes' : 'No',
+      answer,
+      addAnswer,
+    ]);
+  });
+
+  var csv = rows.map(function(row) {
+    return row.map(function(cell) {
+      var s = String(cell).replace(/"/g, '""');
+      return /[",\n\r]/.test(s) ? '"' + s + '"' : s;
+    }).join(',');
+  }).join('\r\n');
+
+  var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'HECVAT-4.14-' + vendorName.replace(/[^a-zA-Z0-9]/g, '-') + '.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
 app.ports.generateDocx.subscribe(function(responses) {
   var D = docx;
   var vendorName = responses['GNRL-01'] || 'Untitled Assessment';
